@@ -1,1 +1,106 @@
-<p>slider works!</p>
+<section id="content" #Content>
+
+    <button id="btn-prev" class="btn" (click)="prevClick()" #BtnPrev>←</button>
+    <button id="btn-next" class="btn" (click)="nextClick()" #BtnNext>→</button>
+
+
+    <div id="content-box" #ContentBox>
+
+        <figure class="figure figure-0">
+            <img src="../../../assets/img/d75583a9-4bd1-4004-802b-6f814c04a83f.webp" title="0" />
+        </figure>
+
+        <figure class="figure figure-1">
+            <img src="../../../assets/img/0f4000a6-4710-432f-9f27-6b0b817abb24.webp" title="1" />
+        </figure>
+
+        <figure class="figure figure-2">
+            <img src="../../../assets/img/12386a8b-ab44-4071-84f7-aceb9d27d1a5.webp" title="2" />
+        </figure>
+
+        <figure class="figure figure-3">
+            <img src="../../../assets/img/15515204-22e9-4a58-bd9a-e8d46e29a89d.webp" title="3" />
+        </figure>
+
+        <figure class="figure figure-4">
+            <img src="../../../assets/img/308c44ff-5d9e-4344-8ffe-0bc874574a13.webp" title="4" />
+        </figure>
+
+        <figure class="figure figure-5">
+            <img src="../../../assets/img/d75583a9-4bd1-4004-802b-6f814c04a83f.webp" title="5" />
+        </figure>
+
+        <figure class="figure figure-6">
+            <img src="../../../assets/img/0f4000a6-4710-432f-9f27-6b0b817abb24.webp" title="6" />
+        </figure>
+
+        <figure class="figure figure-7">
+            <img src="../../../assets/img/12386a8b-ab44-4071-84f7-aceb9d27d1a5.webp" title="7" />
+        </figure>
+
+    </div>
+
+
+
+    <div id="navegadores" #Navegadores>
+
+        <button class="navig btn-0" title="btn0">
+        <div>
+          <span></span>
+        </div>
+      </button>
+
+        <button class="navig btn-1" title="btn1">
+        <div>
+          <span></span>
+        </div>
+      </button>
+
+        <button class="navig btn-2" title="btn2">
+        <div>
+          <span></span>
+        </div>
+      </button>
+
+        <button class="navig btn-3" title="btn3">
+        <div>
+          <span></span>
+        </div>
+      </button>
+
+        <button class="navig btn-4" title="btn4">
+        <div>
+          <span></span>
+        </div>
+      </button>
+
+        <button class="navig btn-5" title="btn5">
+        <div>
+          <span></span>
+        </div>
+      </button>
+
+        <button class="navig btn-6" title="btn6">
+        <div>
+          <span></span>
+        </div>
+      </button>
+
+        <button class="navig btn-7" title="btn7">
+        <div>
+          <span></span>
+        </div>
+      </button>
+
+
+        <a id="play" #play (click)="clickPlay();">
+            <div>||</div>
+            <div>/</div>
+            <div>></div>
+        </a>
+
+
+    </div>
+
+
+</section>

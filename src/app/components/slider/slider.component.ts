@@ -41,7 +41,7 @@ constructor(private render: Renderer2, private router: Router) {
 
 ngOnInit(): void {
   setTimeout( () => { this.Current(); } , 300);
-  this.ResizeSlider(this.event);
+  // this.ResizeSlider(this.event);
 } // ngOnInit;
 
 
@@ -73,6 +73,7 @@ ngAfterViewInit(): void {
   // console.log(`Valor Actual: (${this.valorActual})`);
   
 } // ngAfterViewInit
+
 
 public arr(): void {
   for (let k = 0; k < this.myFigures.length - 2; k++) {

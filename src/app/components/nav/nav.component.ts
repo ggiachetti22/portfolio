@@ -157,7 +157,7 @@ export class NavComponent {
 
 
     if (Check) {
-      this.renderer.setStyle(this.boxsection.nativeElement, 'z-index', `10`);
+      this.renderer.setStyle(this.boxsection.nativeElement, 'z-index', `100`);
       this.renderer.setStyle(this.navegador1.nativeElement, 'left', `0%`);
       this.renderer.setStyle(this.navegador2.nativeElement, 'right', `0%`);
       console.log(`Check True: (${Check})\n((${this.porcentaje}))`);

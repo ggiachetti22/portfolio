@@ -4,3 +4,50 @@ section {
     margin: 100px auto;
     background: dodgerblue;
 }
+
+
+
+#parrafo-servicios {
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+    height: 100%;
+    outline-offset: -4px;
+    /* border: 4px solid red; */
+}
+
+
+h2{
+    text-align: start;
+    font-size: calc(8px + 1.5em);
+}
+
+p {
+    text-align: start;
+    width: 100%;
+    height: auto;
+    font-size: calc(8px + 1em);
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+
+
+/* -----------------Media Query------------------- */
+
+@media (max-width: 650px),
+(width: 300px) {
+    #parrafo-servicios {
+        width: 80%;
+    }
+    h2{
+        text-align: start;
+        font-size: calc(8px + 1em);
+    }
+    
+    p {
+        text-align: start;
+        font-size: calc(8px + .7em);
+    }
+}

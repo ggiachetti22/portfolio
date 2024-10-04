@@ -1,0 +1,13 @@
+<form>
+
+    <h1>Contactanos</h1>
+
+    <input #correo [formControl]="toEmail" type="text" name="toEmail" placeholder="Correo requerido" required />
+
+    <textarea #mensaje [formControl]="toMessage" name="toMessage" placeholder="Dejanos tu mensaje..." required></textarea>
+
+    <p #MsjRecepcion>{{Msj}}</p>
+
+    <button type="button" (click)="SendMessageEmail();">Enviar</button>
+
+</form>

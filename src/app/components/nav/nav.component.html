@@ -1,0 +1,66 @@
+{{V()}}
+<section #NavSection id="NavSection" (window:scroll)="myScroll();">
+    <nav id="Nav">
+
+        <ul class="Nav-var">
+
+            <li class="Nav-item">
+                <a class="Nav-link" [routerLink]="['/home']" [queryParams]="{action: '1'}">
+                    Home
+                <div class="div" [ngClass]="ElLink1 ? 'link1 ' : 'link2' "></div>
+                </a>
+            </li>
+
+            <li class="Nav-item">
+                <a class="Nav-link" [routerLink]="['/chat']" [queryParams]="{action: '2'}">
+                    Chat
+                <div class="div" [ngClass]="ElLink2 ? 'link1 ' : 'link2' "></div>
+                </a>
+            </li>
+
+            <li class="Nav-item">
+                <a class="Nav-link" [routerLink]="['/login']" [queryParams]="{action: '3'}">
+                    Login
+                <div class="div" [ngClass]="ElLink3 ? 'link1 ' : 'link2' "></div>
+                </a>
+                <!-- <ng-template #UserSess>
+                    <div class="Nav-item ">
+                        <a class="Nav-link " [routerLink]="[ '/inicio'] " [queryParams]="{action: '3'} " (click)="logoff() ">
+                        Cerrar Sesión
+                        <div class="div " [ngClass]="ElLink3 ? 'link1 ' : 'link2' "></div>
+                      </a>
+                    </div>
+                </ng-template> -->
+            </li>
+
+
+        </ul>
+
+
+        <input #btnCheck type="checkbox" id="btn-menu" name="input-check" title="input-check" />
+        <label (click)="BtnMenu();" for="btn-menu" class="btn-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+
+    </nav>
+</section>
+
+
+
+<div id="boxsection" class="boxsection" #boxsection>
+    <div id="MySection">
+        <section #navegador1 id="navegador1" class="navegadores navegador1"></section>
+        <section #navegador2 id="navegador2" class="navegadores navegador2"></section>
+    </div>
+</div>
+
+
+<div id="up" #parrafoBox>
+    <div></div>
+    <p #parrafo1 name="parrafo1">↑</p>
+    <br />
+    <p #parrafo2 name="parrafo2">{{Parrafo2}}</p>
+</div>

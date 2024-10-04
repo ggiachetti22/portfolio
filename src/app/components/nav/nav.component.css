@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+    outline: none;
+    font: 400 clac(8px + 2em) sans-serif;
+}
+
+.boxsection {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    margin-top: 60px;
+    overflow: hidden;
+    z-index: -10;
+    border: 2px solid gold;
+}
+
+#MySection {
+    width: 100%;
+    height: calc(100% - 60px);
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+    border: 10px solid orangered;
+}
+
+#NavSection {
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transition: top .5s ease-in-out, background .3s ease-in-out;
+    background: rgba(0, 50, 150, .4);
+    top: 0px;
+    border: 2px solid cyan;
+    
+}
+
+#NavSection.NavToggle {
+    background: transparent;
+    top: -60px;
+}
+
+#Nav {
+    width: 100%;
+    height: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid tomato;
+}
+
+#Nav input {
+    opacity: .5;
+    background: red;
+}
+
+#Nav label {
+    width: 60px;
+    height: 100%;
+    position: relative;
+    outline: 2px solid rgba(0, 0, 0, .5);
+    background: orangered;
+}
+
+#Nav label span {
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: white;
+    position: absolute;
+    transition: all .25s ease-in;
+}
+
+#Nav label span:nth-child(1) {
+    top: 0;
+}
+
+#Nav label span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#Nav label span:nth-child(3) {
+    bottom: 0;
+}
+
+#Nav input:checked~label span:nth-child(1) {
+    animation: menu1 .5s linear forwards;
+}
+
+#Nav input:checked~label span:nth-child(2) {
+    animation: menu2 250ms linear forwards;
+}
+
+#Nav input:checked~label span:nth-child(3) {
+    animation: menu3 .5s linear forwards;
+}
+
+@keyframes menu1 {
+    50% {
+        top: 50%;
+    }
+    100% {
+        top: 50%;
+        transform: rotate(225deg) translateY(2px);
+    }
+}
+
+@keyframes menu3 {
+    50% {
+        bottom: 50%;
+    }
+    100% {
+        bottom: 50%;
+        transform: rotate(135deg) translateY(-2px);
+    }
+}
+
+@keyframes menu2 {
+    to {
+        opacity: 0;
+    }
+    from {
+        display: none;
+    }
+}
+
+.Nav-var {
+    width: 50%;
+    min-width: 270px;
+    height: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 5px solid gold;
+}
+
+a {
+    transition: color .3s ease-in, text-shadow .25s ease-in;
+    color: #aaa;
+    text-shadow: 5px 4px 5px rgba(150, 155, 200, .9);
+}
+
+a div {
+    width: 0%;
+    margin: auto;
+    height: 2px;
+    transition: width .25s ease-out;
+    color: #fff;
+    Background: #fff;
+    border-radius: .5rem;
+}
+
+a:hover {
+    color: whitesmoke;
+    text-shadow: 5px 4px 100px rgba(255, 255, 255, .5);
+}
+
+a:hover div {
+    width: 100%;
+}
+
+a .link1 {
+    width: 100%;
+}
+
+a .link2 {
+    width: 0%;
+}
+
+.navegadores {
+    width: 40%;
+    min-height: 100vh;
+    position: absolute;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transition: all .3s ease-in-out;
+    background: rgba(0, 0, 0, .5);
+}
+
+.navegador1 {
+    top: 0;
+    left: -40%;
+    z-index: -10;
+    border: 2px solid cyan;
+}
+
+.navegador2 {
+    top: 0;
+    right: -40%;
+    z-index: -10;
+    border: 2px solid tomato;
+}
+
+#NavSection:hover~.navegador2 {
+    right: 0%;
+}
+
+#NavSection:hover~.navegador1 {
+    left: 0%;
+}
+
+#up {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background: rgba(0, 0, 0, .2);
+    position: fixed;
+    bottom: 320px;
+    right: 20px;
+    transition: all .25s ease-in;
+    z-index: 10;
+    cursor: pointer;
+    outline: 3px solid rgba(0, 0, 0, .03);
+    outline-offset: -3px;
+}
+
+#up p {
+    text-align: center;
+    line-height: 30px;
+}
+
+#up:hover {
+    background: rgba(0, 0, 0, .5);
+    box-shadow: 3px -3px 10px 5px rgba(255, 255, 255, .2) inset;
+}
+
+
+/* -----------------Media Query------------------- */
+
+@media (max-width: 650px),
+(width: 300px) {
+    #NavSection {
+        background: rgb(5, 50, 150);
+        -webkit-backdrop-filter: blur(0);
+        backdrop-filter: blur(0);
+    }
+    .navegadores {
+        width: 40%;
+    }
+    #up p {
+        cursor: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+}

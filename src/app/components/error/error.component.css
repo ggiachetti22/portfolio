@@ -1,0 +1,24 @@
+p {
+    margin-top: 70px;
+    font: bold calc(8px + 2vw) sans-serif;
+    color: crimson;
+}
+
+#BoxImg {
+    width: 100%;
+    height: 650px;
+}
+
+#Bee {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+@media (max-width: 650px),
+(max-width: 280px) {
+    #BoxImg {
+        width: 200px;
+        height: 200px;
+    }
+}

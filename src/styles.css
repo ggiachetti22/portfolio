@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: whitesmoke;
+    /* border: none; */
+    /* outline: none; */
+    font: 400 calc(8px + .5vw) sans-serif;
+}
+
+body {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: wrap column;
+    position: relative;
+    outline: 7px solid green;
+    outline-offset: -7px;
+    text-align: center;
+    background: rgba(0, 0, 0, .8);
+}

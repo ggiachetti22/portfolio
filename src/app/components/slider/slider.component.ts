@@ -40,9 +40,8 @@ constructor(private render: Renderer2, private router: Router) {
 
 
 ngOnInit(): void {
-
-  this.figureAlto = Number(this.myFigures[0].offsetHeight);
-
+  setTimeout( () => { this.Current(); } , 300);
+  this.ResizeSlider(this.event);
 } // ngOnInit;
 
 
@@ -59,7 +58,9 @@ ngAfterViewInit(): void {
   this.Navegador();
   this.ResizeSlider(this.event);
 
-  this.Current();
+
+  // this.Current();
+
   this.Translate();
   this.IntervalSlider();
 
@@ -82,6 +83,7 @@ public arr(): void {
 } // this.arr();
 
 public IntervalSlider() {
+  this.Current();
   this.ClearIntervalSlider();
   this.intervalSlider = setInterval(() => { this.nextClick(); }, 7000);
   // this.ClearIntervalSlider();
@@ -112,7 +114,7 @@ public Current() {
   this.figureAlto = Number(this.myFigures[0].offsetHeight);
   this.render.setStyle(this.BtnPrev.nativeElement, 'height', `${this.figureAlto}px`);
   this.render.setStyle(this.BtnNext.nativeElement, 'height', `${this.figureAlto}px`);
-  // console.log(`offsetHeight: ${this.figureAlto}px`);
+  console.log(`offsetHeight: ${this.figureAlto}px`);
 } // this.Current();
 
 public Pintar(n: Number) {

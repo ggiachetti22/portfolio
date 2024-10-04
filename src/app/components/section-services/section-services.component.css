@@ -8,7 +8,7 @@ section {
 
 
 #parrafo-servicios {
-    width: 90%;
+    width: 85%;
     margin: auto;
     padding: 10px;
     height: 100%;
@@ -38,9 +38,6 @@ p {
 
 @media (max-width: 650px),
 (width: 300px) {
-    #parrafo-servicios {
-        width: 80%;
-    }
     h2{
         text-align: start;
         font-size: calc(8px + 1em);

@@ -112,7 +112,7 @@ public clickPlay(): void {
 
 
 public Current() {
-  this.figureAlto = Number(this.myFigures[0].offsetHeight);
+  this.figureAlto = Number(this.myFigures[Number(this.V)].offsetHeight);
   this.render.setStyle(this.BtnPrev.nativeElement, 'height', `${this.figureAlto}px`);
   this.render.setStyle(this.BtnNext.nativeElement, 'height', `${this.figureAlto}px`);
   console.log(`offsetHeight: ${this.figureAlto}px`);

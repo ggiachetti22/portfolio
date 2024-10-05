@@ -32,8 +32,8 @@ input, textarea {
 }
 
 input:focus, textarea:focus, button:focus {
-    outline: 3px solid greenyellow;
-    outline-offset: -3px;
+    outline: 2px solid greenyellow;
+    outline-offset: -2px;
 }
 
 button {
@@ -61,6 +61,6 @@ button {
         width: 85%;
     }
     textarea {
-        height: 150px;
+        height: 180px;
     }
 }

@@ -1,9 +1,17 @@
+
+
 #content {
     width: 100%;
-    position: relative;
+    height: auto;
     overflow: hidden;
     background: rgba(70, 140, 255, .3);
     padding: 10px 0 10px 0;
+}
+
+#contenedor {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
     z-index: 20;
 }
 
@@ -119,8 +127,8 @@ img {
 
 @media (max-width: 425px),
 (max-width: 550px) {
-    #content {
-        margin: 150px 0 150px 0;
+    #contenedor {
+        margin: 30px 0 30px 0;
         padding: 10px 0 10px 0;
         transform: scale(1.7);
     }

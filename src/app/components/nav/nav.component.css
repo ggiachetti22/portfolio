@@ -40,7 +40,7 @@
     background: rgba(0, 50, 150, .4);
     top: 0px;
     z-index: 100;
-    border: 2px solid cyan;
+    /* border: 2px solid cyan; */
     
 }
 
@@ -55,11 +55,12 @@
     height: 100%;
     display: flex;
     justify-content: space-between;
-    border: 2px solid tomato;
+    /* border: 2px solid tomato; */
 }
 
 #Nav input {
     opacity: .5;
+    display: none;
     background: red;
 }
 
@@ -67,8 +68,9 @@
     width: 60px;
     height: 100%;
     position: relative;
-    outline: 2px solid rgba(0, 0, 0, .5);
-    background: orangered;
+    border: none;
+    /* outline: 2px solid rgba(0, 0, 0, .5); */
+    background: rgba(0, 0, 0, .05);
 }
 
 #Nav label span {
@@ -142,7 +144,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border: 5px solid gold;
+    /* border: 5px solid gold; */
 }
 
 a {
@@ -192,14 +194,14 @@ a .link2 {
     top: 0;
     left: -40%;
     z-index: -10;
-    border: 2px solid cyan;
+    /* border: 2px solid cyan; */
 }
 
 .navegador2 {
     top: 0;
     right: -40%;
     z-index: -10;
-    border: 2px solid tomato;
+    /* border: 2px solid tomato; */
 }
 
 #NavSection:hover~.navegador2 {

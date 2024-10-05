@@ -16,9 +16,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-flow: wrap column;
-    position: relative;
-    outline: 7px solid green;
-    outline-offset: -7px;
+    position: relative;    
     text-align: center;
     background: rgba(0, 0, 0, .8);
 }

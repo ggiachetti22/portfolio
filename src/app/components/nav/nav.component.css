@@ -20,7 +20,6 @@
     margin-top: 60px;
     overflow: hidden;
     z-index: -10;
-    border: 2px solid gold;
 }
 
 #MySection {
@@ -29,7 +28,6 @@
     position: relative;
     overflow: hidden;
     z-index: 100;
-    border: 10px solid orangered;
 }
 
 #NavSection {

@@ -1,4 +1,4 @@
-section {
+.section {
     width: 100%;
     height: auto;
     padding: 20px 0px 30px 0px;
@@ -6,7 +6,18 @@ section {
     outline: 5px solid rgba(50, 170, 200, .02);
     outline-offset: -5px;
     background: rgba(30, 144, 255, .04);
+
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
+
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 #parrafo-intro {
     width: 90%;

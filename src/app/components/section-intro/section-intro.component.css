@@ -3,7 +3,7 @@ section {
     height: auto;
     padding: 20px 0px 30px 0px;
     margin: 100px auto;
-    background: dodgerblue;
+    background: rgba(30, 144, 255, .05);
 }
 
 #parrafo-intro {

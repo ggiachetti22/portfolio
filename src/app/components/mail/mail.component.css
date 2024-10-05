@@ -1,5 +1,5 @@
 form {
-    padding: 5px;
+    padding: 20px;
     margin: 100px auto;
     width: 70%;
     height: auto;
@@ -15,17 +15,25 @@ form {
 }
 
 input {
-    border-radius: .5rem;
-    width: 90%;
     padding: 10px 20px;
 }
 
 textarea {
-    border-radius: .5rem;
-    padding: 10px 15px;
-    width: 90%;
     height: 300px;
     resize: none;
+}
+
+input, textarea {
+    border-radius: .5rem;
+    padding: 10px 20px;
+    width: 90%;
+    background: rgba(200, 200, 255, .05);
+    border: 2px solid rgba(255,255,255, .1);
+}
+
+input:focus, textarea:focus, button:focus {
+    outline: 3px solid greenyellow;
+    outline-offset: -3px;
 }
 
 button {
@@ -46,8 +54,11 @@ button {
 @media (max-width: 425px),
 (max-width: 550px) {
     form {
-        width: 90%;
+        width: 80%;
         margin: 50px auto;
+    }
+    input, textarea {
+        width: 85%;
     }
     textarea {
         height: 200px;

@@ -16,15 +16,16 @@ export class ScrollAnimationDirective implements OnInit {
     } // ngOnInit;
   
     public createObserver(): void {
+
       const options = {
         root: null, // Usar el viewport actual
         threshold: 0.1 // Comienza la animación cuando el 10% del componente es visible
       };
   
-      this.observer = new IntersectionObserver((entries) => {
+      this.observer = new IntersectionObserver( (entries) => {
 
         
-        entries.forEach(entry => {
+        entries.forEach( (entry) => {
 
           if (entry.isIntersecting) {
             this.renderer.addClass(this.el.nativeElement, 'visible');
@@ -34,7 +35,7 @@ export class ScrollAnimationDirective implements OnInit {
 
         }); // forEach;
 
-      }, options);
+      } , options);
   
 
       this.observer.observe(this.el.nativeElement);

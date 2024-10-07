@@ -12,6 +12,7 @@ import { BehaviorSubject } from 'rxjs';
 export class SliderComponent implements AfterViewInit, OnInit {
 
 @ViewChild('ContentBox') ContentBox!: ElementRef;
+@ViewChild('fondo') fondo!: ElementRef;
 @ViewChild('Navegadores') Navegadores!: ElementRef;
 @ViewChild('BtnPrev') BtnPrev!: ElementRef;
 @ViewChild('BtnNext') BtnNext!: ElementRef;
@@ -30,6 +31,14 @@ private myNavigate: HTMLElement[] = [];
 private myNavigateDiv: HTMLElement[] = [];
 private btn: String[] = ["rgba(255, 255, 255,.08)", "rgba(255, 255, 255,.02)"]
 private numeroArray: Number[] = [];
+private sliderArray: String[] = [
+  '../../../assets/img/0f4000a6-4710-432f-9f27-6b0b817abb24.webp',
+  '../../../assets/img/12386a8b-ab44-4071-84f7-aceb9d27d1a5.webp',
+  '../../../assets/img/15515204-22e9-4a58-bd9a-e8d46e29a89d.webp',
+  '../../../assets/img/308c44ff-5d9e-4344-8ffe-0bc874574a13.webp',
+  '../../../assets/img/d75583a9-4bd1-4004-802b-6f814c04a83f.webp'
+];
+
 
 private figureAlto: Number = 400;
 private event!: Event;
@@ -50,6 +59,7 @@ ngAfterViewInit(): void {
   const figures = this.ContentBox.nativeElement.querySelectorAll('.figure'); // nativeElement por document
   const navigate = this.Navegadores.nativeElement.querySelectorAll('.navig');
   const navigateDiv = this.Navegadores.nativeElement.querySelectorAll('div');
+
 
   this.myFigures = Array.from(figures) as HTMLElement[];
   this.myNavigate = Array.from(navigate) as HTMLElement[];
@@ -169,6 +179,7 @@ public Infinite(vl: Number) {
       this.render.setStyle(this.ContentBox.nativeElement, 'transition', 'none');
       this.V = 0;
       this.Translate();
+      this.clickFondo(this.V);
       if (this.n === 0) { this.Pintar(Number(this.V)); this.IntervalSlider(); } // if;
       console.log(`Nuevo valor actual.length - 3: (${(Number(this.V))})`);
     }, 300);
@@ -180,6 +191,7 @@ public Infinite(vl: Number) {
   if (this.n === 0) { this.Pintar(Number(this.V)); this.IntervalSlider(); } // if;
   this.Translate();
   this.Current();
+  this.clickFondo(this.V);
 } // this.Infinite(this.V);
 
 
@@ -190,11 +202,14 @@ public prevClick() {
     this.render.setStyle(this.ContentBox.nativeElement, 'transition', 'none');
     this.V = Number(this.myFigures.length - 3);
     this.Translate();
+    this.clickFondo(this.V);
     setTimeout(() => {
       this.render.setStyle(this.ContentBox.nativeElement, 'transition', 'all .3s ease-in-out');
       this.V = Number(this.myFigures.length - 4);
+      this.clickFondo(this.V);
       if (this.n === 0) { this.Pintar(Number(this.V)); this.IntervalSlider(); } // if;
       this.Translate();
+      this.clickFondo(this.V);
     }, 300);
   } // if;
 } // prevClick();
@@ -207,14 +222,27 @@ public nextClick() {
     this.render.setStyle(this.ContentBox.nativeElement, 'transition', 'none');
     this.V = 0;
     this.Translate();
+    // this.clickFondo(this.V);
     setTimeout(() => {
       this.render.setStyle(this.ContentBox.nativeElement, 'transition', 'all .3s ease-in-out');
       this.V = 1;
+      this.clickFondo(this.V);
       if (this.n === 0) { this.Pintar(Number(this.V)); this.IntervalSlider(); } // if;
       this.Translate();
+      this.clickFondo(this.V);
     }, 300);
   } // if;
+  // this.clickFondo(this.V);
 } // nextClick();
+
+
+
+private clickFondo(n: Number):  void {
+  console.log(`Click Fondo: (${n})}`); // ${this.fondo.nativeElement}
+  if(n === this.sliderArray.length) n = 0;
+  this.render.setStyle(this.fondo.nativeElement, 'background', `url('${this.sliderArray[Number(n)]}') no-repeat center fixed`); 
+} // this.clickFondo(this.V);
+
 
 
 protected Translate() {
@@ -252,6 +280,7 @@ public Navegador() {
       this.ClearIntervalSlider();
       this.IntervalSlider();
       this.ResetPintar(Number(n));
+      this.clickFondo(n);
       // this.Pintar(Number(n));
     }); // addEventListener;
   }); // forEach;    

@@ -74,11 +74,13 @@ ngAfterViewInit(): void {
   this.Translate();
   this.IntervalSlider();
 
+  this.clickFondo(1);
   this.Pintar(Number(this.V));
 
   this.arr();
   console.log(`Array de números: [${this.numeroArray}]`);
 
+  
   // this.valorActual = Number(this.valorActual) + (Number(this.valor) * Number(this.V));
   // console.log(`Valor Actual: (${this.valorActual})`);
   

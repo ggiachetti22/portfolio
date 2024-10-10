@@ -22,13 +22,13 @@ footer.visible {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    border: 2px solid crimson;
+    /* border: 2px solid crimson; */
 }
 
 
 .footer-box > div {
     width: calc(100% / 3);
-    border: 2px solid green;
+    /* border: 2px solid green; */
 }
 
 
@@ -41,12 +41,15 @@ footer.visible {
     /* border: 2px solid tomato; */
 }
 
+li {
+    list-style: none;
+}
 
 .copy {
     width: 100%;
     height: 60px;
     line-height: 60px;
-    border: 2px solid cyan;
+    /*  border: 2px solid cyan; */
 }
 
 
@@ -60,5 +63,9 @@ footer.visible {
     }
     .footer-box {
         flex-direction: column;
+        
+    }
+    .footer-box ul {
+        align-items: center;
     }
 }

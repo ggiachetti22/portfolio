@@ -63,6 +63,8 @@
     height: 80%;
 }
 
+
+
 app-sub-menu {
     width: 100%;
     height: 100%;
@@ -150,7 +152,7 @@ app-sub-menu {
 
 .Nav-var {
     width: 50%;
-    min-width: 270px;
+    min-width: 260px;
     height: 100%;
     padding: 5px;
     display: flex;

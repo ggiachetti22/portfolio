@@ -8,3 +8,7 @@ app-mail.visible {
     opacity: 1;
     transform: translateY(0);
 }
+
+app-sub-menu {
+    position: sticky;
+}

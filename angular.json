@@ -26,7 +26,8 @@
               "src/_redirects"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/fontello/css/fontello.css"
             ],
             "scripts": []
           },

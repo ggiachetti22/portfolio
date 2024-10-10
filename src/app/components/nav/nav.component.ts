@@ -2,6 +2,7 @@ import { NgClass } from '@angular/common';
 import { Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { SubMenuComponent } from '../sub-menu/sub-menu.component';
 
 @Component({
   selector: 'app-nav',
@@ -9,6 +10,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
   imports: [
     RouterModule,
     FormsModule,
+    SubMenuComponent,
     NgClass
   ],
   templateUrl: './nav.component.html',

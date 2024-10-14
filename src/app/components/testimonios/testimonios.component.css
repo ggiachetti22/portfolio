@@ -9,9 +9,12 @@ section {
 section .div {
     height: auto;
     display: flex;
+    border-radius: .5rem;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    box-shadow: 0px 0px 20px 5px rgba(0,0,0, .1);
+    transition: box-shadow .3s ease-in;
     /* border: 2px solid dodgerblue; */
 }
 
@@ -23,20 +26,34 @@ section .testimonio {
     flex-direction: column;
     align-items: center;
     position: relative;
-    border-radius: 1rem;
+    border-radius: .5rem;
     transition: background .3s ease-in;
     background: transparent;
     cursor: pointer;
     /* border: 2px solid violet; */
 }
 
-section .testimonio:hover {
+
+section .div:hover {
+    box-shadow: 0px 0px 20px 5px rgba(0,0,0, .5);
+    
+}
+
+section .div:hover > .testimonio {
     background: rgb(10, 62, 113);
 }
 
-div p {
-    /* border: 2px solid green; */
-}
+
+/* section .testimonio:hover {
+    background: rgb(10, 62, 113);
+} */
+
+
+
+/* div p {
+    border: 2px solid green;
+} */
+
 
 figure {
     width: 80px;

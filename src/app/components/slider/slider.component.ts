@@ -224,7 +224,7 @@ public nextClick() {
     this.render.setStyle(this.ContentBox.nativeElement, 'transition', 'none');
     this.V = 0;
     this.Translate();
-    // this.clickFondo(this.V);
+    this.clickFondo(this.V);
     setTimeout(() => {
       this.render.setStyle(this.ContentBox.nativeElement, 'transition', 'all .3s ease-in-out');
       this.V = 1;

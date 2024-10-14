@@ -19,7 +19,7 @@ export class ScrollAnimationDirective implements OnInit {
 
       const options = {
         root: null, // Usar el viewport actual
-        threshold: 0.1 // Comienza la animación cuando el 10% del componente es visible
+        threshold: 0.01 // Comienza la animación cuando el 0.1: 10% del componente es visible y 0.01: el 1%
       };
   
       this.observer = new IntersectionObserver( (entries) => {

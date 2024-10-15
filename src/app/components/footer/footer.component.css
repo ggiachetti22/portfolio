@@ -32,7 +32,7 @@ footer.visible {
     /* grid-template-columns: repeat(auto-fit, minmax(10%, 1fr)); */
     align-items: center;
     justify-content: space-around;
-    border: 2px solid crimson;
+    /* border: 2px solid crimson; */
 }
 
 

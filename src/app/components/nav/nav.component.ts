@@ -24,7 +24,6 @@ export class NavComponent {
 
   ngOnInit(): void {
 
-    
     this.route.queryParams.subscribe(p => {
       this.accion = parseInt(p['action'], 10); // 10 especificación de la base decimal;
       console.log(`(this.accion: ${this.accion})`);
@@ -32,6 +31,14 @@ export class NavComponent {
     });
 
     this.route.snapshot.params['ElID'];
+
+    this.route.queryParams.subscribe( act => {
+      this.btnCheck.nativeElement.checked = false;
+      this.Cerrar();
+      // const action = act['action'];
+      // console.log(`this.route.queryParams: (`, action, `)`);
+    }); // this.route.queryParams;
+    
 
     // this.ResizeSlider(this.event);
 
@@ -138,25 +145,27 @@ export class NavComponent {
   public event!: Event;
 
   public accion: number = 0;
-  public ID: number = 0;
+  public ID: number = 0;  
   public ElLink1: boolean = false;
   public ElLink2: boolean = false;
   public ElLink3: boolean = false;
   // public ElLink4: boolean = false;
   // public ElLink5: boolean = false;
 
-
+  public Check: boolean = false;
 
   public BtnMenu(): void {
     const NavSection = this.NavSection.nativeElement.offsetWidth;
     const Check = !this.btnCheck.nativeElement.checked;
+    this.Check = Check;
 
     if (NavSection <= 550 ) {
       this.porcentaje = Number(60);
     } else {
       this.porcentaje = Number(40);
     } // else;
-
+    
+    console.log(`Check: ((${this.Check}))\nCheck: ${Check}`);
 
     if (Check) {
       this.renderer.setStyle(this.boxsection.nativeElement, 'z-index', `90`);
@@ -164,15 +173,45 @@ export class NavComponent {
       this.renderer.setStyle(this.navegador2.nativeElement, 'right', `0%`);
       console.log(`Check True: (${Check})\n((${this.porcentaje}))`);
     } else {
-      this.renderer.setStyle(this.boxsection.nativeElement, 'z-index', `-10`);
-      this.renderer.setStyle(this.navegador1.nativeElement, 'left', `-${this.porcentaje}%`);
-      this.renderer.setStyle(this.navegador2.nativeElement, 'right', `-${this.porcentaje}%`);
+      this.Cerrar();
       console.log(`Check False: (${Check})\n((${this.porcentaje}))`);
     } // else;
 
-    console.log(`Window: ((${NavSection}))`);
+    console.log(`Window: ((${NavSection}))\n-------------------------\n`)
 
   } // this.BtnMenu();
+
+  private Cerrar(): void {
+    // if(!this.Check){
+      const NavSection = this.NavSection.nativeElement.offsetWidth;
+      const Check = !this.btnCheck.nativeElement.checked;
+
+      if (NavSection <= 550 ) {
+        this.porcentaje = Number(60);
+      } else {
+        this.porcentaje = Number(40);
+      } // else;
+
+      this.renderer.setStyle(this.boxsection.nativeElement, 'z-index', `-10`);
+      this.renderer.setStyle(this.navegador1.nativeElement, 'left', `-${this.porcentaje}%`);
+      this.renderer.setStyle(this.navegador2.nativeElement, 'right', `-${this.porcentaje}%`);
+      // console.log(`Check Current: ((${this.Check}))`);
+    // } //
+  } // this.Cerrar();
+
+
+  public Porcentaje(n: Number): Number {
+    // let n: Number = 0;
+    const NavSection = this.NavSection.nativeElement.offsetWidth;
+    const Check = !this.btnCheck.nativeElement.checked;
+    if (NavSection <= 550 ) {
+      this.porcentaje = Number(60);
+    } else {
+      this.porcentaje = Number(40);
+    } // else;
+
+    return this.porcentaje;
+  } // this.Porcentaje();
 
 
 
@@ -183,7 +222,6 @@ export class NavComponent {
 
   protected PositionInitial = 0; // window.scrollY;
 
-
   @HostListener('window.resize', ['$event'])
   public ResizeSlider(event: Event): void {
 
@@ -192,7 +230,7 @@ export class NavComponent {
       const altoWindow = window.innerHeight;
       const NavSection = this.NavSection.nativeElement.offsetWidth;
 
-      console.log(`\n\nWindow: ((${NavSection}))\n`);
+       console.log(`\n\nWindow: ((${NavSection}))\n`);
       console.log(`Window: ((${anchoWindow}px)) alto: ((${altoWindow}))\nAlto de footer: ((..))\n\nAltura de this.parrafoBox: (( ${this.parrafoBox.nativeElement.offsetTop}px ))`);
 
       if (anchoWindow <= 550) {
@@ -214,12 +252,16 @@ export class NavComponent {
     // this.Nom();
     // NavSection?.classList.toggle("NavToggle", window.scrollY > 0);
     if (this.PositionInitial >= PositionActual) {
+      
       NavSection?.classList.remove('NavToggle');
     } else {
+
+      this.btnCheck.nativeElement.checked = false;
+      this.Cerrar();
+
       NavSection?.classList.add('NavToggle');
     } // else;
     this.Parrafo2 = this.PositionInitial.toString();
-
     console.log(`ScrollY Inicial: (${this.PositionInitial})\nScrollY Actual: (${PositionActual})`);
     this.PositionInitial = PositionActual;
   }; // myScroll();

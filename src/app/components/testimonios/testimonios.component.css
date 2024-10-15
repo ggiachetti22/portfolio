@@ -87,10 +87,11 @@ h4 {
 
 /* -----------------Media Query------------------- */
 
+
 @media (max-width: 425px),
 (max-width: 550px) {
     section {
-        width: 300px;
+        width: 250px;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 30px 10px;
     }

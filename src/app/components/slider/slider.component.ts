@@ -242,7 +242,7 @@ public nextClick() {
 private clickFondo(n: Number):  void {
   // console.log(`Click Fondo: (${n})}`); // ${this.fondo.nativeElement}
   if(n === this.sliderArray.length) n = 0;
-  this.render.setStyle(this.fondo.nativeElement, 'background', `url('${this.sliderArray[Number(n)]}') no-repeat center fixed`); 
+  this.render.setStyle(this.fondo.nativeElement, 'background', `url('${this.sliderArray[Number(n)]}') no-repeat center center / cover fixed`); // no-repeat center center / cover fixed;
 } // this.clickFondo(this.V);
 
 

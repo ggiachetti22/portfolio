@@ -1,8 +1,9 @@
 .section {
     width: 100%;
-    height: 400px;
+    max-width: 1450px;
+    height: auto;
     margin: 100px auto;
-    background: dodgerblue;
+    /* background: dodgerblue; */
 
     opacity: 0;
     transform: translateY(50px);
@@ -18,11 +19,84 @@
 
 #parrafo-servicios {
     width: 85%;
-    margin: auto;
-    padding: 10px;
     height: 100%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 20px;
     outline-offset: -4px;
-    /* border: 4px solid red; */
+    /* border: 2px solid crimson; */
+}
+
+
+.div-titulo {
+    width: 85%;
+    margin: auto;
+    border: 2px solid greenyellow;
+}
+
+.div-titulo div {
+    /* border: 2px solid goldenrod; */
+}
+
+.div-titulo h1, .div-titulo h2 {
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.div-section {
+    padding: 20px;
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: rgba(20, 66, 111, .2);
+    transition: background .3s ease-in;
+    border: 2px solid rgb(10, 62, 113);
+}
+
+.div-section:hover {
+    background: rgb(10, 62, 113);
+}
+
+.div-section:nth-of-type(odd) {
+    text-align: end;
+}
+
+.div-section:nth-of-type(even) {
+    text-align: start;
+}
+
+
+.section-p h3 {
+    margin-bottom: 1rem;
+    font: bold calc(6px + 1rem) sans-serif;
+    /* border: 2px solid saddlebrown; */
+}
+
+
+.section-p {
+    padding: 0px 10px 0px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* border: 2px solid salmon; */
+}
+
+.section-p p {
+    font: 400 calc(8px + .8rem) sans-serif;
+    /* overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all; */
+}
+
+
+/* .icono {
+    border: 2px solid seagreen;
+} */
+
+.icon-globe, .icon-cog-1, .icon-adult {
+    font-size: 4rem;
 }
 
 
@@ -31,27 +105,33 @@ h2{
     font-size: calc(8px + 1.5em);
 }
 
-p {
-    text-align: start;
-    width: 100%;
-    height: auto;
-    font-size: calc(8px + 1em);
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-all;
-}
 
 
 
 /* -----------------Media Query------------------- */
 
+
 @media (max-width: 650px),
 (width: 300px) {
+    #parrafo-servicios {
+        grid-template-columns: auto;
+    }
+    .div-section {
+        padding: 15px;
+    }
+    .div-section:nth-of-type(2) {
+        order: 2;
+    }
+    .div-section:nth-of-type(4) {
+        order: 3;
+    }
+    .section-p {
+        padding: 10px;
+    }
     h2{
         text-align: start;
         font-size: calc(8px + 1em);
     }
-    
     p {
         text-align: start;
         font-size: calc(8px + .7em);

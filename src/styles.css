@@ -5,6 +5,8 @@
     padding: 0;
     background: transparent;
     color: whitesmoke;
+    -webkit-user-select: none;
+    user-select: none;
     /* border: none; */
     /* outline: none; */
     font: 400 calc(8px + .5vw) sans-serif;

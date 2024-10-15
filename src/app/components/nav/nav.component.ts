@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { SubMenuComponent } from '../sub-menu/sub-menu.component';
@@ -16,7 +16,8 @@ import { SubMenuComponent } from '../sub-menu/sub-menu.component';
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })
-export class NavComponent {
+
+export class NavComponent implements OnInit {
 
   public UserSession:  any;
   
@@ -32,19 +33,24 @@ export class NavComponent {
 
     this.route.snapshot.params['ElID'];
 
-    this.route.queryParams.subscribe( act => {
-      this.btnCheck.nativeElement.checked = false;
-      this.Cerrar();
-      // const action = act['action'];
-      // console.log(`this.route.queryParams: (`, action, `)`);
-    }); // this.route.queryParams;
-    
+    this.iniciar();
 
     // this.ResizeSlider(this.event);
 
   } // ngOnInit();
 
-   
+  
+  public iniciar(): void {
+    setTimeout( () => {
+      this.route.queryParams.subscribe( act => {
+        this.btnCheck.nativeElement.checked = false;
+        this.Cerrar();
+        // const action = act['action'];
+        // console.log(`this.route.queryParams: (`, action, `)`);
+      }); // this.route.queryParams;
+    },10);
+  } // this.iniciar();
+
 
 
   public QueryParam(activateRoute: ActivatedRoute) {

@@ -4,7 +4,6 @@
     height: auto;
     margin: 100px auto;
     /* background: dodgerblue; */
-
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -15,7 +14,6 @@
     opacity: 1;
     transform: translateY(0);
 }
-
 
 #parrafo-servicios {
     width: 85%;
@@ -28,18 +26,58 @@
     /* border: 2px solid crimson; */
 }
 
-
 .div-titulo {
     width: 85%;
     margin: auto;
-    border: 2px solid greenyellow;
+    /* border: 2px solid greenyellow; */
 }
 
 .div-titulo div {
     /* border: 2px solid goldenrod; */
 }
 
-.div-titulo h1, .div-titulo h2 {
+.div-titulo p {
+    padding: 10px 10px 20px 10px;
+    /* border: 2px solid teal; */
+}
+
+.div-titulo h5 {
+    width: fit-content;
+    height: auto;
+    margin: auto;
+    position: relative;
+    padding: 10px;
+    /* border: 2px solid tomato; */
+}
+
+
+.div-titulo h5::after, 
+.div-titulo h5::before {
+    width: 50px;
+    height: 1.6px;
+    content:"";
+    display: flex;
+    position: absolute;
+    background: rgb(10, 62, 113);
+}
+
+.div-titulo h5::after {
+    left: 0%;
+    top: 50%;
+    transform: translateY( -50%) translateX(-110%);
+    /* border-bottom: 2px solid rgb(9, 33, 68); */
+    
+}
+
+.div-titulo h5::before {
+    right: 0%;
+    top: 50%;
+    transform: translateY( -50% ) translateX(110%);
+    /* border-bottom: 2px solid rgb(9, 33, 68); */
+}
+
+
+.div-titulo h1, .div-titulo h5 {
     text-align: center;
     font-size: 1.3rem;
 }
@@ -113,6 +151,9 @@ h2{
 
 @media (max-width: 650px),
 (width: 300px) {
+    .div-section:nth-of-type(odd) {
+        text-align: start;
+    }
     #parrafo-servicios {
         grid-template-columns: auto;
     }

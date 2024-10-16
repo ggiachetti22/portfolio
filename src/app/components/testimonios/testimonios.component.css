@@ -1,14 +1,23 @@
 section {
+    width: 100%;
     max-width: 1450px;
     margin: auto;
-    display: grid;
+    /* border: 10px solid teal; */
+}
+
+.section {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    /* display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     padding: 20px;
-    gap: 20px 10px;
+    gap: 20px 10px; */
     /* border: 2px solid goldenrod; */
 }
 
-section .div {
+.section .div {
     height: auto;
     display: flex;
     border-radius: .5rem;
@@ -17,11 +26,12 @@ section .div {
     align-items: center;
     box-shadow: 0px 0px 20px 5px rgba(0,0,0, .1);
     transition: box-shadow .3s ease-in;
+    margin: 10px;
     /* border: 2px solid dodgerblue; */
 }
 
 
-section .testimonio {
+.section .testimonio {
     padding: 20px 20px 70px 20px;
     height: auto;
     display: flex;
@@ -36,12 +46,12 @@ section .testimonio {
 }
 
 
-section .div:hover {
+.section .div:hover {
     box-shadow: 0px 0px 20px 5px rgba(0,0,0, .5);
     
 }
 
-section .div:hover > .testimonio {
+.section .div:hover > .testimonio {
     background: rgb(10, 62, 113);
 }
 
@@ -89,9 +99,9 @@ h4 {
 
 @media (max-width: 425px),
 (max-width: 550px) {
-    section {
-        /* width: 250px; */
-        grid-template-columns: 1fr;
+    .section {
+        flex-direction: column;
+        /* grid-template-columns: 1fr; */
         gap: 30px 10px;
     }
     p {
@@ -100,7 +110,7 @@ h4 {
     .titulos {
         margin-top: 60px;
     }
-    section .testimonio {
+    .section .testimonio {
         cursor: none;
         padding: 20px 20px 80px 20px;
     }

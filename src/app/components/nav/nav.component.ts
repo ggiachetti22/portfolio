@@ -203,7 +203,7 @@ export class NavComponent implements OnInit {
         this.porcentaje = Number(40);
       } // else; */
 
-      this.porcentaje = Number(70);
+      this.porcentaje = Number(75);
 
       this.renderer.setStyle(this.MySection.nativeElement, 'background', 'transparent');
 
@@ -244,16 +244,16 @@ export class NavComponent implements OnInit {
       const altoWindow = window.innerHeight;
       const NavSection = this.NavSection.nativeElement.offsetWidth;
 
-       console.log(`\n\nWindow: ((${NavSection}))\n`);
+      console.log(`\n\nWindow: ((${NavSection}))\n`);
       console.log(`Window: ((${anchoWindow}px)) alto: ((${altoWindow}))\nAlto de footer: ((..))\n\nAltura de this.parrafoBox: (( ${this.parrafoBox.nativeElement.offsetTop}px ))`);
 
-      if (anchoWindow <= 550) {
+      /* if (anchoWindow <= 550) {
         this.porcentaje = Number(60);
         console.log(`Resolución menor a 550px ${anchoWindow}`);
       } else {
         this.porcentaje = Number(40);
         console.log(`Resolución es mayor a 550px`);
-      } // else;
+      } // else; */
 
     }); // resize; 
 

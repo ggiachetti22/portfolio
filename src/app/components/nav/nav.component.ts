@@ -75,8 +75,8 @@ export class NavComponent implements OnInit {
   public Param(): void {
     this.porcentaje = Number(0);
     this.renderer.setStyle(this.navegador1.nativeElement, 'left', `0%`);
-    this.renderer.setStyle(this.navegador2.nativeElement, 'right', `0%`);
-    this.renderer.setStyle(this.navegador2.nativeElement, 'background', `red`);
+    // this.renderer.setStyle(this.navegador2.nativeElement, 'right', `0%`);
+    // this.renderer.setStyle(this.navegador2.nativeElement, 'background', `red`);
   } // this.Param();
 
 
@@ -139,11 +139,14 @@ export class NavComponent implements OnInit {
   @ViewChild("boxsection") boxsection!: ElementRef;
   @ViewChild("btnCheck") btnCheck!: ElementRef;
   @ViewChild("navegador1") navegador1!: ElementRef;
-  @ViewChild("navegador2") navegador2!: ElementRef;
+  // @ViewChild("navegador2") navegador2!: ElementRef;
 
   @ViewChild("parrafo1", { static: false }) parrafo1!: ElementRef;
   @ViewChild("parrafo2", { static: false }) parrafo2!: ElementRef;
   @ViewChild("parrafoBox", { static: false }) parrafoBox!: ElementRef;
+
+  @ViewChild("MySection", { static: false}) MySection!: ElementRef;
+
   public Parrafo1: String = '↑';
   public Parrafo2: String = 'Hola';
 
@@ -174,9 +177,11 @@ export class NavComponent implements OnInit {
     console.log(`Check: ((${this.Check}))\nCheck: ${Check}`);
 
     if (Check) {
+      this.renderer.setStyle(this.MySection.nativeElement, 'background', 'rgba(0,0,0, .5)');
+
       this.renderer.setStyle(this.boxsection.nativeElement, 'z-index', `90`);
       this.renderer.setStyle(this.navegador1.nativeElement, 'left', `0%`);
-      this.renderer.setStyle(this.navegador2.nativeElement, 'right', `0%`);
+      // this.renderer.setStyle(this.navegador2.nativeElement, 'right', `0%`);
       console.log(`Check True: (${Check})\n((${this.porcentaje}))`);
     } else {
       this.Cerrar();
@@ -198,9 +203,12 @@ export class NavComponent implements OnInit {
         this.porcentaje = Number(40);
       } // else;
 
+
+      this.renderer.setStyle(this.MySection.nativeElement, 'background', 'transparent');
+
       this.renderer.setStyle(this.boxsection.nativeElement, 'z-index', `-10`);
       this.renderer.setStyle(this.navegador1.nativeElement, 'left', `-${this.porcentaje}%`);
-      this.renderer.setStyle(this.navegador2.nativeElement, 'right', `-${this.porcentaje}%`);
+      // this.renderer.setStyle(this.navegador2.nativeElement, 'right', `-${this.porcentaje}%`);
       // console.log(`Check Current: ((${this.Check}))`);
     // } //
   } // this.Cerrar();
@@ -215,7 +223,6 @@ export class NavComponent implements OnInit {
     } else {
       this.porcentaje = Number(40);
     } // else;
-
     return this.porcentaje;
   } // this.Porcentaje();
 

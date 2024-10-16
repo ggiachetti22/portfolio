@@ -20,5 +20,8 @@ body {
     flex-flow: wrap column;
     position: relative;    
     text-align: center;
+    /* font-family: 'Montserrat', sans-serif; */
+    /* background: linear-gradient(45deg, #FC466B, #3F5EFB); */
     background: rgba(0, 0, 0, .8);
 }
+

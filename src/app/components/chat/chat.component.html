@@ -6,8 +6,49 @@
 
 
 <section class="section">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+
+
+    <section id="Cont">
+
+        <div id="BoxForm">
+      
+          <input #ElNombre name="ElNombre" type="text" placeholder="Nombre.." maxlength="15" autofocus />
+          <input #ElMensaje name="ElApellido" #text type="text" placeholder="Escribe mensaje.." />
+          <button class="enviar">..</button>
+      
+        </div>
+      
+        <div id="Msj">
+          <p>ID: <span>..</span></p>
+      
+          <p>...</p>
+      
+          <p id="parrafo" class="parrafo">...</p>
+      
+          <ng-template #TextMaxLength>
+            <p id="parrafo" class="parrafo">...</p>
+          </ng-template>
+      
+      
+          <div #caja class="BoxBtn">
+            <button #Box1 class="Bots">Editar</button>
+            <button #Box2 class="Bots">Borrar</button>
+            <button #Box3 class="BtnDelete Bots">Eliminar completamente</button>
+          </div>
+      
+      
+        </div>
+      
+      
+        <!-- <main id="chat">
+          <app-message (click)="ToggleBox($event, ID());" class="chat" *ngFor="let msj of listMessage | async" [oMessage]="msj"></app-message>
+        </main> -->
+      
+        <!-- <app-message *ngFor="let a of ArrayString; let i = index" (ArrayString)="AgregarString($event)"></app-message> -->
+      
+      </section>
+      
+      
+
+
 </section>

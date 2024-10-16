@@ -63,6 +63,10 @@
     background: rgb(10, 62, 113);
 }
 
+.div-titulo div h1 {
+    padding: 5px 5px 20px 5px;
+}
+
 .div-titulo h5::after {
     left: 0%;
     top: 50%;
@@ -163,10 +167,13 @@ h2{
         padding: 15px;
     }
     .div-section:nth-of-type(2) {
-        order: 2;
+        order: 1;
     }
     .div-section:nth-of-type(4) {
-        order: 3;
+        order: 1;
+    }
+    .div-section:nth-of-type(6) {
+        order: 1;
     }
     .section-p {
         padding: 10px;

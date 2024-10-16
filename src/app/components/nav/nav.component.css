@@ -20,7 +20,6 @@
     margin-top: 60px;
     overflow: hidden;
     z-index: -10;
-    /* border: 20px solid tomato; */
 }
 
 #MySection {
@@ -30,7 +29,8 @@
     /* position: relative; */
     overflow: hidden;
     z-index: 100;
-    /* border: 20px solid green; */
+    transition: background .3s ease-in;
+    border: 2px solid green;
 }
 
 #NavSection {
@@ -71,6 +71,17 @@ app-sub-menu {
     border: 2px solid crimson;
     position: sticky;
 }
+
+
+ol {
+    min-width: 120px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid orangered;
+}
+
+
 
 #Nav input {
     opacity: .5;
@@ -205,6 +216,7 @@ a .link2 {
 }
 
 .navegador1 {
+    min-width: 70%;
     top: 0;
     left: -40%;
     z-index: -10;
@@ -259,6 +271,7 @@ a .link2 {
 
 /* -----------------Media Query------------------- */
 
+
 @media (max-width: 650px),
 (width: 300px) {
     #NavSection {
@@ -273,5 +286,8 @@ a .link2 {
         cursor: none;
         -webkit-user-select: none;
         user-select: none;
+    }
+    .Nav-var {
+        display: none;
     }
 }

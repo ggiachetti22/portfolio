@@ -197,12 +197,13 @@ export class NavComponent implements OnInit {
       const NavSection = this.NavSection.nativeElement.offsetWidth;
       const Check = !this.btnCheck.nativeElement.checked;
 
-      if (NavSection <= 550 ) {
+      /* if (NavSection <= 550 ) {
         this.porcentaje = Number(60);
       } else {
         this.porcentaje = Number(40);
-      } // else;
+      } // else; */
 
+      this.porcentaje = Number(70);
 
       this.renderer.setStyle(this.MySection.nativeElement, 'background', 'transparent');
 

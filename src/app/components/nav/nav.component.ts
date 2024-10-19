@@ -44,7 +44,7 @@ export class NavComponent implements OnInit {
     setTimeout( () => {
       this.route.queryParams.subscribe( act => {
         this.btnCheck.nativeElement.checked = false;
-        this.Cerrar();
+        this.Close();
         // const action = act['action'];
         // console.log(`this.route.queryParams: (`, action, `)`);
       }); // this.route.queryParams;
@@ -167,52 +167,38 @@ export class NavComponent implements OnInit {
     const NavSection = this.NavSection.nativeElement.offsetWidth;
     const Check = !this.btnCheck.nativeElement.checked;
     this.Check = Check;
-
-    if (NavSection <= 550 ) {
-      this.porcentaje = Number(60);
-    } else {
-      this.porcentaje = Number(40);
-    } // else;
-    
-    console.log(`Check: ((${this.Check}))\nCheck: ${Check}`);
-
     if (Check) {
-      this.renderer.setStyle(this.MySection.nativeElement, 'background', 'rgba(0,0,0, .5)');
-
-      this.renderer.setStyle(this.boxsection.nativeElement, 'z-index', `90`);
-      this.renderer.setStyle(this.navegador1.nativeElement, 'left', `0%`);
-      // this.renderer.setStyle(this.navegador2.nativeElement, 'right', `0%`);
-      console.log(`Check True: (${Check})\n((${this.porcentaje}))`);
+      this.Open();
     } else {
-      this.Cerrar();
-      console.log(`Check False: (${Check})\n((${this.porcentaje}))`);
+      this.Close();
     } // else;
-
-    console.log(`Window: ((${NavSection}))\n-------------------------\n`)
-
+    console.log(`Window: ((${NavSection}))\nCheck: ((${this.Check}))\nCheck: (${Check})\n((${this.porcentaje}))\n-------------------------\n`)
   } // this.BtnMenu();
 
-  private Cerrar(): void {
-    // if(!this.Check){
-      const NavSection = this.NavSection.nativeElement.offsetWidth;
-      const Check = !this.btnCheck.nativeElement.checked;
+  
+  private Open(): void {
+    this.porcentaje = Number(0);
+    this.renderer.setStyle(this.boxsection.nativeElement, "display", "block");
+    this.renderer.setStyle(this.boxsection.nativeElement, "visibility", "visible");
+    this.renderer.setStyle(this.boxsection.nativeElement, "opacity", "1");
+    setTimeout(() => {
+      this.renderer.setStyle(this.MySection.nativeElement, 'background', 'rgba(0,0,0, .5)');
+      this.renderer.setStyle(this.navegador1.nativeElement, 'left', `${this.porcentaje}%`);
+      this.renderer.setStyle(document.body, "overflow", "hidden");
+    } , 300);
+  } // this.Open();
 
-      /* if (NavSection <= 550 ) {
-        this.porcentaje = Number(60);
-      } else {
-        this.porcentaje = Number(40);
-      } // else; */
-
-      this.porcentaje = Number(75);
-
-      this.renderer.setStyle(this.MySection.nativeElement, 'background', 'transparent');
-
-      this.renderer.setStyle(this.boxsection.nativeElement, 'z-index', `-10`);
-      this.renderer.setStyle(this.navegador1.nativeElement, 'left', `-${this.porcentaje}%`);
-      // this.renderer.setStyle(this.navegador2.nativeElement, 'right', `-${this.porcentaje}%`);
-      // console.log(`Check Current: ((${this.Check}))`);
-    // } //
-  } // this.Cerrar();
+  private Close(): void {    
+    this.porcentaje = Number(75);
+    this.renderer.setStyle(document.body, "overflow", "auto");
+    this.renderer.setStyle(this.MySection.nativeElement, 'background', 'transparent');
+    this.renderer.setStyle(this.navegador1.nativeElement, 'left', `-${this.porcentaje}%`);
+    setTimeout(() => {
+      this.renderer.setStyle(this.boxsection.nativeElement, "display", "none");
+      this.renderer.setStyle(this.boxsection.nativeElement, "visibility", "hidden");
+      this.renderer.setStyle(this.boxsection.nativeElement, "opacity", "0");
+    } , 300);
+  } // this.Close();
 
 
   public Porcentaje(n: Number): Number {
@@ -252,7 +238,7 @@ export class NavComponent implements OnInit {
         // console.log(`Resolución menor a 550px ${anchoWindow}`);
       } else {
         this.btnCheck.nativeElement.checked = false;
-        this.Cerrar();
+        this.Close();
         // this.porcentaje = Number(40);
         // console.log(`Resolución es mayor a 550px`);
       } // else;
@@ -272,8 +258,8 @@ export class NavComponent implements OnInit {
       NavSection?.classList.remove('NavToggle');
     } else {
 
-      this.btnCheck.nativeElement.checked = false;
-      this.Cerrar();
+      /* this.btnCheck.nativeElement.checked = false;
+      this.Close(); */
 
       NavSection?.classList.add('NavToggle');
     } // else;
@@ -287,5 +273,34 @@ export class NavComponent implements OnInit {
     window.location.href = 'login?action=5';
     // window.location.reload();
   } // logoff;
+
+
+
+
+
+
+  /* openModal() {
+    const modal = document.getElementById("myModal");
+    if (modal) {
+      modal.style.display = "block";
+      document.body.style.overflow = "hidden"; // Deshabilita el scroll del fondo
+      // this.renderer.setStyle(document.body, "overflow", "");
+    }
+  } */
+
+  /* closeModal() {
+    const modal = document.getElementById("myModal");
+    if (modal) {
+      modal.style.display = "none";
+      // document.body.style.overflow = "auto"; // Vuelve a habilitar el scroll
+      this.renderer.setStyle(document.body, "overflow", "auto");
+    }
+  } */
+
+
+
+
+
+
 
 } // NavComponent;

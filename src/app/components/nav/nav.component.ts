@@ -35,7 +35,7 @@ export class NavComponent implements OnInit {
 
     this.iniciar();
 
-    // this.ResizeSlider(this.event);
+    this.ResizeSlider(this.event);
 
   } // ngOnInit();
 
@@ -247,13 +247,15 @@ export class NavComponent implements OnInit {
       console.log(`\n\nWindow: ((${NavSection}))\n`);
       console.log(`Window: ((${anchoWindow}px)) alto: ((${altoWindow}))\nAlto de footer: ((..))\n\nAltura de this.parrafoBox: (( ${this.parrafoBox.nativeElement.offsetTop}px ))`);
 
-      /* if (anchoWindow <= 550) {
-        this.porcentaje = Number(60);
-        console.log(`Resolución menor a 550px ${anchoWindow}`);
+      if (anchoWindow <= 550) {        
+        // this.porcentaje = Number(60);
+        // console.log(`Resolución menor a 550px ${anchoWindow}`);
       } else {
-        this.porcentaje = Number(40);
-        console.log(`Resolución es mayor a 550px`);
-      } // else; */
+        this.btnCheck.nativeElement.checked = false;
+        this.Cerrar();
+        // this.porcentaje = Number(40);
+        // console.log(`Resolución es mayor a 550px`);
+      } // else;
 
     }); // resize; 
 

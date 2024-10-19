@@ -14,19 +14,22 @@
 
 .boxsection {
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 60px);
     position: fixed;
     top: 0;
     margin-top: 60px;
     overflow: hidden;
     z-index: -10;
+    /* border: 2px solid crimson; */
 }
 
 #MySection {
     width: 100%;
-    height: calc(100% - 60px);
+    height: 100%;
     position: sticky;
     /* position: relative; */
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     overflow: hidden;
     z-index: 100;
     transition: background .3s ease-in;
@@ -89,18 +92,19 @@ ol {
 }
 
 #Nav .btn-menu {
-    width: 60px;
-    height: 100%;
+    width: 30px;
+    height: 30px;
     position: relative;
     border: none;
-    /* outline: 2px solid rgba(0, 0, 0, .5); */
+    display: none;
     background: rgba(0, 0, 0, .05);
+    /* outline: 2px solid rgba(0, 0, 0, .5); */
 }
 
 #Nav .btn-menu span {
     left: 0;
     width: 100%;
-    height: 4px;
+    height: 2px;
     background: white;
     position: absolute;
     transition: all .25s ease-in;
@@ -137,7 +141,7 @@ ol {
     }
     100% {
         top: 50%;
-        transform: rotate(225deg) translateY(2px);
+        transform: rotate(225deg) translateY(1px);
     }
 }
 
@@ -147,7 +151,7 @@ ol {
     }
     100% {
         bottom: 50%;
-        transform: rotate(135deg) translateY(-2px);
+        transform: rotate(135deg) translateY(-1px);
     }
 }
 
@@ -206,16 +210,14 @@ a .link2 {
 
 .navegadores {
     width: 40%;
-    min-height: 100vh;
     position: absolute;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
     transition: all .3s ease-in-out;
-    background: rgba(0, 0, 0, .5);
+    background: rgba(0, 0, 0, .9);
 }
 
 .navegador1 {
     width: 75%;
+    height: 100%;
     top: 0;
     left: -75%;
     z-index: -10;
@@ -269,14 +271,26 @@ a .link2 {
 
 .Nav-var-min {
     width: auto;
-    height: 100%;
-    padding: 5px;
+    height: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
-    /* border: 2px solid gold; */
-    /* display: none; */
+    /* justify-content: space-around; */
+    /* border: 3px solid gold; */
+}
+
+
+.Nav-item-min {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    border-bottom: 1px solid rgba(245, 245, 245, 0.356);
+}
+
+.Nav-item-min a {
+    font-size: calc(5px + 1em);
+    padding: 10px;
+    /* border: 2px saddlebrown solid; */
 }
 
 
@@ -291,9 +305,6 @@ a .link2 {
         -webkit-backdrop-filter: blur(0);
         backdrop-filter: blur(0);
     }
-    .navegadores {
-        width: 75%;
-    }
     #up p {
         cursor: none;
         -webkit-user-select: none;
@@ -302,6 +313,14 @@ a .link2 {
     .Nav-var {
         display: none;
     }
+    #Nav .btn-menu {
+        display: flex;
+        justify-content: space-between;
+        margin: auto 10px;
+    }
+    /* .navegadores {
+        width: 75%;
+    } */
     /* .Nav-var-min {
         display: flex;
     } */

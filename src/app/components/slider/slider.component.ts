@@ -78,7 +78,7 @@ ngAfterViewInit(): void {
   this.Pintar(Number(this.V));
 
   this.arr();
-  console.log(`Array de números: [${this.numeroArray}]`);
+  // console.log(`Array de números: [${this.numeroArray}]`);
 
   
   // this.valorActual = Number(this.valorActual) + (Number(this.valor) * Number(this.V));
@@ -119,7 +119,7 @@ public clickPlay(): void {
     this.Despintar();
   } // else;
   this.render.setStyle(this.play.nativeElement, 'background', `${this.btn[Number(this.n)]}`);
-  console.log(`Numero: ((${this.n}))`);
+  // console.log(`Numero: ((${this.n}))`);
 } // this.clickPlay();
 
 
@@ -127,7 +127,7 @@ public Current() {
   this.figureAlto = Number(this.myFigures[Number(this.V)].offsetHeight);
   this.render.setStyle(this.BtnPrev.nativeElement, 'height', `${this.figureAlto}px`);
   this.render.setStyle(this.BtnNext.nativeElement, 'height', `${this.figureAlto}px`);
-  console.log(`offsetHeight: ${this.figureAlto}px`);
+  // console.log(`offsetHeight: ${this.figureAlto}px`);
 } // this.Current();
 
 public Pintar(n: Number) {
@@ -163,17 +163,17 @@ public Infinite(vl: Number) {
   this.VAfter = Number(this.V); // After;
   this.Despintar();
   this.render.setStyle(this.ContentBox.nativeElement, 'transition', 'all .3s ease-in-out');
-  console.log(`Valor previo: (${(Number(this.V))}) y this.VAfter: ((${Number(this.VAfter)}))`);
+  // console.log(`Valor previo: (${(Number(this.V))}) y this.VAfter: ((${Number(this.VAfter)}))`);
   // this.V = (Number(vl) + Number(this.numeroArray.length)) % this.numeroArray.length; // Valor;
   this.V = (Number(vl) + Number(this.myFigures.length)) % this.myFigures.length; // Valor;
-  console.log(`Valor actual: (${(Number(this.V))})`);
+  // console.log(`Valor actual: (${(Number(this.V))})`);
   if (Number(this.V) === 0) {
      setTimeout(() => {
       this.render.setStyle(this.ContentBox.nativeElement, 'transition', 'none');
        this.V = Number(this.myFigures.length - 3);
        this.Translate();
        if (this.n === 0) { this.Pintar(Number(this.V)); this.IntervalSlider(); } // if;
-      console.log(`Nuevo valor actual0: (${(Number(this.V))})`);
+      // console.log(`Nuevo valor actual0: (${(Number(this.V))})`);
     }, 300);
   } // if;
   if (Number(this.V) === Number(this.myFigures.length - 3)) { 
@@ -183,7 +183,7 @@ public Infinite(vl: Number) {
       this.Translate();
       this.clickFondo(this.V);
       if (this.n === 0) { this.Pintar(Number(this.V)); this.IntervalSlider(); } // if;
-      console.log(`Nuevo valor actual.length - 3: (${(Number(this.V))})`);
+      // console.log(`Nuevo valor actual.length - 3: (${(Number(this.V))})`);
     }, 300);
   } // if;
   // this.ResizeSlider();
@@ -219,7 +219,7 @@ public prevClick() {
 
 public nextClick() {
   this.Infinite(Number(this.V) + 1); // + 1
-  console.log(`nextClickAfter: ${this.V}`);
+  // console.log(`nextClickAfter: ${this.V}`);
   if (Number(this.V) === Number(this.myFigures.length - 2)) {
     this.render.setStyle(this.ContentBox.nativeElement, 'transition', 'none');
     this.V = 0;

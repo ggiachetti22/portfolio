@@ -54,7 +54,6 @@
 
 
 ol {
-    /* min-width: 120px; */
     display: flex;
     /* display: none; */
     justify-content: space-around;
@@ -68,6 +67,7 @@ ol {
     display: none;
     background: red;
 }
+
 
 #Nav .btn-menu {
     width: 30px;

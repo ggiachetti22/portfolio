@@ -36,7 +36,7 @@ export class NavComponent implements OnInit {
     this.iniciar();
 
     this.ResizeSlider(this.event);
-    
+
     /* setTimeout( () => {
       this.CloseEvent();
     } , 500); */ 
@@ -84,21 +84,36 @@ export class NavComponent implements OnInit {
   } // this.Param();
 
 
+  public LocationNow: String[] = ['home','chat','login'];
 
-  public LinkActivo() {
-
+  public LinkActivo() { 
     this.ValueDefault();
-    if (this.accion === 1) {
+    const Lct = window.location.href;   
+    let h: string = this.LocationNow[0].toLowerCase().trim();
+    let c: string = this.LocationNow[1].toLowerCase().trim();
+    let l: string = this.LocationNow[2].toLowerCase().trim();  
+    let In = Lct.indexOf('?') || undefined;
+    if(In === -1) In = undefined;
+    let Home = Lct.indexOf(h);
+    let Chat = Lct.indexOf(c);
+    let Login = Lct.indexOf(l); 
+    let home = Lct.substring(Home, In);
+    let chat = Lct.substring(Chat, In);
+    let login = Lct.substring(Login, In);
+    // console.log(`Location Now: `, Lct, `\nLocal Home: `, home, `\nLocal Chat: `, chat, `\nLocal Login: `, login, `\n(?): (${In})`);
+    if (this.accion === 1 || home === h) {
       this.ElLink1 = true;
+      this.sitio = home;
       console.log(`Acción: ${this.accion}\nValor 1: ${this.ElLink1}\nValor 2: ${this.ElLink2}\nValor 3: ${this.ElLink1}`);
-    } else if (this.accion === 2) {
+    } else if (this.accion === 2 || chat === c) {
       this.ElLink2 = true;
+      this.sitio = chat;
       console.log(`Acción: ${this.accion}\nValor 1: ${this.ElLink1}\nValor 2: ${this.ElLink2}\nValor 3: ${this.ElLink2}`);
-    } else if (this.accion === 3) {
+    } else if (this.accion === 3  || login === l) {
       this.ElLink3 = true;
+      this.sitio = login;
       console.log(`Acción: ${this.accion}\nValor 1: ${this.ElLink1}\nValor 2: ${this.ElLink2}\nValor 3: ${this.ElLink3}`);
     } 
-
     /*
      else if (this.accion === 4) {
       this.ElLink4 = true;
@@ -108,15 +123,13 @@ export class NavComponent implements OnInit {
       console.log(`Acción: ${this.accion}\nValor 5: ${this.ElLink1}\nValor 2: ${this.ElLink2}\nValor 3: ${this.ElLink5}`);
     }
       */
-    
     else {
       this.ValueDefault();
       console.log("No es igual a nunguno..!");
     } // else;
-  
+    console.log(`Estas en el sitio: ((${this.sitio}))`);
+    // window.location.reload();
   } // this.LinkActivo();
-
-
 
   public ValueDefault() {
     this.ElLink1 = false;
@@ -124,15 +137,16 @@ export class NavComponent implements OnInit {
     this.ElLink3 = false;
   } // this.ValueDefault();
   
-
-
   public V() {
-    if (isNaN(this.accion)) {
+    // isNaN(this.accion)
+    if (this.sitio === 'home' || this.sitio === '') {
       this.ElLink1 = true;
     } // if;
+    console.log(`2º Estas en el sitio: ((${this.sitio}))`);
   } // V();
 
 
+  public sitio: string = '';
 
   @ViewChild("link1") link1!: ElementRef;
   @ViewChild("link2") link2!: ElementRef;
@@ -178,7 +192,7 @@ export class NavComponent implements OnInit {
     } else {
       this.Close();
     } // else;
-    console.log(`Window: ((${NavSection}))\nCheck: ((${this.Check}))\nCheck: (${Check})\n((${this.porcentaje}))\n-------------------------\n`)
+    // console.log(`Window: ((${NavSection}))\nCheck: ((${this.Check}))\nCheck: (${Check})\n((${this.porcentaje}))\n-------------------------\n`)
   } // this.BtnMenu();
 
 
@@ -248,10 +262,8 @@ export class NavComponent implements OnInit {
       const anchoWindow = window.innerWidth;
       const altoWindow = window.innerHeight;
       const NavSection = this.NavSection.nativeElement.offsetWidth;
-
-      console.log(`\n\nWindow: ((${NavSection}))\n`);
-      console.log(`Window: ((${anchoWindow}px)) alto: ((${altoWindow}))\nAlto de footer: ((..))\n\nAltura de this.parrafoBox: (( ${this.parrafoBox.nativeElement.offsetTop}px ))`);
-
+      // console.log(`\n\nWindow: ((${NavSection}))\n`);
+      // console.log(`Window: ((${anchoWindow}px)) alto: ((${altoWindow}))\nAlto de footer: ((..))\n\nAltura de this.parrafoBox: (( ${this.parrafoBox.nativeElement.offsetTop}px ))`);
       if (anchoWindow <= 550) {        
         // this.porcentaje = Number(60);
         // console.log(`Resolución menor a 550px ${anchoWindow}`);

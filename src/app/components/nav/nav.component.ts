@@ -36,6 +36,10 @@ export class NavComponent implements OnInit {
     this.iniciar();
 
     this.ResizeSlider(this.event);
+    
+    /* setTimeout( () => {
+      this.CloseEvent();
+    } , 500); */ 
 
   } // ngOnInit();
 
@@ -152,6 +156,7 @@ export class NavComponent implements OnInit {
 
   private porcentaje: Number = 0;
   public event!: Event;
+  public eventClose!: Event;
 
   public accion: number = 0;
   public ID: number = 0;  
@@ -167,6 +172,7 @@ export class NavComponent implements OnInit {
     const NavSection = this.NavSection.nativeElement.offsetWidth;
     const Check = !this.btnCheck.nativeElement.checked;
     this.Check = Check;
+    const M = this.MySection.nativeElement;
     if (Check) {
       this.Open();
     } else {
@@ -175,7 +181,18 @@ export class NavComponent implements OnInit {
     console.log(`Window: ((${NavSection}))\nCheck: ((${this.Check}))\nCheck: (${Check})\n((${this.porcentaje}))\n-------------------------\n`)
   } // this.BtnMenu();
 
-  
+
+  public CloseEvent(e: Event) {
+    const E =  e.target;
+    const M = this.MySection.nativeElement;
+    if(M === E) {
+      this.btnCheck.nativeElement.checked = false;
+      this.Close();
+    } // if;
+    // console.log('Evento Target: ', e.target);
+  } // this.CloseEvent();
+
+
   private Open(): void {
     this.porcentaje = Number(0);
     this.renderer.setStyle(this.boxsection.nativeElement, "display", "block");
@@ -188,6 +205,7 @@ export class NavComponent implements OnInit {
     } , 300);
   } // this.Open();
 
+  
   private Close(): void {    
     this.porcentaje = Number(75);
     this.renderer.setStyle(document.body, "overflow", "auto");
@@ -199,6 +217,7 @@ export class NavComponent implements OnInit {
       this.renderer.setStyle(this.boxsection.nativeElement, "opacity", "0");
     } , 300);
   } // this.Close();
+
 
 
   public Porcentaje(n: Number): Number {
@@ -264,7 +283,7 @@ export class NavComponent implements OnInit {
       NavSection?.classList.add('NavToggle');
     } // else;
     this.Parrafo2 = this.PositionInitial.toString();
-    console.log(`ScrollY Inicial: (${this.PositionInitial})\nScrollY Actual: (${PositionActual})`);
+    // console.log(`ScrollY Inicial: (${this.PositionInitial})\nScrollY Actual: (${PositionActual})`);
     this.PositionInitial = PositionActual;
   }; // myScroll();
 
@@ -296,10 +315,6 @@ export class NavComponent implements OnInit {
       this.renderer.setStyle(document.body, "overflow", "auto");
     }
   } */
-
-
-
-
 
 
 

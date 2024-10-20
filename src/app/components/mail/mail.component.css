@@ -40,6 +40,7 @@ input:focus, textarea:focus, button:focus {
 button {
     width: 200px;
     height: 60px;
+    min-height: 40px;
     border-radius: .5rem;
     background: dodgerblue;
 }
@@ -53,10 +54,20 @@ button {
 
 /* -----------------Media Query------------------- */
 
+@media (max-width: 551px),
+(max-width: 720px) {
+    form {
+        height: 220px;
+        padding: 10px 20px 15px 20px;
+    }
+}
+
+
 @media (max-width: 425px),
 (max-width: 550px) {
     form {
         width: 80%;
+        height: 350px;
         margin: 50px auto;
     }
     input, textarea {

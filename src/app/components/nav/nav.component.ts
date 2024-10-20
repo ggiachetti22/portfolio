@@ -125,9 +125,9 @@ export class NavComponent implements OnInit {
       */
     else {
       this.ValueDefault();
-      console.log("No es igual a nunguno..!");
+      // console.log("No es igual a nunguno..!");
     } // else;
-    console.log(`Estas en el sitio: ((${this.sitio}))`);
+    // console.log(`Estas en el sitio: ((${this.sitio}))`);
     // window.location.reload();
   } // this.LinkActivo();
 

@@ -54,10 +54,10 @@ button {
 
 /* -----------------Media Query------------------- */
 
-@media (max-width: 551px),
-(max-width: 720px) {
+@media (max-width: 650px),
+(max-width: 850px) {
     form {
-        height: 220px;
+        height: 300px;
         padding: 10px 20px 15px 20px;
     }
 }

@@ -1,7 +1,7 @@
 form {
-    width: 70%;
+    width: 50%;
     max-width: 1450px;
-    height: auto;
+    height: 400px;
     padding: 20px;
     margin: 100px auto;
     display: flex;
@@ -57,6 +57,7 @@ button {
 @media (max-width: 650px),
 (max-width: 850px) {
     form {
+        width: 70%;
         height: 300px;
         padding: 10px 20px 15px 20px;
     }

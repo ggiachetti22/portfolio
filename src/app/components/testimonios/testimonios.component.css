@@ -40,7 +40,7 @@ section {
     position: relative;
     border-radius: .5rem;
     transition: background .3s ease-in;
-    background: transparent;
+    background: rgba(20, 66, 111, .2);
     cursor: pointer;
     /* border: 2px solid violet; */
 }

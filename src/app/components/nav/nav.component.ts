@@ -20,12 +20,55 @@ import { BehaviorSubject } from 'rxjs';
 
 export class NavComponent implements OnInit {
 
+  @ViewChild("link1") link1!: ElementRef;
+  @ViewChild("link2") link2!: ElementRef;
+  @ViewChild("link3") link3!: ElementRef;
+  public ElLink1: boolean = false;
+  public ElLink2: boolean = false;
+  public ElLink3: boolean = false;
+  // public ElLink4: boolean = false;
+  // public ElLink5: boolean = false;
+  @ViewChild('NavSection') NavSection!: ElementRef;
+  @ViewChild("boxsection") boxsection!: ElementRef;
+  @ViewChild("btnCheck") btnCheck!: ElementRef;
+  @ViewChild("navegador1") navegador1!: ElementRef;
+  // @ViewChild("navegador2") navegador2!: ElementRef;
+  @ViewChild("parrafo1", { static: false }) parrafo1!: ElementRef;
+  @ViewChild("parrafo2", { static: false }) parrafo2!: ElementRef;
+  @ViewChild("parrafoBox", { static: false }) parrafoBox!: ElementRef;
+  @ViewChild("MySection", { static: false}) MySection!: ElementRef;
+  @ViewChild("menu1", { static: false}) menu1!: ElementRef;
+  @ViewChild("menu2", { static: false}) menu2!: ElementRef;
+  @ViewChild("menu3", { static: false}) menu3!: ElementRef;
+
+  public Check = new BehaviorSubject<boolean>(false);
   public UserSession:  any;
   
+  private LocationNow: string[] = ['home','chat','login'];
+  private h: string = "h";
+  private c: string = "c";
+  private l: string = "l";
+  private home: string = "h";
+  private chat: string = "c";
+  private login: string = "l";
+  private Lct: string = "";
+  private In = this.Lct.indexOf('?') || undefined;
+  private sitio: string = '';
+
+  public Parrafo1: String = '↑';
+  public Parrafo2: String = 'Hola';
+
+  private porcentaje: Number = 0;
+  public event!: Event;
+  public eventClose!: Event;
+  public accion: number = 0;
+  public ID: number = 0;
+  
+
   constructor(protected renderer: Renderer2, protected router: Router, private route: ActivatedRoute) { } // constructor();
 
-  ngOnInit(): void {
 
+  ngOnInit(): void {
     this.route.queryParams.subscribe(p => {
       this.accion = parseInt(p['action'], 10); // 10 especificación de la base decimal;
       console.log(`(this.accion: ${this.accion})`);
@@ -33,34 +76,28 @@ export class NavComponent implements OnInit {
     });
 
     this.route.snapshot.params['ElID'];
-
     const hasVisited = localStorage.getItem('hasVisited');
     
     if (hasVisited === null) {
       localStorage.setItem('hasVisited', 'true');
       console.log('El sitio carga por primera vez');
     } else {
-      // localStorage.setItem('hasVisited', 'null');
       console.log('El sitio ya ha sido visitado anteriormente');
     }
 
     this.iniciar();
-    
     this.ResizeSlider(this.event);
 
   } // ngOnInit();
 
-
   public iniciar(): void {
-    
     setTimeout( () => {
       let LctConst = window.location.href;
       this.route.queryParams.subscribe( act => {
         let LctObs = window.location.href;
         if(LctObs !== LctConst) {
           this.btnCheck.nativeElement.checked = false;
-          this.Ck.next(false);
-          this.StandarMenu();
+          this.Check.next(false);
           this.Close();
           LctConst = LctObs;
           console.log('((LctObs !== LctConst))');
@@ -74,21 +111,13 @@ export class NavComponent implements OnInit {
 
 
   public QueryParam(activateRoute: ActivatedRoute) {
-
     activateRoute = this.route;
-
     activateRoute.queryParams.subscribe(p => {
-
       this.accion = parseInt(p['action'], 10); // 10 especificación de la base decimal;
-
-      console.log(`this.accion: ${this.accion}`);
-
       this.LinkActivo();
-    
+      // console.log(`this.accion: ${this.accion}`);
     });
-
-    activateRoute.snapshot.params['ElID'];
-    
+    activateRoute.snapshot.params['ElID'];  
   } // this.QueryParam();
 
 
@@ -96,49 +125,48 @@ export class NavComponent implements OnInit {
     this.porcentaje = Number(0);
     this.renderer.setStyle(this.navegador1.nativeElement, 'left', `0%`);
     // this.renderer.setStyle(this.navegador2.nativeElement, 'right', `0%`);
-    // this.renderer.setStyle(this.navegador2.nativeElement, 'background', `red`);
   } // this.Param();
 
 
-  public LocationNow: String[] = ['home','chat','login'];
+  private MyLocation(): void {
+    const Lct = window.location.href;
+    this.h = this.LocationNow[0].toLowerCase().trim();
+    this.c = this.LocationNow[1].toLowerCase().trim();
+    this.l = this.LocationNow[2].toLowerCase().trim();  
+    this.In = Lct.indexOf('?') || undefined;
+    if(this.In === - 1) this.In = undefined;
+    let Home = Lct.indexOf(this.h);
+    let Chat = Lct.indexOf(this.c);
+    let Login = Lct.indexOf(this.l); 
+    this.home = Lct.substring(Home, this.In);
+    this.chat = Lct.substring(Chat, this.In);
+    this.login = Lct.substring(Login, this.In);
+    console.log(`Location Now: `, Lct, `\nLocal Home: `, this.home, `\nLocal Chat: `, this.chat, `\nLocal Login: `, this.login, `\n(?): (${this.In})`);
+  } // this.MyLocation();
+
 
   public LinkActivo() { 
     this.ValueDefault();
-    const Lct = window.location.href;
-    let h: string = this.LocationNow[0].toLowerCase().trim();
-    let c: string = this.LocationNow[1].toLowerCase().trim();
-    let l: string = this.LocationNow[2].toLowerCase().trim();  
-    let In = Lct.indexOf('?') || undefined;
-    if(In === -1) In = undefined;
-    let Home = Lct.indexOf(h);
-    let Chat = Lct.indexOf(c);
-    let Login = Lct.indexOf(l); 
-    let home = Lct.substring(Home, In);
-    let chat = Lct.substring(Chat, In);
-    let login = Lct.substring(Login, In);
-    // console.log(`Location Now: `, Lct, `\nLocal Home: `, home, `\nLocal Chat: `, chat, `\nLocal Login: `, login, `\n(?): (${In})`);
-    if (this.accion === 1 || home === h) {
+    this.MyLocation();
+    if (this.accion === 1 || this.home === this.h) {
       this.ElLink1 = true;
-      this.sitio = home;
-      console.log(`Acción: ${this.accion}\nValor 1: ${this.ElLink1}\nValor 2: ${this.ElLink2}\nValor 3: ${this.ElLink3}\nthis.Check: (${this.Ck.value})`);
-    } else if (this.accion === 2 || chat === c) {
+      this.sitio = this.home;
+      console.log(`Acción: ${this.accion}\nValor 1: ${this.ElLink1}\nValor 2: ${this.ElLink2}\nValor 3: ${this.ElLink3}\nthis.Check: (${this.Check.value})`);
+    } else if (this.accion === 2 || this.chat === this.c) {
       this.ElLink2 = true;
-      this.sitio = chat;
-      console.log(`Acción: ${this.accion}\nValor 1: ${this.ElLink1}\nValor 2: ${this.ElLink2}\nValor 3: ${this.ElLink3}\nthis.Check: (${this.Ck.value})`);
-    } else if (this.accion === 3  || login === l) {
+      this.sitio = this.chat;
+      console.log(`Acción: ${this.accion}\nValor 1: ${this.ElLink1}\nValor 2: ${this.ElLink2}\nValor 3: ${this.ElLink3}\nthis.Check: (${this.Check.value})`);
+    } else if (this.accion === 3  || this.login === this.l) {
       this.ElLink3 = true;
-      this.sitio = login;
-      console.log(`Acción: ${this.accion}\nValor 1: ${this.ElLink1}\nValor 2: ${this.ElLink2}\nValor 3: ${this.ElLink3}\nthis.Check: (${this.Ck.value})`);
+      this.sitio = this.login;
+      console.log(`Acción: ${this.accion}\nValor 1: ${this.ElLink1}\nValor 2: ${this.ElLink2}\nValor 3: ${this.ElLink3}\nthis.Check: (${this.Check.value})`);
     } 
     /*
      else if (this.accion === 4) {
       this.ElLink4 = true;
       console.log(`Acción: ${this.accion}\nValor 4: ${this.ElLink1}\nValor 2: ${this.ElLink2}\nValor 3: ${this.ElLink4}`);
-    } else if (this.accion === 5) {
-      this.ElLink5 = true;
-      console.log(`Acción: ${this.accion}\nValor 5: ${this.ElLink1}\nValor 2: ${this.ElLink2}\nValor 3: ${this.ElLink5}`);
     }
-      */
+    */
     else {
       this.ValueDefault();
       // console.log("No es igual a nunguno..!");
@@ -146,74 +174,33 @@ export class NavComponent implements OnInit {
     
   } // this.LinkActivo();
 
+
   public ValueDefault() {
     this.ElLink1 = false;
     this.ElLink2 = false;
     this.ElLink3 = false;
   } // this.ValueDefault();
   
+
   public V() {
     // isNaN(this.accion)
     if (this.sitio === 'home' || this.sitio === '') {
       this.ElLink1 = true;
     } // if;
-    // console.log(`2º Estas en el sitio: ((${this.sitio}))`);
   } // V();
 
-
-  public sitio: string = '';
-
-  @ViewChild("link1") link1!: ElementRef;
-  @ViewChild("link2") link2!: ElementRef;
-  @ViewChild("link3") link3!: ElementRef;
-
-
-  @ViewChild('NavSection') NavSection!: ElementRef;
-  @ViewChild("boxsection") boxsection!: ElementRef;
-  @ViewChild("btnCheck") btnCheck!: ElementRef;
-  @ViewChild("navegador1") navegador1!: ElementRef;
-  // @ViewChild("navegador2") navegador2!: ElementRef;
-
-  @ViewChild("parrafo1", { static: false }) parrafo1!: ElementRef;
-  @ViewChild("parrafo2", { static: false }) parrafo2!: ElementRef;
-  @ViewChild("parrafoBox", { static: false }) parrafoBox!: ElementRef;
-
-  @ViewChild("MySection", { static: false}) MySection!: ElementRef;
-
-  @ViewChild("menu1", { static: false}) menu1!: ElementRef;
-  @ViewChild("menu2", { static: false}) menu2!: ElementRef;
-  @ViewChild("menu3", { static: false}) menu3!: ElementRef;
-
-  public Parrafo1: String = '↑';
-  public Parrafo2: String = 'Hola';
-
-  private porcentaje: Number = 0;
-  public event!: Event;
-  public eventClose!: Event;
-
-  public accion: number = 0;
-  public ID: number = 0;  
-  public ElLink1: boolean = false;
-  public ElLink2: boolean = false;
-  public ElLink3: boolean = false;
-  // public ElLink4: boolean = false;
-  // public ElLink5: boolean = false;
-
-  public Check: boolean = false;
-  public Ck = new BehaviorSubject<boolean>(false);
 
   public BtnMenu(): void {
     const NavSection = this.NavSection.nativeElement.offsetWidth;
     const Check = !this.btnCheck.nativeElement.checked;
-    this.Check = Check;
-    this.Ck.next(Check);
+    this.Check.next(Check);
     const M = this.MySection.nativeElement;
     if (Check) {
       this.Open();
     } else {
       this.Close();
     } // else;
-    console.log(`Window: ((${NavSection}))\nthis.Check: ((${this.Check}))\nCheck: (${Check})\n((${this.porcentaje}))\n-------------------------\nObservable: ${this.Ck.value}`)
+    console.log(`Window: ((${NavSection}))\nthis.Check: ((${this.Check}))\nCheck: (${Check})\n((${this.porcentaje}))\n-------------------------\nObservable: ${this.Check.value}`)
   } // this.BtnMenu();
 
   private OpenMenu(): void {
@@ -236,23 +223,13 @@ export class NavComponent implements OnInit {
     this.renderer.addClass(this.menu3.nativeElement, 'close3');
   } // this.CloseMenu();
 
-  private StandarMenu(): void {
-    setTimeout(() => {
-      this.renderer.removeClass(this.menu1.nativeElement, 'open1');
-      this.renderer.removeClass(this.menu2.nativeElement, 'open2');
-      this.renderer.removeClass(this.menu3.nativeElement, 'open3');
-      this.renderer.removeClass(this.menu1.nativeElement, 'close1');
-      this.renderer.removeClass(this.menu2.nativeElement, 'close2');
-      this.renderer.removeClass(this.menu3.nativeElement, 'close3');
-    }, 10 );
-  } // this.StandarMenu();
 
   public CloseEvent(e: Event) {
     const E =  e.target;
     const M = this.MySection.nativeElement;
     if(M === E) {
       this.btnCheck.nativeElement.checked = false;
-      this.Ck.next(false);
+      this.Check.next(false);
       this.Close();
     } // if;
     // console.log('Evento Target: ', e.target);
@@ -323,7 +300,7 @@ export class NavComponent implements OnInit {
         // console.log(`Resolución menor a 550px ${anchoWindow}`);
       } else {
         this.btnCheck.nativeElement.checked = false;
-        this.Ck.next(false);
+        this.Check.next(false);
         this.Close();
         // this.porcentaje = Number(40);
         // console.log(`Resolución es mayor a 550px`);

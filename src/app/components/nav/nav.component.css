@@ -101,17 +101,33 @@ ol {
     bottom: 0;
 }
 
-#Nav input:checked ~ .btn-menu span:nth-child(1) {
+
+.menu1.open1 {
     animation: menu1 .5s linear forwards;
 }
 
-#Nav input:checked ~ .btn-menu span:nth-child(2) {
+.menu2.open2{
     animation: menu2 250ms linear forwards;
 }
 
-#Nav input:checked ~ .btn-menu span:nth-child(3) {
+.menu3.open3{
     animation: menu3 .5s linear forwards;
 }
+
+
+.menu1.close1 {
+    animation: cerrar-menu1 .5s linear forwards;
+}
+
+.menu2.close2 {
+    animation: cerrar-menu2 250ms linear forwards;
+}
+
+.menu3.close3 {
+    animation: cerrar-menu3 .5s linear forwards;
+}
+
+
 
 @keyframes menu1 {
     50% {
@@ -141,6 +157,39 @@ ol {
         display: none;
     }
 }
+
+
+
+@keyframes cerrar-menu1 {
+    50% {
+        top: 50%;
+    }
+    100% {
+        top: 0%;
+        transform: rotate(180deg) translateY(1px);
+    }
+}
+
+@keyframes cerrar-menu3 {
+    50% {
+        bottom: 50%;
+    }
+    100% {
+        bottom: 0%;
+        transform: rotate(180deg) translateY(-1px);
+    }
+}
+
+@keyframes cerrar-menu2 {
+    to {
+        display: block;
+    }
+    from {
+        opacity: 0;
+    }
+}
+
+
 
 .Nav-var {
     width: 50%;

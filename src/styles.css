@@ -16,8 +16,6 @@ body {
     width: 100%;
     height: auto;
     min-height: 100vh;
-    display: flex;
-    flex-flow: wrap column;
     position: relative;    
     text-align: center;
     /* font-family: 'Montserrat', sans-serif; */

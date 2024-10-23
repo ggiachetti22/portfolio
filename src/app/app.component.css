@@ -1,0 +1,8 @@
+.container {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    position: relative;
+    display: block;
+    /* border: 5px solid green; */
+}

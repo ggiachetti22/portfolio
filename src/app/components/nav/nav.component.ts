@@ -165,6 +165,10 @@ export class NavComponent implements OnInit {
 
   @ViewChild("MySection", { static: false}) MySection!: ElementRef;
 
+  @ViewChild("menu1", { static: false}) menu1!: ElementRef;
+  @ViewChild("menu2", { static: false}) menu2!: ElementRef;
+  @ViewChild("menu3", { static: false}) menu3!: ElementRef;
+
   public Parrafo1: String = '↑';
   public Parrafo2: String = 'Hola';
 
@@ -195,6 +199,25 @@ export class NavComponent implements OnInit {
     // console.log(`Window: ((${NavSection}))\nCheck: ((${this.Check}))\nCheck: (${Check})\n((${this.porcentaje}))\n-------------------------\n`)
   } // this.BtnMenu();
 
+  private OpenMenu(): void {
+    this.renderer.removeClass(this.menu1.nativeElement, 'close1');
+    this.renderer.removeClass(this.menu2.nativeElement, 'close2');
+    this.renderer.removeClass(this.menu3.nativeElement, 'close3');
+
+    this.renderer.addClass(this.menu1.nativeElement, 'open1');
+    this.renderer.addClass(this.menu2.nativeElement, 'open2');
+    this.renderer.addClass(this.menu3.nativeElement, 'open3');
+  } // this.OpenMenu();
+
+  private CloseMenu(): void {
+    this.renderer.removeClass(this.menu1.nativeElement, 'open1');
+    this.renderer.removeClass(this.menu2.nativeElement, 'open2');
+    this.renderer.removeClass(this.menu3.nativeElement, 'open3');
+
+    this.renderer.addClass(this.menu1.nativeElement, 'close1');
+    this.renderer.addClass(this.menu2.nativeElement, 'close2');
+    this.renderer.addClass(this.menu3.nativeElement, 'close3');
+  } // this.CloseMenu();
 
   public CloseEvent(e: Event) {
     const E =  e.target;
@@ -208,6 +231,7 @@ export class NavComponent implements OnInit {
 
 
   private Open(): void {
+    this.OpenMenu();
     this.porcentaje = Number(0);
     this.renderer.setStyle(this.boxsection.nativeElement, "display", "block");
     this.renderer.setStyle(this.boxsection.nativeElement, "visibility", "visible");
@@ -221,6 +245,7 @@ export class NavComponent implements OnInit {
 
   
   private Close(): void {    
+    this.CloseMenu();
     this.porcentaje = Number(75);
     this.renderer.setStyle(document.body, "overflow", "auto");
     this.renderer.setStyle(this.MySection.nativeElement, 'background', 'transparent');

@@ -25,3 +25,16 @@ body {
     background: rgba(0, 0, 0, .8);
 }
 
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+::-webkit-scrollbar-track {
+  background: rgb(0, 60, 80);
+}
+  
+::-webkit-scrollbar-thumb {
+  border-radius: .3rem;
+  background: rgb(42, 110, 178)
+}

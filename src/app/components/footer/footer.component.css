@@ -1,24 +1,23 @@
 footer {
     width: 100%;
     height: auto;
-    background: rgba(200, 50, 30, .5);
+    background: rgb(20, 20, 31);
     display: flex;
     flex-direction: column;
-    justify-items: center;
-    align-self: flex-end;
-    /* justify-content: space-around; */
-    /* padding: 80px 0px 0px 0px; */
-    opacity: 0;
-    transform: translateY(50px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    /* border: 2px solid yellow; */
+    /* border: 5px solid yellow; */
 }
 
 
 .footer-content {
     width: 100%;
     max-width: 1450px;
-    margin: auto;
+    margin: 15px auto 0px auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* border: 5px solid yellowgreen; */
 }
 
 footer.visible {
@@ -28,18 +27,17 @@ footer.visible {
 
 .footer-box {
     width: 100%;
-    height: 100%;
-    display: grid; 
-    grid-template-columns: repeat(3, 30%);
-    /* grid-template-columns: repeat(auto-fit, minmax(10%, 1fr)); */
-    align-items: center;
-    justify-content: space-around;
+    height: auto;
+    display: flex;
+    justify-content: space-around   ;
     /* border: 2px solid crimson; */
 }
 
 
 #logo-footer {
     font-size: calc(8px + 2rem);
+    padding: 1.5rem 0px 1.5rem 0px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
 
@@ -49,28 +47,115 @@ footer.visible {
 
 
 .footer-box ul {
-    padding: 10px;
     height: auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    /* border: 2px solid seagreen; */
 }
 
 p {
     text-align: start;
-    font-size: calc(8px + 1rem);
+    font-size: 18px;
+}
+
+ul, ol, .div-nosotros {
+    padding: 20px;
+}
+
+.div-servicios ol {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border: 2px solid salmon; */
 }
 
 li {
     list-style: none;
     text-align: start;
+    margin-bottom: 10px;
+}
+
+
+.div-logo {
+    padding: 20px;
+    /* border: 2px solid gold; */
+}
+
+.div-logo h1 {
+    text-align: start;
+    padding-left: 20px;
+    /* border: 2px solid chocolate; */
+}
+
+.div-servicios {
+    height: auto;
+    /* border: 2px solid chartreuse; */
+}
+
+
+/* .div-nosotros {
+    border: 2px solid green;
+} */
+
+.div-nosotros h1 {
+    text-align: start;
+    padding-left: 5px;
+}
+
+
+h1, h2 {
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 24px;
 }
 
 .copy {
     width: 100%;
-    height: 60px;
-    line-height: 60px;
-    /*  border: 2px solid cyan; */
+    /* height: 70px;
+    line-height: 70px; */
+    padding: 1.5rem 0px 1.5rem 0px;
+    border-top: 1px solid rgba(255,255,255,.08);
 }
+
+.div-form h3 {
+    text-align: start;
+    font-size: 20px;
+    padding: 0px 0px 20px 5px;
+}
+
+.div-form {
+    margin-top: 30px;
+    /* border: 2px slateblue solid; */
+}
+
+.div-form form {
+    display: flex;
+    /* border: 2px darkorange solid; */
+}
+
+.div-form form input {
+    width: 100%;
+    border: none;
+    padding: 10px 15px; 
+    border-top-left-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+    background: rgba(255,255,255, .07);
+}
+
+.div-form form button {
+    border: none;
+    padding: 10px;
+    background: dodgerblue;
+}
+
+.div-form form input:focus,
+.div-form form button:focus {
+    outline: 2px solid greenyellow;
+    outline-offset: -2px;
+}
+
 
 
 /* -----------------Media Query------------------- */
@@ -78,12 +163,12 @@ li {
 
 @media (max-width: 650px),
 (width: 300px) {
-    footer {
-        padding: 50px 0px 0px 0px;
+    .footer-content {
+        width: 95%;
+        margin: 0px auto 0px auto;
     }
     .footer-box {
-        grid-template-columns: 100%;
-        
+        flex-direction: column;
     }
     .footer-box ul {
         height: auto;
@@ -92,9 +177,22 @@ li {
         font-size: calc(6px + 1rem);
     }
     h1 {
-        font-size: calc(6px + 1rem);
+        font-size: calc(6px + 1.5rem);
     }
     #logo-footer {
         font-size: calc(8px + 2rem);
+    }
+    .copy {
+        padding: 4rem 0px 4rem 0px;
+        font-size: 12px;
+    }
+    #logo-footer {
+        font-size: calc(8px + 2rem);
+        padding: 3rem 0px 3rem 0px;
+        line-height: auto;
+        border: 1px solid rgba(255,255,255,.08);
+    }
+    h1, h2 {
+        margin-bottom: 15px;
     }
 }

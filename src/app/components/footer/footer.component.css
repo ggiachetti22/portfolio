@@ -184,6 +184,9 @@ h1, h2 {
     #logo-footer {
         font-size: calc(8px + 2rem);
     }
+    .div-logo {
+        padding: 0;
+    }
     .copy {
         padding: 4rem 0px 4rem 0px;
         font-size: 12px;
@@ -193,6 +196,13 @@ h1, h2 {
         padding: 3rem 0px 3rem 0px;
         line-height: auto;
         border: 1px solid rgba(255,255,255,.08);
+    }
+    .div-form form {
+        margin-bottom: 10px;
+        width: 95%;
+    }
+    .div-form form input {
+        max-width: 220px;
     }
     h1, h2 {
         margin-bottom: 15px;

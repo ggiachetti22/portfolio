@@ -95,16 +95,20 @@ section {
     left: -40px;
     z-index: -1;
   }
-  
-  
-  a,
-  input:focus,
-  select:focus,
-  textarea:focus,
-  button:focus {
-    outline: none;
+
+  p {
+    margin-bottom: 15px;
   }
   
+  a:focus {
+    outline: none;
+  }
+
+  input:focus,  
+  button:focus {
+    outline: 2px solid #b6ff00;
+    outline-offset: -2px;
+  }
 
 
   
@@ -116,5 +120,8 @@ section {
 (width: 300px) {
     input {
         width: calc(200px + 10vw);
+    }
+    .drops {
+      display: none;
     }
 }

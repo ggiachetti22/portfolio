@@ -147,6 +147,8 @@ h1, h2 {
 .div-form form button {
     border: none;
     padding: 10px;
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem;
     background: dodgerblue;
 }
 

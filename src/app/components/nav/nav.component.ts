@@ -33,21 +33,31 @@ export class NavComponent implements OnInit {
 
     this.route.snapshot.params['ElID'];
 
-    this.iniciar();
+    const hasVisited = localStorage.getItem('hasVisited');
+    
+    if (hasVisited === null) {
+      this.StandarMenu();
+      localStorage.setItem('hasVisited', 'true');
+      //  console.log('El sitio carga por primera vez');
+    } else {
+      this.iniciar();
+      // localStorage.setItem('hasVisited', 'null');
+      // console.log('El sitio ya ha sido visitado anteriormente');
+    }
+
+    console.log(`localStorage.getItem('hasVisited'): ((${hasVisited}))`);
 
     this.ResizeSlider(this.event);
-
-    /* setTimeout( () => {
-      this.CloseEvent();
-    } , 500); */ 
 
   } // ngOnInit();
 
   
   public iniciar(): void {
+    const Lct = window.location.href;
     setTimeout( () => {
       this.route.queryParams.subscribe( act => {
         this.btnCheck.nativeElement.checked = false;
+        if(!Lct) this.StandarMenu();
         this.Close();
         // const action = act['action'];
         // console.log(`this.route.queryParams: (`, action, `)`);
@@ -88,7 +98,7 @@ export class NavComponent implements OnInit {
 
   public LinkActivo() { 
     this.ValueDefault();
-    const Lct = window.location.href;   
+    const Lct = window.location.href;
     let h: string = this.LocationNow[0].toLowerCase().trim();
     let c: string = this.LocationNow[1].toLowerCase().trim();
     let l: string = this.LocationNow[2].toLowerCase().trim();  
@@ -142,7 +152,7 @@ export class NavComponent implements OnInit {
     if (this.sitio === 'home' || this.sitio === '') {
       this.ElLink1 = true;
     } // if;
-    console.log(`2º Estas en el sitio: ((${this.sitio}))`);
+    // console.log(`2º Estas en el sitio: ((${this.sitio}))`);
   } // V();
 
 
@@ -218,6 +228,17 @@ export class NavComponent implements OnInit {
     this.renderer.addClass(this.menu2.nativeElement, 'close2');
     this.renderer.addClass(this.menu3.nativeElement, 'close3');
   } // this.CloseMenu();
+
+  private StandarMenu(): void {
+    setTimeout(() => {
+      this.renderer.removeClass(this.menu1.nativeElement, 'open1');
+      this.renderer.removeClass(this.menu2.nativeElement, 'open2');
+      this.renderer.removeClass(this.menu3.nativeElement, 'open3');
+      this.renderer.removeClass(this.menu1.nativeElement, 'close1');
+      this.renderer.removeClass(this.menu2.nativeElement, 'close2');
+      this.renderer.removeClass(this.menu3.nativeElement, 'close3');
+    }, 10 );
+  } // this.StandarMenu();
 
   public CloseEvent(e: Event) {
     const E =  e.target;

@@ -35,7 +35,7 @@ export class NavComponent implements OnInit {
 
     const hasVisited = localStorage.getItem('hasVisited');
     
-    if (hasVisited === null) {
+    /* if (hasVisited === null) {
       this.StandarMenu();
       localStorage.setItem('hasVisited', 'true');
       //  console.log('El sitio carga por primera vez');
@@ -43,7 +43,9 @@ export class NavComponent implements OnInit {
       this.iniciar();
       // localStorage.setItem('hasVisited', 'null');
       // console.log('El sitio ya ha sido visitado anteriormente');
-    }
+    } */
+
+    this.iniciar();
 
     console.log(`localStorage.getItem('hasVisited'): ((${hasVisited}))`);
 

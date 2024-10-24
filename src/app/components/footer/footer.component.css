@@ -66,6 +66,7 @@ footer.visible {
     width: 150px;
     margin-left: 40px;
     padding: 20px;
+    filter: blur(.2px);
     /* border: 2px solid gold; */
 }
 

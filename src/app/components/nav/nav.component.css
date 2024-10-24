@@ -370,6 +370,7 @@ a .link2 {
 #logo-footer .img-logo {
     width: 70px;
     padding: 10px;
+    filter: blur(.1px);
     /* border: 2px solid gold; */
 }
 
@@ -436,7 +437,7 @@ a .link2 {
     #Nav .btn-menu {
         display: flex;
         justify-content: space-between;
-        margin: auto -10px;
+        margin: auto -30px;
     }
     #logo-footer {
         transform: translateX(0%);

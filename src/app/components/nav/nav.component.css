@@ -21,7 +21,7 @@
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     transition: top .5s ease-in-out, background .3s ease-in-out;
-    background: rgba(0, 50, 150, .4);
+    /* background: rgba(0, 50, 150, .4); */
     background: linear-gradient(-45deg, #1d81cc, #162838 50%);
     top: 0px;
     z-index: 100;
@@ -406,7 +406,7 @@ a .link2 {
 @media (max-width: 650px),
 (width: 300px) {
     #NavSection {
-        background: rgb(5, 50, 150);
+        /* background: rgb(5, 50, 150); */
         background: linear-gradient(-45deg, #1d81cc, #162838 80%);
         -webkit-backdrop-filter: blur(0);
         backdrop-filter: blur(0);

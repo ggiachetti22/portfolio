@@ -277,10 +277,7 @@ export class NavComponent implements OnInit {
     return this.porcentaje;
   } // this.Porcentaje();
 
-
-
   // (window:scroll)="myScroll();
-
 
   // [ngClass]="ElLink1 ? 'link1 ' : 'link2' "
 
@@ -293,31 +290,21 @@ export class NavComponent implements OnInit {
       const anchoWindow = window.innerWidth;
       const altoWindow = window.innerHeight;
       const NavSection = this.NavSection.nativeElement.offsetWidth;
-      // console.log(`\n\nWindow: ((${NavSection}))\n`);
-      // console.log(`Window: ((${anchoWindow}px)) alto: ((${altoWindow}))\nAlto de footer: ((..))\n\nAltura de this.parrafoBox: (( ${this.parrafoBox.nativeElement.offsetTop}px ))`);
-      if (anchoWindow <= 550) {        
-        // this.porcentaje = Number(60);
-        // console.log(`Resolución menor a 550px ${anchoWindow}`);
-      } else {
+      // console.log(`\nWindow: ((${NavSection}))\nWindow: ((${anchoWindow}px)) alto: ((${altoWindow}))\nAlto de footer: ((..))\n\nAltura de this.parrafoBox: (( ${this.parrafoBox.nativeElement.offsetTop}px ))`);
+      if (anchoWindow >= 550) {        
         this.btnCheck.nativeElement.checked = false;
         this.Check.next(false);
         this.Close();
-        // this.porcentaje = Number(40);
-        // console.log(`Resolución es mayor a 550px`);
-      } // else;
-
+        // console.log(`Resolución mayor a 550px ${anchoWindow}`);
+      } // if;
     }); // resize; 
-
   } // this.ResizeSlider($event);
  
 
   protected myScroll() { // (window:scroll)="myScroll();" // de forma dinámica;
     const NavSection = document.getElementById('NavSection');
     let PositionActual = window.scrollY;
-    // this.Nom();
     // NavSection?.classList.toggle("NavToggle", window.scrollY > 0);
-    // background: transparent;
-    // background: rgba(0, 50, 150, .4);
     if (this.PositionInitial >= PositionActual) {
       this.renderer.setStyle(NavSection, 'background', null);
       NavSection?.classList.remove('NavToggle');
@@ -337,10 +324,6 @@ export class NavComponent implements OnInit {
   } // logoff;
 
 
-
-
-
-
   /* openModal() {
     const modal = document.getElementById("myModal");
     if (modal) {
@@ -349,6 +332,7 @@ export class NavComponent implements OnInit {
       // this.renderer.setStyle(document.body, "overflow", "");
     }
   } */
+
 
   /* closeModal() {
     const modal = document.getElementById("myModal");

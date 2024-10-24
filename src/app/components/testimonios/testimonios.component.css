@@ -97,11 +97,22 @@ h4 {
 /* -----------------Media Query------------------- */
 
 
+
+
+@media (max-width: 850px),
+(max-width: 551px) {
+    .section {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+    }
+}
+
+
 @media (max-width: 425px),
 (max-width: 550px) {
     .section {
+        display: flex;
         flex-direction: column;
-        /* grid-template-columns: 1fr; */
         gap: 30px 10px;
     }
     p {

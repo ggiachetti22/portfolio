@@ -316,18 +316,17 @@ export class NavComponent implements OnInit {
     let PositionActual = window.scrollY;
     // this.Nom();
     // NavSection?.classList.toggle("NavToggle", window.scrollY > 0);
+    // background: transparent;
+    // background: rgba(0, 50, 150, .4);
     if (this.PositionInitial >= PositionActual) {
-      
+      this.renderer.setStyle(NavSection, 'background', null);
       NavSection?.classList.remove('NavToggle');
     } else {
-
-      /* this.btnCheck.nativeElement.checked = false;
-      this.Close(); */
-
+      if (this.PositionInitial >= 60) this.renderer.setStyle(NavSection, 'background', 'transparent');
       NavSection?.classList.add('NavToggle');
     } // else;
     this.Parrafo2 = this.PositionInitial.toString();
-    // console.log(`ScrollY Inicial: (${this.PositionInitial})\nScrollY Actual: (${PositionActual})`);
+    console.log(`ScrollY Inicial: (${this.PositionInitial})\nScrollY Actual: (${PositionActual})`);
     this.PositionInitial = PositionActual;
   }; // myScroll();
 

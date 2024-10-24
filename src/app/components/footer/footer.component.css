@@ -17,7 +17,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* border: 5px solid yellowgreen; */
+    /* border: 2px solid yellowgreen; */
 }
 
 footer.visible {
@@ -25,19 +25,62 @@ footer.visible {
     transform: translateY(0);
 }
 
+
+#box-Logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+
 .footer-box {
     width: 100%;
     height: auto;
     display: flex;
-    justify-content: space-around   ;
+    justify-content: space-around;
     /* border: 2px solid crimson; */
 }
 
 
 #logo-footer {
-    font-size: calc(8px + 2rem);
+    width: 100%;
+    max-width: 1450px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    position: relative;
+    /* border: 2px solid tomato; */
+}
+
+.logo-footer {
+    margin-top: 20px;
+    margin-left: -10px;
+    font-size: 18px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: dodgerblue;
     padding: 1.5rem 0px 1.5rem 0px;
-    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+#logo-footer .img-logo {
+    width: 150px;
+    margin-left: 40px;
+    padding: 20px;
+    /* border: 2px solid gold; */
+}
+
+
+#logo-footer::after {
+    content:"AFC";
+    color: transparent;
+    font-size: 35px;
+    text-shadow: 0px 0px 10px cyan;
+    width: 100px;
+    height: 40px;
+    left: 100px;
+    display: flex;
+    position: absolute;
+    /* border: 2px solid green; */
 }
 
 
@@ -167,7 +210,7 @@ h1, h2 {
 (width: 300px) {
     .footer-content {
         width: 95%;
-        margin: 0px auto 0px auto;
+        /* margin: 0px auto 0px auto; */
     }
     .footer-box {
         flex-direction: column;
@@ -206,5 +249,23 @@ h1, h2 {
     }
     h1, h2 {
         margin-bottom: 15px;
+    }
+    .logo-footer {
+        margin-left: 0px;
+    }
+    #logo-footer {
+        font-size: 18px;
+        padding: 20px;
+    }
+    #logo-footer .img-logo {
+        width: 100px;
+        margin-left: 0px;
+        padding: 0px;
+        /* border: 2px solid gold; */
+    }
+    #logo-footer::after {
+        font-size: 22px;
+        left: 45px;
+        bottom: 40px;
     }
 }

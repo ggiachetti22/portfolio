@@ -24,7 +24,7 @@
     background: rgba(0, 50, 150, .4);
     top: 0px;
     z-index: 100;
-    /* border: 2px solid cyan; */
+    /* border: 2px solid greenyellow; */
 }
 
 #NavSection.NavToggle {
@@ -34,10 +34,12 @@
 
 #Nav {
     width: 100%;
+    max-width: 1450px;
     height: 100%;
     display: flex;
-    justify-content: space-between;
-    /* border: 2px solid tomato; */
+    margin: auto;
+    justify-content: center;
+    /* border: 2px solid cyan; */
 }
 
 #logo {
@@ -205,7 +207,7 @@ ol {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    /* border: 5px solid gold; */
+    /* border: 2px solid gold; */
 }
 
 a {
@@ -341,11 +343,62 @@ a .link2 {
 
 
 .Nav-cog {
-    opacity: 0;
+    padding: 20px;
+    /* border: 2px solid cyan; */
+}
+
+
+#logo-footer {
+    width: auto;
+    display: flex;
+    transform: translateX(-90%);
+    padding: 10px;
+    align-items: center;
+    position: relative;
+    /* border: 2px solid tomato; */
+}
+
+.logo-footer {
+    margin-left: -10px;
+    font-size: 12px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: dodgerblue;
+    padding: 1.5rem 0px 1.5rem 0px;
+}
+
+
+#logo-footer .img-logo {
+    width: 70px;
+    padding: 10px;
+    /* border: 2px solid gold; */
+}
+
+
+#logo-footer::after {
+    content:"AFC";
+    color: transparent;
+    font-size: 12px;
+    text-shadow: 0px 0px 10px cyan;
+    width: 100px;
+    height: 40px;
+    left: 100px;
+    display: flex;
+    position: absolute;
+    top: 38%;
+    left: 20%;
+    /* border: 2px solid green; */
 }
 
 
 /* -----------------Media Query------------------- */
+
+
+@media (max-width: 890px),
+(width: 651px) {
+    #logo-footer {
+        transform: translateX(0%);
+    }
+}
 
 
 @media (max-width: 650px),
@@ -369,6 +422,9 @@ a .link2 {
         rgba(255, 0, 0, 1) 100%
         ); */
     }
+    #Nav {
+        justify-content: space-around;
+    }
     #up p {
         cursor: none;
         -webkit-user-select: none;
@@ -380,7 +436,10 @@ a .link2 {
     #Nav .btn-menu {
         display: flex;
         justify-content: space-between;
-        margin: auto 10px;
+        margin: auto -10px;
+    }
+    #logo-footer {
+        transform: translateX(0%);
     }
     /* .navegadores {
         width: 75%;

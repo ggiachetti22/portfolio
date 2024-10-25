@@ -76,8 +76,8 @@ export class NavComponent implements OnInit {
     });
 
     this.route.snapshot.params['ElID'];
+
     const hasVisited = localStorage.getItem('hasVisited');
-    
     if (hasVisited === null) {
       localStorage.setItem('hasVisited', 'true');
       console.log('El sitio carga por primera vez');
@@ -304,9 +304,9 @@ export class NavComponent implements OnInit {
   protected myScroll() { // (window:scroll)="myScroll();" // de forma dinámica;
     const NavSection = document.getElementById('NavSection');
     let PositionActual = window.scrollY;
-    // NavSection?.classList.toggle("NavToggle", window.scrollY > 0);
+    // NavSection?.classList.toggle("NavToggle", window.scrollY > 60);
     if (this.PositionInitial >= PositionActual) {
-      this.renderer.setStyle(NavSection, 'opacity', '1');
+      this.renderer.setStyle(NavSection, 'opacity', null);
       NavSection?.classList.remove('NavToggle');
     } else {
       if (this.PositionInitial >= 60) this.renderer.setStyle(NavSection, 'opacity', '0');

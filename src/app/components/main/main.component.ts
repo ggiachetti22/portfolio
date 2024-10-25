@@ -8,5 +8,4 @@ import { Component } from '@angular/core';
   styleUrl: './main.component.css'
 })
 export class MainComponent {
-
-}
+} // MainComponent;

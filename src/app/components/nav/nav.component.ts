@@ -306,10 +306,10 @@ export class NavComponent implements OnInit {
     let PositionActual = window.scrollY;
     // NavSection?.classList.toggle("NavToggle", window.scrollY > 0);
     if (this.PositionInitial >= PositionActual) {
-      this.renderer.setStyle(NavSection, 'background', null);
+      this.renderer.setStyle(NavSection, 'opacity', '1');
       NavSection?.classList.remove('NavToggle');
     } else {
-      if (this.PositionInitial >= 60) this.renderer.setStyle(NavSection, 'background', 'transparent');
+      if (this.PositionInitial >= 60) this.renderer.setStyle(NavSection, 'opacity', '0');
       NavSection?.classList.add('NavToggle');
     } // else;
     this.Parrafo2 = this.PositionInitial.toString();

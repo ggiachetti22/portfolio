@@ -1,28 +1,23 @@
-h1 {
-    width: 100%;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
 section {
-    width: 80%;
+    width: 100%;
     height: 100vh;
-    margin: auto;
-    position: relative;
+    display: flex;
     /* border: 2px solid green; */
 }
 
-
-  .container {
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%;
-  }
+.container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid greenyellow; */    
+ }
   
   form {
     background: rgb(50, 155, 255, .3);
     padding: 3em 1em;
+    width: auto;
     height: auto;
     border-radius: 20px;
     border-left: 1px solid white;
@@ -37,9 +32,8 @@ section {
     color: #fff;
     opacity: 0.7;
     font-size: 1.4rem;
-    margin-top: 0;
-    margin-bottom: 60px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    /* border: 2px solid cyan; */
   }
   
   input {
@@ -64,11 +58,11 @@ section {
   }
   
   
-  &[type="button"] {
+  .button {
     margin-top: 10px;
-    width: 150px;
     font-size: 1rem;
     cursor: pointer;
+    background: dodgerblue;
   }
   
   
@@ -95,6 +89,14 @@ section {
     left: -40px;
     z-index: -1;
   }
+
+
+h1 {
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
 
   p {
     margin-bottom: 15px;
@@ -138,13 +140,15 @@ section {
 @media (max-width: 650px),
 (width: 300px) {
     form {
+        width: 80%;
         height: 200px;
     }
     form .box-forgot {
         margin-top: 20px;
     }
     input {
-        width: calc(200px + 10vw);
+        width: calc(230px + 10vw);
+        width: 90%;
     }
     .drops {
       display: none;

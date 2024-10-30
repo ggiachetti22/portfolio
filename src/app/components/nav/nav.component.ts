@@ -77,13 +77,13 @@ export class NavComponent implements OnInit {
 
     this.route.snapshot.params['ElID'];
 
-    const hasVisited = localStorage.getItem('hasVisited');
+    /* const hasVisited = localStorage.getItem('hasVisited');
     if (hasVisited === null) {
       localStorage.setItem('hasVisited', 'true');
       console.log('El sitio carga por primera vez');
     } else {
       console.log('El sitio ya ha sido visitado anteriormente');
-    }
+    } */
 
     this.iniciar();
     this.ResizeSlider(this.event);
@@ -313,7 +313,7 @@ export class NavComponent implements OnInit {
       NavSection?.classList.add('NavToggle');
     } // else;
     this.Parrafo2 = this.PositionInitial.toString();
-    console.log(`ScrollY Inicial: (${this.PositionInitial})\nScrollY Actual: (${PositionActual})`);
+    // console.log(`ScrollY Inicial: (${this.PositionInitial})\nScrollY Actual: (${PositionActual})`);
     this.PositionInitial = PositionActual;
   }; // myScroll();
 

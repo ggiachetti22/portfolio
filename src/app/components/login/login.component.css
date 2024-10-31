@@ -1,6 +1,6 @@
 .section {
   width: auto;
-  height: 70vh;
+  height: 70%;
   min-height: 50vh;
   display: flex;
   flex-direction: column;

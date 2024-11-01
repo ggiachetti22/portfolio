@@ -4,6 +4,7 @@ import { FormControl } from "@angular/forms";
 import { BehaviorSubject, Observable, map, noop } from "rxjs";
 import { MyResponse, UserResponse } from "../interface/interfaces";
 import { NonNullAssert } from "@angular/compiler";
+import { environment } from "../../url/url.component";
 
 
 const HttpOption = {
@@ -20,8 +21,8 @@ const HttpOption = {
 
 export class LoginServices {
 
-  private readonly baseUrl: String = `https://localhost:7212`; // api/Messager/SendMessage
-  private readonly LoginUser: String = `https://localhost:7212/api/Access/login`;
+  private readonly LoginUsers: String = `https://www.loginusertoken.somee.com/api/Access/LoginAuth`;
+  private readonly LoginUser: String = environment.apiUrlLoginUser + `/api/Access/LoginAuth`;
   // private userSession = new BehaviorSubject<UserResponse | null>(null);
   private userSession: BehaviorSubject<UserResponse | null>;
   private userNameSession: BehaviorSubject<String | null>;
@@ -41,7 +42,11 @@ export class LoginServices {
   public loginUser(uName: String, Clave: String): Observable<MyResponse> {
     const body = JSON.stringify({ "userName": uName, "password": Clave });
 
-    return this.http.post<MyResponse>(`${this.LoginUser}`, { "userName": uName, "password": Clave, HttpOption }).pipe(
+    console.log(`----------------\n`);
+    console.log(body);
+    console.log(`----------------\n`);
+
+    return this.http.post<MyResponse>(`${this.LoginUsers}`, { "userName": uName, "password": Clave, HttpOption }).pipe(
       map( res => {
         const usuario: UserResponse = res.data;
 
@@ -61,6 +66,8 @@ export class LoginServices {
 
           console.log(`Acceso concedido!!\n\b${JSON.stringify(usuario)}`);
           console.log(`Acceso concedido!!\n\b${JSON.stringify(us)}`);
+
+          // console.log(`Ruta: ((${this.LoginUser}))`);
         } // if;
 
         return res;

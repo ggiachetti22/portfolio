@@ -3,7 +3,9 @@ export const environment = {
     // apiUrl: 'http://localhost:4200'  // API local;
   
     production: true, // para produccion/publicado;
-    apiUrl: 'https://www.sendemail.somee.com'  // API en producción/publicado y eliminar proxy.conf.json;
+    apiUrl: 'https://www.sendemail.somee.com',  // API en producción/publicado y eliminar proxy.conf.json;
+    apiUrlLoginUser: 'https://www.loginusertoken.somee.com' // 'https://www.loginusertoken.somee.com'
+    // https://www.sendemail.somee.com/swagger/index.html
   };
   
   

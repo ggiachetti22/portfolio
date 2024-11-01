@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LoginServices } from '../servicios/login.service';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../url/url.component';
 
 @Component({
   selector: 'app-login',
@@ -23,9 +24,13 @@ import { BehaviorSubject } from 'rxjs';
 export class LoginComponent implements OnInit {
 
 
-  constructor(private titleService: TitleServices, private router: Router, private route: ActivatedRoute) // private loginService: LoginServices
+  constructor(private titleService: TitleServices, private router: Router, private route: ActivatedRoute, private loginService: LoginServices) // private loginService: LoginServices
   {
-    // window.location.href = "/home?action=1";
+    if (this.loginService.userData) {
+      // this.router.navigate(['/home']); // home?action=1
+      window.location.href = "/home?action=1";
+      // window.location.reload();
+    } // if;
   } // constructor;
 
   public ngOnInit(): void {
@@ -43,15 +48,14 @@ export class LoginComponent implements OnInit {
   public Nombre = new FormControl('');
   public Clave = new FormControl('');
 
-  public home: string = 'home?action=1';
-
-  public homeLink() {
-    window.location.href = this.home;
-  } // homeLink();
+  private readonly LoginUser: String = environment.apiUrlLoginUser + `/api/Access/LoginAuth`;
 
   // DSLOIS, 1234;
 
   public loginEnter() {
+
+    console.log(`Ruta: ((${this.LoginUser}))`);
+
     this.N.next(Number(1 - Number(this.N.value)));
     this.n = Number(this.N.asObservable());
     this.Ingresar = this.Ingreso[Number(this.N.value)];
@@ -60,7 +64,7 @@ export class LoginComponent implements OnInit {
     const us: String = `${this.Nombre.value}`;
     const ps: String = `${this.Clave.value}`;
 
-  /* this.loginService.loginUser(us, ps).subscribe({
+  this.loginService.loginUser(us, ps).subscribe({
       next: (resp) => {
       const rN: Number = resp.success;
       const tK: string = resp.data;
@@ -79,7 +83,7 @@ export class LoginComponent implements OnInit {
 
       error: (er) => { console.error(er); }
 
-    }); // subcribe; */
+    }); // subcribe;
 
 
   } // loginEnter;

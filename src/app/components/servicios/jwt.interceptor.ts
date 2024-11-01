@@ -3,12 +3,15 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { LoginServices } from "./login.service";
 
-@Injectable()
+
+@Injectable({
+  providedIn: 'root'
+})
+
+
 export class JwtInterceptor implements HttpInterceptor {
 
-  constructor(private loginService: LoginServices) {
-  } // constructor;
-
+  constructor(private loginService: LoginServices) {} // constructor;
 
   intercept(solicitud: HttpRequest<any>, nextHandler: HttpHandler): Observable<HttpEvent<any>> {
     const user = this.loginService.userData; // ?.keyToken;
@@ -24,7 +27,6 @@ export class JwtInterceptor implements HttpInterceptor {
     } // if;
     return nextHandler.handle(solicitud);
   } // intercept;
-
 
 
 } // JwtInterceptor;

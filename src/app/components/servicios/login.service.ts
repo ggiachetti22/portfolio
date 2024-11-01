@@ -46,7 +46,7 @@ export class LoginServices {
     console.log(body);
     console.log(`----------------\n`);
 
-    return this.http.post<MyResponse>(`${this.LoginUsers}`, { "userName": uName, "password": Clave, HttpOption }).pipe(
+    return this.http.post<MyResponse>(`${this.LoginUser}`, { "userName": uName, "password": Clave, HttpOption }).pipe(
       map( res => {
         const usuario: UserResponse = res.data;
 
@@ -62,7 +62,7 @@ export class LoginServices {
           let us = usuario.userName;
 
           const nombre = this.userNameSession?.value;
-          console.log(` this.userName: ${this.myUserName} // (${nombre})\n`);
+          console.log(`this.userName: ${this.myUserName} // (${nombre})\n`);
 
           console.log(`Acceso concedido!!\n\b${JSON.stringify(usuario)}`);
           console.log(`Acceso concedido!!\n\b${JSON.stringify(us)}`);

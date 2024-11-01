@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
 
       if (resp.success === 1) {
         // this.router.navigate(['/home']); // /home?action=1
-        window.location.href = '/chat/0?action=2';
+        window.location.href = '/chat/?action=2';
         // window.location.reload();
         alert(`Sesión de: ${this.loginService.myUserName}!`);
       } // if;

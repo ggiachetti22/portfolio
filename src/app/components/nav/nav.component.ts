@@ -1,9 +1,10 @@
-import { NgClass } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 import { Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { SubMenuComponent } from '../sub-menu/sub-menu.component';
 import { BehaviorSubject } from 'rxjs';
+import { LoginServices } from '../servicios/login.service';
 
 @Component({
   selector: 'app-nav',
@@ -12,7 +13,8 @@ import { BehaviorSubject } from 'rxjs';
     RouterModule,
     FormsModule,
     SubMenuComponent,
-    NgClass
+    NgClass,
+    NgIf
   ],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
@@ -42,7 +44,7 @@ export class NavComponent implements OnInit {
   @ViewChild("menu3", { static: false}) menu3!: ElementRef;
 
   public Check = new BehaviorSubject<boolean>(false);
-  public UserSession:  any;
+  public UserSession:  any; // | null;
   
   private LocationNow: string[] = ['home','chat','login'];
   private h: string = "h";
@@ -65,15 +67,23 @@ export class NavComponent implements OnInit {
   public ID: number = 0;
   
 
-  constructor(protected renderer: Renderer2, protected router: Router, private route: ActivatedRoute) { } // constructor();
+  constructor(protected renderer: Renderer2, protected router: Router, private route: ActivatedRoute, private loginService: LoginServices) {
+    this.UserSession = loginService.userData;
+  } // constructor();
 
 
   ngOnInit(): void {
+    console.log(`Login start:\n`, this.UserSession);
+    this.UserSession = this.loginService.userData;
+    console.log(`${this.UserSession}\n`);
+
     this.route.queryParams.subscribe(p => {
       this.accion = parseInt(p['action'], 10); // 10 especificación de la base decimal;
       console.log(`(this.accion: ${this.accion})`);
       this.LinkActivo();
     });
+
+    
 
     this.route.snapshot.params['ElID'];
 
@@ -115,9 +125,10 @@ export class NavComponent implements OnInit {
     activateRoute.queryParams.subscribe(p => {
       this.accion = parseInt(p['action'], 10); // 10 especificación de la base decimal;
       this.LinkActivo();
+      this.UserSession = this.loginService.userData;
       // console.log(`this.accion: ${this.accion}`);
     });
-    activateRoute.snapshot.params['ElID'];  
+    activateRoute.snapshot.params['ElID'];
   } // this.QueryParam();
 
 
@@ -319,7 +330,8 @@ export class NavComponent implements OnInit {
 
 
   public logoff() {
-    window.location.href = 'login?action=5';
+    this.loginService.removeUser();
+    window.location.href = 'login?action=3';
     // window.location.reload();
   } // logoff;
 

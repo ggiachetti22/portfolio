@@ -24,18 +24,19 @@
             </li>
 
             <li class="Nav-item">
-                <a class="Nav-link" [routerLink]="['/login']" [queryParams]="{action: '3'}">
+
+                <a *ngIf="UserSession === null; else UserSess" class="Nav-link" [routerLink]="['/login']" [queryParams]="{action: '3'}">
                     Login
                 <div class="div" [ngClass]="ElLink3 ? 'link1 ' : 'link2' "></div>
                 </a>
-                <!-- <ng-template #UserSess>
-                    <div class="Nav-item ">
-                        <a class="Nav-link " [routerLink]="[ '/inicio'] " [queryParams]="{action: '3'} " (click)="logoff() ">
+
+                <ng-template #UserSess>
+                        <a class="Nav-link " [routerLink]="[ '/login'] " [queryParams]="{action: '3'} " (click)="logoff() ">
                         Cerrar Sesión
                         <div class="div " [ngClass]="ElLink3 ? 'link1 ' : 'link2' "></div>
                       </a>
-                    </div>
-                </ng-template> -->
+                </ng-template>
+
             </li>
 
         </ul>
@@ -72,7 +73,7 @@
                 </li>
     
                 <li class="Nav-item-min">
-                    <a class="Nav-link" [routerLink]="['/login']" [queryParams]="{action: '3'}">
+                    <a *ngIf="UserSession === null; else UserSess" class="Nav-link" [routerLink]="['/login']" [queryParams]="{action: '3'}">
                         Login
                     <div class="div" [ngClass]="ElLink3 ? 'link1 ' : 'link2' "></div>
                     </a>

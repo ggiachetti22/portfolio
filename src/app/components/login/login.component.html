@@ -3,8 +3,8 @@
   <h1>Inicia Sesión .!!! !!! </h1>
 
   <form class="form">
-    <input type="text" [formControl]="Nombre" placeholder="Nombre de usuario.." class="nom" />
-    <input type="password" [formControl]="Clave" placeholder="Clave.." class="pass" />
+    <input type="text" [formControl]="Nombre" placeholder="Nombre de usuario ej: user" class="nom" />
+    <input type="password" [formControl]="Clave" placeholder="Clave ej: 1324" class="pass" />
     <button id="botonLogin" type="button" (click)="loginEnter();" class="myBtn">{{Ingresar}}</button>
     <label id="label">Hola</label>
     <a id="create" [routerLink]="['/create']" class="btn-primary">No tienes cuenta registrate ahora!!</a>

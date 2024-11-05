@@ -40,9 +40,13 @@ export class UserServices {
         // {"email": UserNameEmail.value, "password": Password.value}
 
         this.http.post<MyResponse>(this.apiUrlUser + this.AddUserPath, 
-            { "email": UserNameEmail.value, "password": Password.value, MyHttpOptions }).subscribe({
+            { Payload, MyHttpOptions }).subscribe({
                     next: (opt) => {
-                        console.log(`Usuario: (${opt.data})\n\n`, JSON.stringify(opt));
+                        if (opt) {
+                            console.log(`Usuario creado exitosamente: ${JSON.stringify(opt)}`);
+                        } else {
+                            console.warn('La respuesta de la API fue null o no tiene el formato esperado.');
+                        } // else;
                     }, // next;
                     error: (er) => {
                         console.error(er);

@@ -43,7 +43,8 @@ export class UserServices {
             { "email": UserNameEmail.value, "password": Password.value, MyHttpOptions }).subscribe({
                     next: (opt) => {
                         if (opt) {
-                            console.log(`Usuario creado exitosamente: ${JSON.stringify(opt)}`);
+                            console.log(`Usuario creado exitosamente: ${opt}`);
+                            // console.log(`Usuario creado exitosamente: ${JSON.stringify(opt)}`);
                         } else {
                             console.warn('La respuesta de la API fue null o no tiene el formato esperado.');
                         } // else;

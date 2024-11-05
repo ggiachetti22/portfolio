@@ -5,7 +5,7 @@ import { FormControl } from "@angular/forms";
 import { MyResponse } from "../interface/interfaces";
 
 
-const HttpOptions = {
+const MyHttpOptions = {
     MyHeader: new HttpHeaders ({
         "Conten-Type": "application/json",
         "Authorization": "my-auth-token"
@@ -26,10 +26,17 @@ export class UserServices {
 
 
     public CreateUser(UserNameEmail: FormControl, Password: FormControl): void {
-        this.http.post<MyResponse>(this.apiUrlUser + this.AddUserPath, 
-            {"email": UserNameEmail.value, "password": Password, HttpOptions}).subscribe({
+
+        const payload = {
+            email: UserNameEmail.value,
+            password: Password.value // aseguramos que accedemos a `.value` aquí
+        };
+
+        // {"email": UserNameEmail.value, "password": Password}
+
+        this.http.post<MyResponse>(this.apiUrlUser + this.AddUserPath, payload).subscribe({
                     next: (opt) => {
-                        console.log(`Usuario: (${opt})`);
+                        console.log(`Usuario: (${opt.data})`);
                     }, // next;
                     error: (er) => {
                         console.error(er);

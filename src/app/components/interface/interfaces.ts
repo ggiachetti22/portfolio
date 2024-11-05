@@ -20,3 +20,11 @@ export interface UserResponse {
   userName: String,
   keyToken: String
 } // UserResponse;
+
+export interface UserDTO {
+  userID: Number,
+  userEmail: String,
+  userName: String,
+  password: String,
+  stateID: Number,
+} // UserDTO;

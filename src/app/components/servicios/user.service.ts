@@ -7,8 +7,8 @@ import { MyResponse } from "../interface/interfaces";
 
 const MyHttpOptions = {
     MyHeader: new HttpHeaders ({
-        "Conten-Type": "application/json",
-        "Authorization": "my-auth-token"
+        "Content-Type": "application/json",
+        // "Authorization": "my-auth-token"
     })
 } // this.HttpOptions;
 

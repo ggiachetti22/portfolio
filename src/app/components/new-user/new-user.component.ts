@@ -3,14 +3,16 @@ import { TitleServices } from '../servicios/title.service';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import { UserServices } from '../servicios/user.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-new-user',
   standalone: true,
   imports: [
     LoginComponent,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule,    
   ],
   templateUrl: './new-user.component.html',
   styleUrl: './new-user.component.css'
@@ -19,6 +21,8 @@ import { FormControl } from '@angular/forms';
 export class NewUserComponent implements OnInit {
 
   constructor(private titleService: TitleServices, private userServices: UserServices) {} // constructor;
+  // , private userServices: UserServices
+
 
   public ngOnInit(): void {
     this.titleService.AddTitle(this.title);
@@ -50,9 +54,9 @@ export class NewUserComponent implements OnInit {
   public UserAdd(): void {
     this.userServices.CreateUser(this.UserNameEmail, this.Password);
 
-    /* this.UserNameEmail.setValue('');
-    this.Password.setValue('');
-    this.myUserNameEmail.nativeElement.focus(); */
+    // this.UserNameEmail.setValue('');
+    // this.Password.setValue('');
+    // this.myUserNameEmail.nativeElement.focus();
   } // UserAdd();
 
 

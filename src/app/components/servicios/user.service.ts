@@ -40,7 +40,7 @@ export class UserServices {
         // {"email": UserNameEmail.value, "password": Password.value}
 
         this.http.post<MyResponse>(this.apiUrlUser + this.AddUserPath, 
-            { payload, MyHttpOptions }).subscribe({
+            { "email": UserNameEmail.value, "password": Password.value, MyHttpOptions }).subscribe({
                     next: (opt) => {
                         if (opt) {
                             console.log(`Usuario creado exitosamente: ${JSON.stringify(opt)}`);

@@ -46,8 +46,8 @@ export class LoginServices {
     console.log(`----------------\n`);
     console.log(body);
     console.log(`----------------\n`);
-    // { "userName": uName, "password": Clave, HttpOption }
-    return this.http.post<MyResponse>(`${this.LoginUser}`, { body, HttpOption }).pipe(
+    // { "email": uName, "userName": uName, "password": Clave, HttpOption }
+    return this.http.post<MyResponse>(`${this.LoginUser}`, { "email": uName, "userName": uName, "password": Clave, HttpOption }).pipe(
       map( res => {
         const usuario: UserResponse = res.data;
 

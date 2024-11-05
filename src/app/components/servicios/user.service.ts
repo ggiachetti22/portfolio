@@ -36,7 +36,7 @@ export class UserServices {
 
         this.http.post<MyResponse>(this.apiUrlUser + this.AddUserPath, { payload, MyHttpOptions }).subscribe({
                     next: (opt) => {
-                        console.log(`Usuario: (${opt.data})`);
+                        console.log(`Usuario: (${opt.data})\n\n`, JSON.stringify(opt.data));
                     }, // next;
                     error: (er) => {
                         console.error(er);

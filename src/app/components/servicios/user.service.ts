@@ -29,14 +29,20 @@ export class UserServices {
 
         const payload = {
             email: UserNameEmail.value,
-            password: Password.value // aseguramos que accedemos a `.value` aquí
-        };
+            password: Password.value
+        }; // payload;
+
+        const Payload = {
+            "email": UserNameEmail.value,
+            "password": Password.value
+        }; // Payload;
 
         // {"email": UserNameEmail.value, "password": Password.value}
 
-        this.http.post<MyResponse>(this.apiUrlUser + this.AddUserPath, { "email": UserNameEmail.value, "password": Password.value, MyHttpOptions }).subscribe({
+        this.http.post<MyResponse>(this.apiUrlUser + this.AddUserPath, 
+            { "email": UserNameEmail.value, "password": Password.value, MyHttpOptions }).subscribe({
                     next: (opt) => {
-                        console.log(`Usuario: (${opt.data})\n\n`, JSON.stringify(opt.data));
+                        console.log(`Usuario: (${opt.data})\n\n`, JSON.stringify(opt));
                     }, // next;
                     error: (er) => {
                         console.error(er);

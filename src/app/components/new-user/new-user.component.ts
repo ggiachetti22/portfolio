@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { TitleServices } from '../servicios/title.service';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
+import { UserServices } from '../servicios/user.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-new-user',
@@ -16,13 +18,21 @@ import { LoginComponent } from '../login/login.component';
 
 export class NewUserComponent implements OnInit {
 
-  constructor(private titleService: TitleServices) {} // constructor;
+  constructor(private titleService: TitleServices, private userServices: UserServices) {} // constructor;
 
   public ngOnInit(): void {
     this.titleService.AddTitle(this.title);
   } // this.ngOnInit();
 
   
+  public UserNameEmail = new FormControl('');
+  public Password = new FormControl('');
+  public UserName = new FormControl('');
+
+  @ViewChild("myUserNameEmail") myUserNameEmail!: ElementRef;
+  @ViewChild("myPassword") myPassword!: ElementRef;
+  @ViewChild("myUseName") myUseName!: ElementRef;
+
   protected title: string = `Create Login`;
   public home: string = 'home?action=1';
   public login: string = 'login?action=3';
@@ -34,6 +44,18 @@ export class NewUserComponent implements OnInit {
   public loginLink() {
     window.location.href = this.login;
   } // loginLink();
+
+
+
+  public UserAdd(): void {
+    this.userServices.CreateUser(this.UserNameEmail, this.Password);
+
+    /* this.UserNameEmail.setValue('');
+    this.Password.setValue('');
+    this.myUserNameEmail.nativeElement.focus(); */
+  } // UserAdd();
+
+
 
 
 } // NewUserComponent;

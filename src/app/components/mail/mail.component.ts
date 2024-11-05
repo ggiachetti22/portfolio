@@ -18,8 +18,8 @@ import { environment } from '../../url/url.component';
 export class MailComponent {
 
 
+  private readonly ApiUrlEmail = environment.apiUrlEmail // Active in Production;
   private readonly enviarMensajeEmail = "/api/EmailMessage/SendEmailMessage"; // "https://www.sendemail.somee.com/api/EmailMessage/SendEmailMessage";
-  private readonly ApiUrl = environment.apiUrl // Active in Production;
 
   public toEmail = new FormControl();
   public toMessage = new FormControl();
@@ -53,7 +53,7 @@ export class MailComponent {
 
   private EnviarElMensaje(): void {
     var mySend = { toEmail: this.toEmail.value, toMessage: this.toMessage.value };
-    this.http.post(`${this.ApiUrl}${this.enviarMensajeEmail}`, mySend).subscribe({
+    this.http.post(`${this.ApiUrlEmail}${this.enviarMensajeEmail}`, mySend).subscribe({
       next: (resp) => { console.log(`Mensaje enviado con éxito.!! ${this.toEmail}, ${this.toMessage}`) },
       error: (er) => { console.error(er); }
     }); // subscribe;

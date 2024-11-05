@@ -1,4 +1,4 @@
-<section class="section">
+<!-- <section class="section">
 
   <h1>Inicia Sesión .!!! !!! </h1>
 
@@ -10,5 +10,33 @@
     <a id="create" [routerLink]="['/create']" class="btn-primary">No tienes cuenta registrate ahora!!</a>
   </form>
 
-</section>
+</section> -->
 
+
+
+<section class="section">
+
+  <div class="container">
+      <form>
+        
+        <p>Inicia Sesión!</p>
+
+        <input type="text" [formControl]="Nombre" placeholder="Nombre de usuario ej: user" /> <!-- class="nom" -->
+        <input type="password" [formControl]="Clave" placeholder="Clave ej: 1324" /> <!-- class="pass" -->
+
+        <!-- <input type="email" placeholder="Email"><br>
+        <input type="password" placeholder="Password"><br> -->
+
+
+        <!-- <button id="botonLogin" type="button" (click)="loginEnter();" class="button myBtn">{{Ingresar}}</button> -->
+        <input class="button" type="button" (click)="loginEnter();" value="{{Ingresar}}"><br>
+
+        <div class="box-forgot">
+          <a id="create" [routerLink]="['/create']" class="btn-primary">No tienes cuenta registrate ahora!!</a>
+        </div>
+
+      </form>
+      
+    </div>
+    
+</section>

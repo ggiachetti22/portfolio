@@ -34,7 +34,7 @@ export class UserServices {
 
         // {"email": UserNameEmail.value, "password": Password}
 
-        this.http.post<MyResponse>(this.apiUrlUser + this.AddUserPath, payload).subscribe({
+        this.http.post<MyResponse>(this.apiUrlUser + this.AddUserPath, { payload, MyHttpOptions }).subscribe({
                     next: (opt) => {
                         console.log(`Usuario: (${opt.data})`);
                     }, // next;

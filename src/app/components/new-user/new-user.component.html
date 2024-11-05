@@ -4,8 +4,9 @@
         <form>
           <p>Crear usuario</p>
 
-          <input #myUserNameEmail [formControl]="UserNameEmail" type="email" placeholder="Email"><br>
-          <input #myPassword [formControl]="Password" type="password" placeholder="Password"><br>
+          <input #myUserNameEmail [formControl]="UserNameEmail" type="email" placeholder="Email.."><br>
+          <input #myPassword [formControl]="Password" type="password" placeholder="Clave.."><br>
+          <input #myPasswordConfirm [formControl]="ConfirmarPassword" type="password" placeholder="Confirmar clave.."><br>
           <input #myUseName class="button" (click)="UserAdd();" type="button" value="Sign in"><br>
 
           <div class="box-forgot">

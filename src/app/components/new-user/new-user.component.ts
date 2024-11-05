@@ -31,10 +31,12 @@ export class NewUserComponent implements OnInit {
   
   public UserNameEmail = new FormControl('');
   public Password = new FormControl('');
+  public ConfirmarPassword = new FormControl('');
   public UserName = new FormControl('');
 
   @ViewChild("myUserNameEmail") myUserNameEmail!: ElementRef;
   @ViewChild("myPassword") myPassword!: ElementRef;
+  @ViewChild("myPasswordConfirm") myPasswordConfirm!: ElementRef;
   @ViewChild("myUseName") myUseName!: ElementRef;
 
   protected title: string = `Create Login`;

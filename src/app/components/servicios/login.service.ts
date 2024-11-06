@@ -68,8 +68,8 @@ export class LoginServices {
           console.log(`Acceso concedido!!\n\b${JSON.stringify(usuario)}`);
           console.log(`Acceso concedido!!\n\b${JSON.stringify(us)}`);
 
-          window.location.href = '/chat/?action=2';
-          alert(`Sesión de: ${nombre}!`);
+          // window.location.href = '/chat/?action=2';
+          // alert(`Sesión de: ${nombre}!`);
         } // if;
 
         return res;

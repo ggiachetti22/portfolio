@@ -107,8 +107,8 @@ export class LoginComponent implements OnInit {
     this.loginService.loginUser(us, ps).subscribe({
       next: (resp) => {
         if (resp.success === 1) {
-          window.location.href = '/chat/?action=2';
           alert(`Sesión de: ${this.loginService.myUserName}!`);
+          window.location.href = '/chat/?action=2';
         } // if;
       }, error: (er) => {
         this.MyEmal = `Usuario o contraseña son incorrectos`;

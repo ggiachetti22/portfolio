@@ -14,7 +14,7 @@ export class JwtInterceptor implements HttpInterceptor {
   constructor(private loginService: LoginServices) {} // constructor;
 
   intercept(solicitud: HttpRequest<any>, nextHandler: HttpHandler): Observable<HttpEvent<any>> {
-    const user = this.loginService.userData; // ?.keyToken;
+    const user = this.loginService.userData; // keyToken;
     console.log(`User: ${user?.userName}\nToken: ${user?.keyToken}`);
     console.log(`User Data:`);
     console.log(this.loginService.userData);
@@ -22,7 +22,7 @@ export class JwtInterceptor implements HttpInterceptor {
       solicitud = solicitud.clone({
         setHeaders: {
           Authorization: `Bearer ${user?.keyToken}`
-        }
+        } // setHeaders;
       }); // clone;
     } // if;
     return nextHandler.handle(solicitud);

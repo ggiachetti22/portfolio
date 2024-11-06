@@ -1,11 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, CanActivateFn, GuardResult, MaybeAsync, Router, RouterStateSnapshot } from "@angular/router";
 import { LoginServices } from "./login.service";
-import { NavComponent } from "../nav/nav.component";
 
-/* @Injectable({
-  providedIn: 'root'
-}) */
 
 export const GuardServices: CanActivateFn = () => {
 

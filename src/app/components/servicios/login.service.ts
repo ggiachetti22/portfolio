@@ -87,6 +87,8 @@ export class LoginServices {
 
   public get userData(): UserResponse | null {
     console.log(`-----------------\n`);
+    console.log(this.userNameSession.value);
+    console.log(`-----------------\n`);
     console.log(this.userSession.value);
     console.log(`-----------------\n`);
     // this.userSession?.asObservable();

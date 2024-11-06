@@ -112,9 +112,9 @@ export class NewUserComponent implements OnInit {
     this.render.setStyle(this.EmailRef.nativeElement, "opacity", "1");
     this.render.setStyle(this.PassRef.nativeElement, "opacity", "1");
     this.render.setStyle(this.ConfPassRef.nativeElement, "opacity", "1");
-    this.MyEmal = `Campo está vacío`;
-    this.MyPass = `Campo está vacío`;
-    this.MyConfPass = `Campo está vacío`;
+    this.MyEmal = `Campo vacío`;
+    this.MyPass = `Campo vacío`;
+    this.MyConfPass = `Campo vacío`;
   } // this.Pintar();
 
   protected Despintar(): void {

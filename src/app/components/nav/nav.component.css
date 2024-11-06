@@ -288,7 +288,7 @@ a .link2 {
     background: rgba(0, 0, 0, .2);
     position: fixed;
     bottom: 300px;
-    right: 20px;
+    right: 40px;
     transition: all .25s ease-in;
     z-index: 10;
     cursor: pointer;
@@ -297,8 +297,10 @@ a .link2 {
 }
 
 #up p {
+    width: 70px;
     text-align: center;
     line-height: 30px;
+    border: 2px solid green;
 }
 
 #up:hover {

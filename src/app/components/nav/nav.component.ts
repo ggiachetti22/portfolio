@@ -59,6 +59,7 @@ export class NavComponent implements OnInit {
 
   public Parrafo1: String = '↑';
   public Parrafo2: String = 'Hola';
+  public Parrafo3: String = 'usuario';
 
   private porcentaje: Number = 0;
   public event!: Event;
@@ -73,9 +74,12 @@ export class NavComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log(`\n\n-----------------NAV------------------\n\n`);
+    console.log(`${this.loginService.userData?.userName}\n`);
     console.log(`Login start:\n`, this.UserSession);
     this.UserSession = this.loginService.userData;
     console.log(`${this.UserSession}\n`);
+    console.log(`\n\n-----------------NAV------------------\n\n`);
 
     this.route.queryParams.subscribe(p => {
       this.accion = parseInt(p['action'], 10); // 10 especificación de la base decimal;

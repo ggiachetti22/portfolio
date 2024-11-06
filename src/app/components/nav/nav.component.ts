@@ -87,14 +87,6 @@ export class NavComponent implements OnInit {
 
     this.route.snapshot.params['ElID'];
 
-    /* const hasVisited = localStorage.getItem('hasVisited');
-    if (hasVisited === null) {
-      localStorage.setItem('hasVisited', 'true');
-      console.log('El sitio carga por primera vez');
-    } else {
-      console.log('El sitio ya ha sido visitado anteriormente');
-    } */
-
     this.iniciar();
     this.ResizeSlider(this.event);
 
@@ -110,10 +102,8 @@ export class NavComponent implements OnInit {
           this.Check.next(false);
           this.Close();
           LctConst = LctObs;
-          console.log('((LctObs !== LctConst))');
         }
         const action = act['action'];
-        // console.log(`this.route.queryParams: (`, action, `)\nLctObs: (${LctObs}) == ${LctConst}`);
       }); // this.route.queryParams;
     },10);
   } // this.iniciar();
@@ -126,7 +116,6 @@ export class NavComponent implements OnInit {
       this.accion = parseInt(p['action'], 10); // 10 especificación de la base decimal;
       this.LinkActivo();
       this.UserSession = this.loginService.userData;
-      // console.log(`this.accion: ${this.accion}`);
     });
     activateRoute.snapshot.params['ElID'];
   } // this.QueryParam();
@@ -135,7 +124,6 @@ export class NavComponent implements OnInit {
   public Param(): void {
     this.porcentaje = Number(0);
     this.renderer.setStyle(this.navegador1.nativeElement, 'left', `0%`);
-    // this.renderer.setStyle(this.navegador2.nativeElement, 'right', `0%`);
   } // this.Param();
 
 
@@ -180,7 +168,6 @@ export class NavComponent implements OnInit {
     */
     else {
       this.ValueDefault();
-      // console.log("No es igual a nunguno..!");
     } // else;
     
   } // this.LinkActivo();
@@ -288,7 +275,6 @@ export class NavComponent implements OnInit {
     return this.porcentaje;
   } // this.Porcentaje();
 
-  // (window:scroll)="myScroll();
 
   // [ngClass]="ElLink1 ? 'link1 ' : 'link2' "
 
@@ -332,28 +318,7 @@ export class NavComponent implements OnInit {
   public logoff() {
     this.loginService.removeUser();
     window.location.href = 'login?action=3';
-    // window.location.reload();
   } // logoff;
-
-
-  /* openModal() {
-    const modal = document.getElementById("myModal");
-    if (modal) {
-      modal.style.display = "block";
-      document.body.style.overflow = "hidden"; // Deshabilita el scroll del fondo
-      // this.renderer.setStyle(document.body, "overflow", "");
-    }
-  } */
-
-
-  /* closeModal() {
-    const modal = document.getElementById("myModal");
-    if (modal) {
-      modal.style.display = "none";
-      // document.body.style.overflow = "auto"; // Vuelve a habilitar el scroll
-      this.renderer.setStyle(document.body, "overflow", "auto");
-    }
-  } */
 
 
 

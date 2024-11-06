@@ -30,10 +30,6 @@ export class LoginServices {
   constructor(private http: HttpClient) {
     this.userSession = new BehaviorSubject<UserResponse | null>(JSON.parse(`${localStorage.getItem('usuario')}`));
     this.userNameSession = new BehaviorSubject<String | null>(this.myUserName);
-
-    // const nombre = this.userNameSession?.value;
-    // console.log(`this.userNameSession: ${this.myUserName} (${nombre})`);
-
   } // constructor;
 
 
@@ -62,7 +58,7 @@ export class LoginServices {
 
           let us = usuario.userName;
 
-          const nombre = this.userNameSession?.value; // UserName
+          const nombre = this.userNameSession?.value; // UserName;
           console.log(`this.userName: ${this.myUserName} // (${nombre})\n`);
 
           console.log(`Acceso concedido!!\n\b${JSON.stringify(usuario)}`);
@@ -85,11 +81,13 @@ export class LoginServices {
   } // this.myUserName;
 
   public get userData(): UserResponse | null {
+    console.log(`Session open ----------------\n`);
+    console.log(this.userSession.value?.email);
     console.log(`-----------------\n`);
     console.log(this.userSession.value?.userName);
     console.log(`-----------------\n`);
     console.log(this.userSession.value);
-    console.log(`-----------------\n`);
+    console.log(`Session end -----------------\n`);
     // this.userSession?.asObservable();
     return this.userSession.value;
   } // userData;

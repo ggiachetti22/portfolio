@@ -79,7 +79,7 @@ export class NewUserComponent implements OnInit {
       this.render.setStyle(this.PassRef.nativeElement, "opacity", "1");
       this.MyPass = `Completa el password`;
       this.render.setStyle(this.myPassword.nativeElement, "outline", "2px solid coral");
-    } else if(Number(this.Password.value?.length) <= 8) {
+    } else if(Number(this.Password.value?.length) < 8) {
       this.render.setStyle(this.PassRef.nativeElement, "opacity", "1");
       this.MyPass = `El password debe tener mínimo 8 caracteres`;
       this.render.setStyle(this.myPassword.nativeElement, "outline", "2px solid coral");

@@ -21,8 +21,17 @@
         
         <p class="p">Inicia Sesión!</p>
 
-        <input type="text" [formControl]="Nombre" placeholder="Nombre de usuario ej: user" /> <!-- class="nom" -->
-        <input type="password" [formControl]="Clave" placeholder="Clave ej: 1324" /> <!-- class="pass" -->
+        <input type="text" #myUserNameEmail [formControl]="Nombre" placeholder="Nombre de usuario ej: user" /> <!-- class="nom" -->
+        <div #EmailRef class="label" contenteditable="false">
+          <i class="icon-attention-1 icon"></i>
+          {{MyEmal}}
+        </div>
+
+        <input type="password" #myPassword [formControl]="Clave" placeholder="Clave ej: 1324" /> <!-- class="pass" -->
+        <div #PassRef class="label" contenteditable="false">
+          <i class="icon-attention-1 icon"></i>
+          {{MyPass}}
+        </div>
 
         <input class="button" type="button" (click)="loginEnter();" value="{{Ingresar}}"><br>
 

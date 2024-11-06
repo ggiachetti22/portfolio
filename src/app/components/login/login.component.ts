@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { TitleServices } from '../servicios/title.service';
 import { NewUserComponent } from '../new-user/new-user.component';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -24,7 +24,7 @@ import { environment } from '../../url/url.component';
 export class LoginComponent implements OnInit {
 
 
-  constructor(private titleService: TitleServices, private router: Router, private route: ActivatedRoute, private loginService: LoginServices) // private loginService: LoginServices
+  constructor(private titleService: TitleServices, private router: Router, private route: ActivatedRoute, private loginService: LoginServices, private render: Renderer2) // private loginService: LoginServices
   {
     if (this.loginService.userData) {
       // this.router.navigate(['/home']); // home?action=1
@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
 
   protected title: string = `Login Pages`;
 
+  private readonly LoginUser: String = environment.apiUrlLoginUser + `/api/Access/LoginAuth`;
 
   public N = new BehaviorSubject<Number>(0);
   public n: Number = 0;
@@ -48,45 +49,79 @@ export class LoginComponent implements OnInit {
   public Nombre = new FormControl('');
   public Clave = new FormControl('');
 
-  private readonly LoginUser: String = environment.apiUrlLoginUser + `/api/Access/LoginAuth`;
+  private cl: any;
 
-  // DSLOIS, 1234;
+  @ViewChild("myUserNameEmail") myUserNameEmail!: ElementRef;
+  @ViewChild("myPassword") myPassword!: ElementRef;
+  @ViewChild("EmailRef") EmailRef!: ElementRef;
+  @ViewChild("PassRef") PassRef!: ElementRef;
+  public MyEmal: string = '';
+  public MyPass: string = '';
 
   public loginEnter() {
+    clearTimeout(this.cl);
+    if(this.Clave.value === '' && this.Nombre.value === ''){
+      this.Pintar();
+      this.MyEmal = `Los Campos están vacíos`;
+      this.MyPass = `Los Campos están vacíos`;
+    } else if(this.Nombre.value === ''){
+      this.render.setStyle(this.myUserNameEmail.nativeElement, "outline", "2px solid coral");
+      this.render.setStyle(this.EmailRef.nativeElement, "opacity", "1");
+      this.MyEmal = `El nombre de usuario es requerido`;
+    } else if(this.Clave.value === '') {
+      this.render.setStyle(this.myPassword.nativeElement, "outline", "2px solid coral");
+      this.render.setStyle(this.PassRef.nativeElement, "opacity", "1");
+      this.MyPass = `El password es requerido`;
+    } else {
+      console.log(`Éxito`);
+      this.Login();
+    } //else
 
+    this.cl = setTimeout( () => this.Despintar() , 3000);
+
+  } // this.loginEnter();
+
+  private Pintar(): void {
+    this.render.setStyle(this.myUserNameEmail.nativeElement, "outline", "2px solid coral");
+    this.render.setStyle(this.EmailRef.nativeElement, "opacity", "1");
+    this.render.setStyle(this.myPassword.nativeElement, "outline", "2px solid coral");
+    this.render.setStyle(this.PassRef.nativeElement, "opacity", "1");
+  } // this.Pintar();
+
+  private Despintar(): void {
+    this.render.setStyle(this.myUserNameEmail.nativeElement, "outline", null);
+    this.render.setStyle(this.EmailRef.nativeElement, "opacity", null);
+    this.render.setStyle(this.myPassword.nativeElement, "outline", null);
+    this.render.setStyle(this.PassRef.nativeElement, "opacity", null);
+  } // this.Despintar();
+
+  protected Login(): void {
     console.log(`Ruta: ((${this.LoginUser}))`);
 
     this.N.next(Number(1 - Number(this.N.value)));
     this.n = Number(this.N.asObservable());
     this.Ingresar = this.Ingreso[Number(this.N.value)];
-    // console.log(`Numero Subject: ${this.N.asObservable()} / / ${this.N.value}`);
 
     const us: String = `${this.Nombre.value}`;
     const ps: String = `${this.Clave.value}`;
 
-  this.loginService.loginUser(us, ps).subscribe({
+    this.loginService.loginUser(us, ps).subscribe({
       next: (resp) => {
-      const rN: Number = resp.success;
-      const tK: string = resp.data;
-
-      console.log(rN);
-      console.log("\n");
-      console.log(tK);
-
-      if (resp.success === 1) {
-        // this.router.navigate(['/home']); // /home?action=1
-        window.location.href = '/chat/?action=2';
-        // window.location.reload();
-        alert(`Sesión de: ${this.loginService.myUserName}!`);
-      } // if;
-    },
-
+        if (resp.success === 1) {
+          window.location.href = '/chat/?action=2';
+          alert(`Sesión de: ${this.loginService.myUserName}!`);
+        } else {
+          this.MyEmal = `Usuario o password incorrctos`;
+          this.MyPass = `Usuario o password incorrctos`;
+          this.Pintar();
+          this.myUserNameEmail.nativeElement.setValue('');
+          this.myUserNameEmail.nativeElement.focus();
+        } // else;
+      },
       error: (er) => { console.error(er); }
-
     }); // subcribe;
+  } // this.Login();
 
-
-  } // loginEnter;
 
 
 

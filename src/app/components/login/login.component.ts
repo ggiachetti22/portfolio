@@ -62,8 +62,8 @@ export class LoginComponent implements OnInit {
     clearTimeout(this.cl);
     if (this.Clave.value === '' && this.Nombre.value === ''){
       this.Pintar();
-      this.MyEmal = `Los Campos están vacíos`;
-      this.MyPass = `Los Campos están vacíos`;
+      this.MyEmal = `Los campos están vacíos`;
+      this.MyPass = `Los campos están vacíos`;
     } else if (this.Nombre.value === ''){
       this.render.setStyle(this.myUserNameEmail.nativeElement, "outline", "2px solid coral");
       this.render.setStyle(this.EmailRef.nativeElement, "opacity", "1");

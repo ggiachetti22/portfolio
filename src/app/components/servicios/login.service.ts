@@ -46,7 +46,7 @@ export class LoginServices {
     console.log(`----------------\n`);
     console.log(body);
     console.log(`----------------\n`);
-    // { "email": uName, "userName": uName, "password": Clave, HttpOption }
+
     return this.http.post<MyResponse>(`${this.LoginUser}`, { "email": uName, "userName": uName, "password": Clave, HttpOption }).pipe(
       map( res => {
         const usuario: UserResponse = res.data;
@@ -62,14 +62,12 @@ export class LoginServices {
 
           let us = usuario.userName;
 
-          const nombre = this.userNameSession?.value;
+          const nombre = this.userNameSession?.value; // UserName
           console.log(`this.userName: ${this.myUserName} // (${nombre})\n`);
 
           console.log(`Acceso concedido!!\n\b${JSON.stringify(usuario)}`);
           console.log(`Acceso concedido!!\n\b${JSON.stringify(us)}`);
 
-          // window.location.href = '/chat/?action=2';
-          // alert(`Sesión de: ${nombre}!`);
         } // if;
 
         return res;

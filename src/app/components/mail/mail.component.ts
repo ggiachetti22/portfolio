@@ -34,7 +34,6 @@ export class MailComponent {
 
 
   public SendMessageEmail(): void {
-    // guillermogiacchetti85@gmail.com
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if (emailPattern.test(this.toEmail.value)) {
@@ -53,6 +52,7 @@ export class MailComponent {
 
   private EnviarElMensaje(): void {
     var mySend = { toEmail: this.toEmail.value, toMessage: this.toMessage.value };
+
     this.http.post(`${this.ApiUrlEmail}${this.enviarMensajeEmail}`, mySend).subscribe({
       next: (resp) => { console.log(`Mensaje enviado con éxito.!! ${this.toEmail}, ${this.toMessage}`) },
       error: (er) => { console.error(er); }

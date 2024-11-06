@@ -27,6 +27,8 @@ export class UserServices {
 
     public CreateUser(UserNameEmail: FormControl, Password: FormControl): void {
 
+        const body = JSON.stringify({ "email": UserNameEmail.value, "password": Password.value });
+
         const payload = {
             email: UserNameEmail.value,
             password: Password.value

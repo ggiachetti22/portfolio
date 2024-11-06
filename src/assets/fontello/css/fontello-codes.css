@@ -70,6 +70,12 @@
 .icon-male:before { content: '\e844'; } /* '' */
 .icon-cog-1:before { content: '\e845'; } /* '' */
 .icon-cog-outline:before { content: '\e846'; } /* '' */
+.icon-attention:before { content: '\e847'; } /* '' */
+.icon-alert:before { content: '\e848'; } /* '' */
+.icon-warning-empty:before { content: '\e849'; } /* '' */
+.icon-attention-1:before { content: '\e84a'; } /* '' */
+.icon-attention-alt:before { content: '\e84b'; } /* '' */
+.icon-warning:before { content: '\e84c'; } /* '' */
 .icon-twitter-circled:before { content: '\f057'; } /* '' */
 .icon-gplus-circled:before { content: '\f059'; } /* '' */
 .icon-phone-squared:before { content: '\f098'; } /* '' */

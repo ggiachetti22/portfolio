@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { TitleServices } from '../servicios/title.service';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
@@ -20,7 +20,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export class NewUserComponent implements OnInit {
 
-  constructor(private titleService: TitleServices, private userServices: UserServices) {} // constructor;
+  constructor(private titleService: TitleServices, private userServices: UserServices, private render: Renderer2) {} // constructor;
   // , private userServices: UserServices
 
 
@@ -39,6 +39,13 @@ export class NewUserComponent implements OnInit {
   @ViewChild("myPasswordConfirm") myPasswordConfirm!: ElementRef;
   @ViewChild("myUseName") myUseName!: ElementRef;
 
+  @ViewChild("EmailRef") EmailRef!: ElementRef;
+  @ViewChild("PassRef") PassRef!: ElementRef;
+  @ViewChild("ConfPassRef") ConfPassRef!: ElementRef;
+  public MyEmal: string = '';
+  public MyPass: string = '';
+  public MyConfPass: string = '';
+
   protected title: string = `Create Login`;
   public home: string = 'home?action=1';
   public login: string = 'login?action=3';
@@ -52,15 +59,71 @@ export class NewUserComponent implements OnInit {
   } // loginLink();
 
 
-
   public UserAdd(): void {
-    this.userServices.CreateUser(this.UserNameEmail, this.Password);
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    // this.UserNameEmail.setValue('');
-    // this.Password.setValue('');
-    // this.myUserNameEmail.nativeElement.focus();
+    if(this.Password.value === '' && this.ConfirmarPassword.value === '' && this.UserNameEmail.value === '') {
+      this.Pintar();
+    } else if( this.UserNameEmail.value === '' ) {
+      this.render.setStyle(this.EmailRef.nativeElement, "opacity", "1");
+      this.MyEmal = `El campo mail está vacío`;
+      this.render.setStyle(this.myUserNameEmail.nativeElement, "outline", "2px solid coral");
+    } else if ( !emailPattern.test(`${this.UserNameEmail.value}`) ) {
+      this.render.setStyle(this.EmailRef.nativeElement, "opacity", "1");
+      this.MyEmal = `El Mail está mal escrito`;
+      this.render.setStyle(this.myUserNameEmail.nativeElement, "outline", "2px solid coral");
+    } else if( this.Password.value === '' ) {
+      this.render.setStyle(this.PassRef.nativeElement, "opacity", "1");
+      this.MyPass = `Completa el password`;
+      this.render.setStyle(this.myPassword.nativeElement, "outline", "2px solid coral");
+    } else if( this.ConfirmarPassword.value === '' ) {
+      this.render.setStyle(this.ConfPassRef.nativeElement, "opacity", "1");
+      this.MyConfPass = `Campo comfirmar password se encuentra vacío`;
+      this.render.setStyle(this.myPasswordConfirm.nativeElement, "outline", "2px solid coral");
+    } else if (this.Password.value !== this.ConfirmarPassword.value) {
+      this.render.setStyle(this.ConfPassRef.nativeElement, "opacity", "1");
+      this.MyConfPass = `El password no coincide`;
+      this.render.setStyle(this.myPasswordConfirm.nativeElement, "outline", "2px solid coral");
+    } else {
+      alert(`Se ha creado el usuario con éxito!`);
+      this.userServices.CreateUser(this.UserNameEmail, this.Password);
+      window.location.href = '/login?action=3';
+    } //else;
+
+    this.Despintar();
+    this.ClearInputs();
+
   } // UserAdd();
 
+  protected Pintar(): void {
+    this.render.setStyle(this.myUserNameEmail.nativeElement, "outline", "2px solid coral");
+    this.render.setStyle(this.myPassword.nativeElement, "outline", "2px solid coral");
+    this.render.setStyle(this.myPasswordConfirm.nativeElement, "outline", "2px solid coral");
+    this.render.setStyle(this.EmailRef.nativeElement, "opacity", "1");
+    this.render.setStyle(this.PassRef.nativeElement, "opacity", "1");
+    this.render.setStyle(this.ConfPassRef.nativeElement, "opacity", "1");
+    this.MyEmal = `Los campos están vacíos`;
+    this.MyPass = `Los campos están vacíos`;
+    this.MyConfPass = `Los campos están vacíos`;
+  } // this.Pintar();
+
+  protected Despintar(): void {
+    setTimeout( () => {
+      this.render.setStyle(this.myUserNameEmail.nativeElement, "outline", null);
+      this.render.setStyle(this.myPassword.nativeElement, "outline", null);
+      this.render.setStyle(this.myPasswordConfirm.nativeElement, "outline", null);
+      this.render.setStyle(this.EmailRef.nativeElement, "opacity", null);
+      this.render.setStyle(this.PassRef.nativeElement, "opacity", null);
+      this.render.setStyle(this.ConfPassRef.nativeElement, "opacity", null);
+    }, 3000);
+  } // this.Despintar();
+
+  protected ClearInputs(): void {
+    this.UserNameEmail.setValue('');
+    this.Password.setValue('');
+    this.ConfirmarPassword.setValue('');
+    this.myUserNameEmail.nativeElement.focus();
+  } // this.ClearInputs();
 
 
 

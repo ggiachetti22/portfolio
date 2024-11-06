@@ -4,9 +4,24 @@
         <form>
           <p>Crear usuario</p>
 
-          <input #myUserNameEmail [formControl]="UserNameEmail" type="email" placeholder="Email.."><br>
-          <input #myPassword [formControl]="Password" type="password" placeholder="Clave.."><br>
-          <input #myPasswordConfirm [formControl]="ConfirmarPassword" type="password" placeholder="Confirmar clave.."><br>
+          <input #myUserNameEmail [formControl]="UserNameEmail" type="email" placeholder="Email..">
+          <div #EmailRef class="label" contenteditable="false">
+            <i class="icon-attention-1 icon"></i>
+            {{MyEmal}}
+          </div>
+
+          <input #myPassword [formControl]="Password" type="password" placeholder="Clave..">
+          <div #PassRef class="label" contenteditable="false">
+            <i class="icon-attention-1 icon"></i>
+            {{MyPass}}
+          </div>
+
+          <input #myPasswordConfirm [formControl]="ConfirmarPassword" type="password" placeholder="Confirmar clave..">
+          <div #ConfPassRef class="label" contenteditable="false">
+            <i class="icon-attention-1 icon"></i>
+            {{MyConfPass}}
+          </div>
+          
           <input #myUseName class="button" (click)="UserAdd();" type="button" value="Sign in"><br>
 
           <div class="box-forgot">

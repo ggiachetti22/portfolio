@@ -94,8 +94,10 @@ export class NewUserComponent implements OnInit {
     } else {
       alert(`Se ha creado el usuario con éxito!`);
       this.userServices.CreateUser(this.UserNameEmail, this.Password);
-      this.ClearInputs();
-      window.location.href = '/login?action=3';
+      setTimeout( () => {
+        this.ClearInputs();
+        window.location.href = '/login?action=3'
+      } , 2000);
     } //else;
 
     clearTimeout(this.cl);

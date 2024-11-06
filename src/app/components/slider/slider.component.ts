@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -5,7 +6,9 @@ import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-slider',
   standalone: true,
-  imports: [],
+  imports: [
+    NgOptimizedImage
+  ],
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.css'
 })
@@ -49,7 +52,7 @@ constructor(private render: Renderer2, private router: Router) {
 
 
 ngOnInit(): void {
-  setTimeout( () => { this.Current(); } , 300);
+  setTimeout( () => { this.Current(); } , 250);
   // this.ResizeSlider(this.event);
 } // ngOnInit;
 

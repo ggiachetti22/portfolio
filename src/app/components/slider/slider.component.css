@@ -1,12 +1,9 @@
-
-
 #content {
     width: 100%;
     height: auto;
     overflow: hidden;
     transition: .5s ease-in-out;
     background: url('../../../assets/img/d75583a9-4bd1-4004-802b-6f814c04a83f.webp') no-repeat center center / cover fixed;
-    /* background-size: cover; */
     padding: 10px 0 10px 0;
     position: relative;
     z-index: 10;
@@ -85,7 +82,6 @@ img {
 #navegadores {
     width: 100%;
     height: 17.5vh;
-    /* position: absolute; */
     bottom: 0;
     left: 0;
     display: flex;

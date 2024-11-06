@@ -89,8 +89,6 @@ export class NavComponent implements OnInit {
       this.LinkActivo();
     });
 
-    
-
     this.route.snapshot.params['ElID'];
 
     this.iniciar();
@@ -326,6 +324,12 @@ export class NavComponent implements OnInit {
     window.location.href = 'login?action=3';
   } // logoff;
 
+  public scrollToTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // Desplazamiento suave
+    });
+  } // scrollToTop(); */
 
 
 } // NavComponent;

@@ -400,6 +400,12 @@ a .link2 {
     padding: 10px;
 }
 
+#session {
+    display: block;
+    margin-right: -20px;
+    padding: 20px;
+}
+
 
 /* -----------------Media Query------------------- */
 
@@ -452,6 +458,9 @@ a .link2 {
     }
     #logo-footer {
         transform: translateX(0%);
+    }
+    #session {
+        display: none;
     }
     /* .navegadores {
         width: 75%;

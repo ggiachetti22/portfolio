@@ -39,7 +39,14 @@
 
             </li>
 
+            
+
         </ul>
+
+        <a id="session" *ngIf="UserSession !== null" class="Nav-link">
+            Sesión de: {{Parrafo3}}
+            <!-- <div id="myDiv" class="div">Sesión de: {{Parrafo3}}</div> -->
+        </a>
 
 
         <input #btnCheck type="checkbox" id="btn-menu" name="input-check" title="input-check" />

@@ -58,9 +58,12 @@ export class NewUserComponent implements OnInit {
     window.location.href = this.login;
   } // loginLink();
 
+  private cl: any;
 
   public UserAdd(): void {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    clearTimeout(this.cl);
 
     if(this.Password.value === '' && this.ConfirmarPassword.value === '' && this.UserNameEmail.value === '') {
       this.Pintar();
@@ -76,6 +79,10 @@ export class NewUserComponent implements OnInit {
       this.render.setStyle(this.PassRef.nativeElement, "opacity", "1");
       this.MyPass = `Completa el password`;
       this.render.setStyle(this.myPassword.nativeElement, "outline", "2px solid coral");
+    } else if(Number(this.Password.value?.length) <= 8) {
+      this.render.setStyle(this.PassRef.nativeElement, "opacity", "1");
+      this.MyPass = `El password debe tener mínimo 8 caracteres`;
+      this.render.setStyle(this.myPassword.nativeElement, "outline", "2px solid coral");
     } else if( this.ConfirmarPassword.value === '' ) {
       this.render.setStyle(this.ConfPassRef.nativeElement, "opacity", "1");
       this.MyConfPass = `Campo comfirmar password se encuentra vacío`;
@@ -87,11 +94,12 @@ export class NewUserComponent implements OnInit {
     } else {
       alert(`Se ha creado el usuario con éxito!`);
       this.userServices.CreateUser(this.UserNameEmail, this.Password);
+      this.ClearInputs();
       window.location.href = '/login?action=3';
     } //else;
 
-    this.Despintar();
-    this.ClearInputs();
+    clearTimeout(this.cl);
+    this.cl = setTimeout( () => this.Despintar(), 3000);
 
   } // UserAdd();
 
@@ -108,14 +116,14 @@ export class NewUserComponent implements OnInit {
   } // this.Pintar();
 
   protected Despintar(): void {
-    setTimeout( () => {
-      this.render.setStyle(this.myUserNameEmail.nativeElement, "outline", null);
+    this.render.setStyle(this.myUserNameEmail.nativeElement, "outline", null);
       this.render.setStyle(this.myPassword.nativeElement, "outline", null);
       this.render.setStyle(this.myPasswordConfirm.nativeElement, "outline", null);
       this.render.setStyle(this.EmailRef.nativeElement, "opacity", null);
       this.render.setStyle(this.PassRef.nativeElement, "opacity", null);
       this.render.setStyle(this.ConfPassRef.nativeElement, "opacity", null);
-    }, 3000);
+    /* setTimeout( () => {
+    }, 3000); */
   } // this.Despintar();
 
   protected ClearInputs(): void {

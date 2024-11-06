@@ -73,7 +73,6 @@ export class LoginComponent implements OnInit {
       this.render.setStyle(this.PassRef.nativeElement, "opacity", "1");
       this.MyPass = `El password es requerido`;
     } else {
-      console.log(`Éxito`);
       this.Login();
     } //else
 
@@ -111,8 +110,9 @@ export class LoginComponent implements OnInit {
           window.location.href = '/chat/?action=2';
           alert(`Sesión de: ${this.loginService.myUserName}!`);
         } else {
-          this.MyEmal = `Usuario o password incorrctos`;
-          this.MyPass = `Usuario o password incorrctos`;
+          console.log(`Response: ${resp.upMessage}`);
+          this.MyEmal = `${resp.upMessage}`;
+          this.MyPass = `${resp.upMessage}`;
           this.Pintar();
           this.myUserNameEmail.nativeElement.setValue('');
           this.myUserNameEmail.nativeElement.focus();

@@ -109,16 +109,15 @@ export class LoginComponent implements OnInit {
         if (resp.success === 1) {
           window.location.href = '/chat/?action=2';
           alert(`Sesión de: ${this.loginService.myUserName}!`);
-        } else {
-          console.log(`Response: ${resp.upMessage}`);
-          this.MyEmal = `${resp.upMessage}`;
-          this.MyPass = `${resp.upMessage}`;
-          this.Pintar();
-          this.myUserNameEmail.nativeElement.setValue('');
-          this.myUserNameEmail.nativeElement.focus();
-        } // else;
-      },
-      error: (er) => { console.error(er); }
+        } // if;
+      }, error: (er) => {
+        this.MyEmal = `Usuario inválido`;
+        this.MyPass = `Usuario inválido`;
+        this.Pintar();
+        this.myUserNameEmail.nativeElement.setValue('');
+        this.myUserNameEmail.nativeElement.focus();
+        console.error(er);
+      } // error;
     }); // subcribe;
   } // this.Login();
 

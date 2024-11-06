@@ -67,8 +67,9 @@ export class LoginServices {
 
           console.log(`Acceso concedido!!\n\b${JSON.stringify(usuario)}`);
           console.log(`Acceso concedido!!\n\b${JSON.stringify(us)}`);
-        } else {
-          console.log(`Usuario inválido!`);
+
+          window.location.href = '/chat/?action=2';
+          alert(`Sesión de: ${nombre}!`);
         } // if;
 
         return res;

@@ -92,7 +92,7 @@ export class NewUserComponent implements OnInit {
       this.MyConfPass = `El password no coincide`;
       this.render.setStyle(this.myPasswordConfirm.nativeElement, "outline", "2px solid coral");
     } else {
-      alert(`Se ha creado el usuario con éxito!`);
+      alert(`Se ha creado el usuario \"${this.UserNameEmail}\" con éxito!`);
       this.userServices.CreateUser(this.UserNameEmail, this.Password);
       setTimeout( () => {
         this.ClearInputs();
@@ -112,9 +112,9 @@ export class NewUserComponent implements OnInit {
     this.render.setStyle(this.EmailRef.nativeElement, "opacity", "1");
     this.render.setStyle(this.PassRef.nativeElement, "opacity", "1");
     this.render.setStyle(this.ConfPassRef.nativeElement, "opacity", "1");
-    this.MyEmal = `Los campos están vacíos`;
-    this.MyPass = `Los campos están vacíos`;
-    this.MyConfPass = `Los campos están vacíos`;
+    this.MyEmal = `Campo están vacío`;
+    this.MyPass = `Campo están vacío`;
+    this.MyConfPass = `Campo está vacío`;
   } // this.Pintar();
 
   protected Despintar(): void {

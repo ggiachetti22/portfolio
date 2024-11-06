@@ -58,6 +58,14 @@
         <section #navegador1 id="navegador1" class="navegadores navegador1">
 
             <ul class="Nav-var-min">
+
+                <li class="Nav-item-min">
+                    <a *ngIf="UserSession !== null" class="Nav-link">
+                        Sesión de: {{Parrafo3}}
+                        <!-- <div id="myDiv" class="div">Sesión de: {{Parrafo3}}</div> -->
+                    </a>
+                </li>
+
                 <li class="Nav-item-min">
                     <a class="Nav-link" [routerLink]="['/home']" [queryParams]="{action: '1'}">
                         Home
@@ -104,7 +112,7 @@
     <p #parrafo1 name="parrafo1">↑</p>
     <br />
     <!-- <p #parrafo2 name="parrafo2">{{Parrafo2}}</p> -->
-    <p #parrafo2 name="parrafo2">{{Parrafo3}}</p>
+    <p #parrafo2 name="parrafo2">{{Parrafo2}}</p>
 </div>
 
 <!-- <app-sub-menu></app-sub-menu> -->

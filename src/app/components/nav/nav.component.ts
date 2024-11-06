@@ -74,12 +74,14 @@ export class NavComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(`\n\n-----------------NAV------------------\n\n`);
+    console.log(`\n\n-----------------NAV open------------------\n`);
     console.log(`${this.loginService.userData?.userName}\n`);
+    this.Parrafo3 = `${this.loginService.userData?.userName}`;
+    console.log(`((( Nombre de usuario ))) : `, this.Parrafo3);
     console.log(`Login start:\n`, this.UserSession);
     this.UserSession = this.loginService.userData;
     console.log(`${this.UserSession}\n`);
-    console.log(`\n\n-----------------NAV------------------\n\n`);
+    console.log(`\n\n-----------------NAV end-------------------\n\n`);
 
     this.route.queryParams.subscribe(p => {
       this.accion = parseInt(p['action'], 10); // 10 especificación de la base decimal;

@@ -60,15 +60,15 @@ export class LoginComponent implements OnInit {
 
   public loginEnter() {
     clearTimeout(this.cl);
-    if(this.Clave.value === '' && this.Nombre.value === ''){
+    if (this.Clave.value === '' && this.Nombre.value === ''){
       this.Pintar();
       this.MyEmal = `Los Campos están vacíos`;
       this.MyPass = `Los Campos están vacíos`;
-    } else if(this.Nombre.value === ''){
+    } else if (this.Nombre.value === ''){
       this.render.setStyle(this.myUserNameEmail.nativeElement, "outline", "2px solid coral");
       this.render.setStyle(this.EmailRef.nativeElement, "opacity", "1");
       this.MyEmal = `El nombre de usuario es requerido`;
-    } else if(this.Clave.value === '') {
+    } else if (this.Clave.value === '') {
       this.render.setStyle(this.myPassword.nativeElement, "outline", "2px solid coral");
       this.render.setStyle(this.PassRef.nativeElement, "opacity", "1");
       this.MyPass = `El password es requerido`;

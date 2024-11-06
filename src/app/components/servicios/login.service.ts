@@ -67,8 +67,8 @@ export class LoginServices {
 
           console.log(`Acceso concedido!!\n\b${JSON.stringify(usuario)}`);
           console.log(`Acceso concedido!!\n\b${JSON.stringify(us)}`);
-
-          // console.log(`Ruta: ((${this.LoginUser}))`);
+        } else {
+          console.log(`Usuario inválido!`);
         } // if;
 
         return res;

@@ -111,8 +111,8 @@ export class LoginComponent implements OnInit {
           alert(`Sesión de: ${this.loginService.myUserName}!`);
         } // if;
       }, error: (er) => {
-        this.MyEmal = `Usuario inválido`;
-        this.MyPass = `Usuario inválido`;
+        this.MyEmal = `Usuario o contraseña son incorrectos`;
+        this.MyPass = `Usuario o contraseña son incorrectos`;
         this.Pintar();
         this.myUserNameEmail.nativeElement.setValue('');
         this.myUserNameEmail.nativeElement.focus();

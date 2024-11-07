@@ -31,7 +31,7 @@
                 </a>
 
                 <ng-template #UserSess>
-                        <a class="Nav-link " [routerLink]="[ '/login'] " [queryParams]="{action: '3'} " (click)="logoff() ">
+                        <a class="Nav-link" [routerLink]="[ '/login'] " [queryParams]="{action: '3'} " (click)="logoff() ">
                         Cerrar Sesión
                         <div class="div " [ngClass]="ElLink3 ? 'link1 ' : 'link2' "></div>
                       </a>
@@ -43,9 +43,8 @@
 
         </ul>
 
-        <a id="session" *ngIf="UserSession !== null" class="Nav-link">
-            Sesión de: {{Parrafo3}}
-            <!-- <div id="myDiv" class="div">Sesión de: {{Parrafo3}}</div> -->
+        <a id="session" *ngIf="UserSession !== null" class="Nav-link session">
+            Sesión de:<span>&nbsp;{{Parrafo3}}</span>
         </a>
 
 
@@ -67,9 +66,8 @@
             <ul class="Nav-var-min">
 
                 <li class="Nav-item-min">
-                    <a *ngIf="UserSession !== null" class="Nav-link">
-                        Sesión de: {{Parrafo3}}
-                        <!-- <div id="myDiv" class="div">Sesión de: {{Parrafo3}}</div> -->
+                    <a *ngIf="UserSession !== null" class="Nav-link session">
+                        Sesión de:<span>&nbsp;{{Parrafo3}}</span>
                     </a>
                 </li>
 

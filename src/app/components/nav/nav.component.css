@@ -80,6 +80,7 @@ ol {
     border: none;
     display: none;
     background: rgba(0, 0, 0, .05);
+    background: transparent;
     /* outline: 2px solid rgba(0, 0, 0, .5); */
 }
 
@@ -395,17 +396,21 @@ a .link2 {
 }
 
 
-#myDiv {
-    font-size: 14px;
-    padding: 10px;
-}
-
 #session {
-    display: block;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
     margin-right: -20px;
-    padding: 20px;
 }
 
+.session {
+    text-shadow: none;
+}
+
+.session > span {
+    font-size: 14px;
+    color: whitesmoke;
+}
 
 /* -----------------Media Query------------------- */
 
@@ -421,24 +426,9 @@ a .link2 {
 @media (max-width: 650px),
 (width: 300px) {
     #NavSection {
-        /* background: rgb(5, 50, 150); */
         background: linear-gradient(-45deg, #1d81cc, #162838 80%);
         -webkit-backdrop-filter: blur(0);
         backdrop-filter: blur(0);
-        /* background: linear-gradient(
-        90deg,
-        rgba(255, 0, 0, 1) 0%,
-        rgba(255, 154, 0, 1) 10%,
-        rgba(208, 222, 33, 1) 20%,
-        rgba(79, 220, 74, 1) 30%,
-        rgba(63, 218, 216, 1) 40%,
-        rgba(47, 201, 226, 1) 50%,
-        rgba(28, 127, 238, 1) 60%,
-        rgba(95, 21, 242, 1) 70%,
-        rgba(186, 12, 248, 1) 80%,
-        rgba(251, 7, 217, 1) 90%,
-        rgba(255, 0, 0, 1) 100%
-        ); */
     }
     #Nav {
         justify-content: space-around;

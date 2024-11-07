@@ -43,7 +43,8 @@ private sliderArray: String[] = [
 ];
 
 
-private figureAlto: Number = 400;
+private figureAltoPrev: Number = 400;
+private figureAltoNext: Number = 400;
 private event!: Event;
 private intervalSlider: any;
 
@@ -127,10 +128,11 @@ public clickPlay(): void {
 
 
 public Current() {
-  this.figureAlto = Number(this.myFigures[Number(this.V)].offsetHeight);
-  this.render.setStyle(this.BtnPrev.nativeElement, 'height', `${this.figureAlto}px`);
-  this.render.setStyle(this.BtnNext.nativeElement, 'height', `${this.figureAlto}px`);
-  // console.log(`offsetHeight: ${this.figureAlto}px`);
+  this.figureAltoPrev = Number(this.myFigures[Number(this.V)].offsetHeight);
+  this.figureAltoNext = Number(this.myFigures[Number(this.V)].offsetHeight);
+  this.render.setStyle(this.BtnPrev.nativeElement, 'height', `${this.figureAltoPrev}px`);
+  this.render.setStyle(this.BtnNext.nativeElement, 'height', `${this.figureAltoNext}px`);
+  console.log(`offsetHeight: ${this.figureAltoPrev}px == ${this.figureAltoNext}px\nActual: ${this.V}`);
 } // this.Current();
 
 public Pintar(n: Number) {

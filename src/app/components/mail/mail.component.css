@@ -15,7 +15,7 @@ form {
 
 
 form.Background1 {
-    background: rgba(0,0, 244, .7);
+    background: rgba(20, 66, 111, .7);
     border: 4px solid rgba(200, 200, 255, .3);
 }
 
@@ -41,7 +41,7 @@ input, textarea {
 
 
 input.Fondo1, textarea.Fondo1 {
-    background: rgba(100, 100, 155);
+    background: rgba(20, 66, 111, .2);
     border: 2px solid rgba(255,255,255, .1);
 }
 

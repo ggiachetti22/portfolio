@@ -4,9 +4,5 @@
     height: auto;
     position: relative;
     display: block;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-between; */
-    /* background: rgba(0, 0, 0, .8); */
     /* border: 5px solid green; */
 }

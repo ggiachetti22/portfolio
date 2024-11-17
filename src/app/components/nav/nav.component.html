@@ -55,6 +55,24 @@
             <span class="menu3" #menu3></span>
         </label>
 
+
+        <ol *ngIf="!ValorBool" id="Config" class="Nav-cog">
+            <li>
+                <svg #Svg0 id="svg0" (click)="Light();">
+                    <foreignObject id="foreignObject01"  x="10" y="10" width="20" height="20">
+                        <i class="icon-moon-inv"></i>
+                    </foreignObject>
+
+                    <circle #Circle0 id="circle0" class="icon-adjust" r="10" cy="50%" cx="25%" pathlength="100" />
+
+                    <foreignObject id="foreignObject02" x="10" y="10" width="20" height="20">
+                        <i class="icon-sun-filled"></i>
+                    </foreignObject>
+                </svg>
+            </li>
+        </ol>
+
+
     </nav>
 </section>
 
@@ -95,7 +113,6 @@
 
 
             <ol class="Nav-cog">
-                
                 <li>
                     <svg #Svg id="svg" (click)="Light();">
                         <foreignObject id="foreignObject1"  x="10" y="10" width="20" height="20">
@@ -109,8 +126,8 @@
                         </foreignObject>
                     </svg>
                 </li>
-                
             </ol>
+
 
         </section>
         <!-- <section #navegador2 id="navegador2" class="navegadores navegador2"></section> -->

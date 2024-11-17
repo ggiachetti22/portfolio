@@ -45,6 +45,8 @@ export class NavComponent implements OnInit, AfterViewInit {
 
   @ViewChild("Svg", {static: false}) Svg!: ElementRef;
   @ViewChild("Circle", {static: false}) Circle!: ElementRef;
+  @ViewChild("Svg0", {static: false}) Svg0!: ElementRef;
+  @ViewChild("Circle0", {static: false}) Circle0!: ElementRef;
 
 
   public Check = new BehaviorSubject<boolean>(false);
@@ -78,20 +80,18 @@ export class NavComponent implements OnInit, AfterViewInit {
 
 
   public ngOnInit(): void {
-    
-
-    console.log(`\n\n-----------------NAV open------------------\n`);
-    console.log(`${this.loginService.userData?.userName}\n`);
+    // console.log(`\n\n-----------------NAV open------------------\n`);
+    // console.log(`${this.loginService.userData?.userName}\n`);
     this.Parrafo3 = `${this.loginService.userData?.userName}`;
-    console.log(`((( Nombre de usuario ))) : `, this.Parrafo3);
-    console.log(`Login start:\n`, this.UserSession);
+    // console.log(`((( Nombre de usuario ))) : `, this.Parrafo3);
+    // console.log(`Login start:\n`, this.UserSession);
     this.UserSession = this.loginService.userData;
-    console.log(`${this.UserSession}\n`);
-    console.log(`\n\n-----------------NAV end-------------------\n\n`);
+    // console.log(`${this.UserSession}\n`);
+    // console.log(`\n\n-----------------NAV end-------------------\n\n`);
 
     this.route.queryParams.subscribe(p => {
       this.accion = parseInt(p['action'], 10); // 10 especificación de la base decimal;
-      console.log(`(this.accion: ${this.accion})`);
+      // console.log(`(this.accion: ${this.accion})`);
       this.LinkActivo();
     });
 
@@ -100,7 +100,6 @@ export class NavComponent implements OnInit, AfterViewInit {
     this.iniciar();
     this.ResizeSlider(this.event);
 
-
   } // ngOnInit();
 
 
@@ -108,11 +107,18 @@ export class NavComponent implements OnInit, AfterViewInit {
     if (this.titleService.CurrentLight) {
       this.renderer.addClass(this.Svg.nativeElement, 'activaCheck');
       this.renderer.addClass(this.Circle.nativeElement, 'circleCheck');
+
+      this.renderer.addClass(this.Svg0.nativeElement, 'activaCheck');
+      this.renderer.addClass(this.Circle0.nativeElement, 'circleCheck');
     } else {
       this.renderer.removeClass(this.Svg.nativeElement, 'activaCheck');
       this.renderer.removeClass(this.Circle.nativeElement, 'circleCheck');
+
+      this.renderer.removeClass(this.Svg0.nativeElement, 'activaCheck');
+      this.renderer.removeClass(this.Circle0.nativeElement, 'circleCheck');
     } // else;
   } // ngAfterViewInit();
+
 
   public iniciar(): void {
     setTimeout( () => {
@@ -124,7 +130,7 @@ export class NavComponent implements OnInit, AfterViewInit {
           this.Check.next(false);
           this.Close();
           LctConst = LctObs;
-        }
+        } // if;
         const action = act['action'];
       }); // this.route.queryParams;
     },10);
@@ -227,7 +233,6 @@ export class NavComponent implements OnInit, AfterViewInit {
     this.renderer.removeClass(this.menu1.nativeElement, 'close1');
     this.renderer.removeClass(this.menu2.nativeElement, 'close2');
     this.renderer.removeClass(this.menu3.nativeElement, 'close3');
-
     this.renderer.addClass(this.menu1.nativeElement, 'open1');
     this.renderer.addClass(this.menu2.nativeElement, 'open2');
     this.renderer.addClass(this.menu3.nativeElement, 'open3');
@@ -237,7 +242,6 @@ export class NavComponent implements OnInit, AfterViewInit {
     this.renderer.removeClass(this.menu1.nativeElement, 'open1');
     this.renderer.removeClass(this.menu2.nativeElement, 'open2');
     this.renderer.removeClass(this.menu3.nativeElement, 'open3');
-
     this.renderer.addClass(this.menu1.nativeElement, 'close1');
     this.renderer.addClass(this.menu2.nativeElement, 'close2');
     this.renderer.addClass(this.menu3.nativeElement, 'close3');
@@ -300,6 +304,8 @@ export class NavComponent implements OnInit, AfterViewInit {
 
   // [ngClass]="ElLink1 ? 'link1 ' : 'link2' "
 
+  public ValorBool: boolean = false;
+
   protected PositionInitial = 0; // window.scrollY;
 
   @HostListener('window.resize', ['$event'])
@@ -314,11 +320,15 @@ export class NavComponent implements OnInit, AfterViewInit {
         this.btnCheck.nativeElement.checked = false;
         this.Check.next(false);
         this.Close();
+        this.ValorBool = false;
         // console.log(`Resolución mayor a 550px ${anchoWindow}`);
-      } // if;
+      } else {
+        this.ValorBool = true;        
+      } // else;
     }); // resize; 
   } // this.ResizeSlider($event);
  
+  
 
   protected myScroll() { // (window:scroll)="myScroll();" // de forma dinámica;
     const NavSection = document.getElementById('NavSection');
@@ -357,19 +367,24 @@ export class NavComponent implements OnInit, AfterViewInit {
     // this.T = !this.T;
     this.T = !this.titleService.CurrentLight; // Invierte el estado actual.
 
+    this.titleService.AddLight(this.T);
+
     if (this.T) {
       this.renderer.addClass(this.Svg.nativeElement, 'activaCheck');
       this.renderer.addClass(this.Circle.nativeElement, 'circleCheck');
+
+      this.renderer.addClass(this.Svg0.nativeElement, 'activaCheck');
+      this.renderer.addClass(this.Circle0.nativeElement, 'circleCheck');
     } else {
       this.renderer.removeClass(this.Svg.nativeElement, 'activaCheck');
       this.renderer.removeClass(this.Circle.nativeElement, 'circleCheck');
+
+      this.renderer.removeClass(this.Svg0.nativeElement, 'activaCheck');
+      this.renderer.removeClass(this.Circle0.nativeElement, 'circleCheck');
     } // else;
 
-    // Boolean(this.titleService.AddLight(this.T));
     // console.log(`Light: ((${this.T})) `, this.titleService.CurrentLight);
-    // this.t = this.titleService.CurrentLight;
-
-    this.titleService.AddLight(this.T);
+    
 
   } // this.Light();
 

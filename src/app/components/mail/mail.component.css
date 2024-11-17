@@ -10,8 +10,17 @@ form {
     gap: 15px;
     align-items: center;
     z-index: 10;
-    background: rgba(0,0,144, .05);
     border-radius: 1rem;
+}
+
+
+form.Background1 {
+    background: rgba(0,0, 244, .7);
+    border: 4px solid rgba(200, 200, 255, .3);
+}
+
+form.Background2 {
+    background: rgba(0,0, 144, .05);
     border: 4px solid rgba(200, 200, 255, .05);
 }
 
@@ -28,9 +37,30 @@ input, textarea {
     border-radius: .5rem;
     padding: 10px 20px;
     width: 90%;
+}
+
+
+input.Fondo1, textarea.Fondo1 {
+    background: rgba(100, 100, 155);
+    border: 2px solid rgba(255,255,255, .1);
+}
+
+input.Fondo2, textarea.Fondo2 {
     background: rgba(200, 200, 255, .05);
     border: 2px solid rgba(255,255,255, .1);
 }
+
+
+input.Fondo1::placeholder,
+textarea.Fondo1::placeholder {
+    color: #aaa;
+}
+
+input.Fondo2::placeholder,
+textarea.Fondo2::placeholder {
+    color: #666;
+}
+
 
 input:focus, textarea:focus, button:focus {
     outline: 2px solid greenyellow;
@@ -43,6 +73,7 @@ button {
     min-height: 40px;
     border-radius: .5rem;
     background: dodgerblue;
+    border: none;
 }
 
 #titulo {

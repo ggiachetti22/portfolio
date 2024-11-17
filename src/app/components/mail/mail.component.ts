@@ -1,7 +1,9 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../../url/url.component';
+import { TitleServices } from '../servicios/title.service';
+import { NgClass } from '@angular/common';
 
 
 @Component({
@@ -10,13 +12,13 @@ import { environment } from '../../url/url.component';
   imports: [
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgClass
   ],
   templateUrl: './mail.component.html',
   styleUrl: './mail.component.css'
 })
-export class MailComponent {
-
+export class MailComponent implements AfterViewInit {
 
   private readonly ApiUrlEmail = environment.apiUrlEmail // Active in Production;
   private readonly enviarMensajeEmail = "/api/EmailMessage/SendEmailMessage"; // "https://www.sendemail.somee.com/api/EmailMessage/SendEmailMessage";
@@ -26,11 +28,19 @@ export class MailComponent {
   public Msj: String = "Dejanos un mensaje";
   @ViewChild('correo') correo?: ElementRef;
 
-  
   // "start": "ng serve --proxy-config proxy.conf.json -o",
 
+  public valor: boolean = false;
 
-  public constructor(private http: HttpClient) { } // constructor;
+  public constructor(private http: HttpClient,  private titleService: TitleServices) { } // constructor;
+
+  public ngAfterViewInit(): void {
+
+    this.titleService.Light.subscribe( (v) => {
+      this.valor = Boolean(v);
+    } ); // subscribe;
+    
+  } // ngAfterViewInit();
 
 
   public SendMessageEmail(): void {

@@ -1,10 +1,10 @@
-<form>
+<form [ngClass]="valor ? 'Background1' : 'Background2'">
 
     <h1>Contactanos</h1>
 
-    <input #correo [formControl]="toEmail" type="text" name="toEmail" placeholder="Correo requerido" required />
+    <input #correo [formControl]="toEmail" [ngClass]="valor ? 'Fondo1' : 'Fondo2'" type="text" name="toEmail" placeholder="Correo requerido" required />
 
-    <textarea #mensaje [formControl]="toMessage" name="toMessage" placeholder="Dejanos tu mensaje..." required></textarea>
+    <textarea #mensaje [formControl]="toMessage" [ngClass]="valor ? 'Fondo1' : 'Fondo2'" name="toMessage" placeholder="Dejanos tu mensaje..." required></textarea>
 
     <p #MsjRecepcion>{{Msj}}</p>
 

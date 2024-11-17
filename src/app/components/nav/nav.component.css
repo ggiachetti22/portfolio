@@ -417,7 +417,7 @@ a .link2 {
 /* -----------------Boton svg------------------- */
 
 
-#svg{
+#svg, #svg0{
     transition: background .2s .1s ease-in;   
     background: rgb(77, 166, 255);
     border-radius: 100px;
@@ -429,7 +429,7 @@ a .link2 {
     /* outline: 2px solid rgba(0,0,0,.7); */
 }
 
-#circle{
+#circle, #circle0{
     stroke: deepskyblue;
     transition: transform .2s ease-in-out;
     stroke-width: 1;
@@ -444,18 +444,34 @@ a .link2 {
 }
 
 
-#foreignObject2 {
+#foreignObject2  {
     position: absolute;
     transform: translateX(25%) translateY(-25%);
 }
 
 
-#svg.activaCheck {
+#foreignObject01 {
+    position: absolute;
+    transform: translateX(-25%) translateY(-45%);
+}
+
+#foreignObject02 {
+    position: absolute;
+    transform: translateX(25%) translateY(-45%);
+}
+
+
+#svg0 .icon-moon-inv, #svg0 .icon-sun-filled {
+    font-size: 12px;
+}
+
+
+#svg0.activaCheck {
     background: rgb(11, 44, 101);
 }
 
 
-#circle.circleCheck {
+#circle0.circleCheck {
     transform: translateX(50%);
 }
 
@@ -498,13 +514,14 @@ a .link2 {
     #logo-footer {
         transform: translateX(0%);
     }
-    #session {
+    #session, #Config {
         display: none;
     }
-    /* .navegadores {
-        width: 75%;
-    } */
-    /* .Nav-var-min {
-        display: flex;
-    } */
+
+    #svg.activaCheck {
+        background: rgb(11, 44, 101);
+    }
+    #circle.circleCheck {
+        transform: translateX(50%);
+    }
 }

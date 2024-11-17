@@ -3,12 +3,15 @@
 
     <div class="div-titulo">
         <div>
-            <h5>
+            <h5 [ngClass]="valor ? 'Color1' : 'Color2'">
                 Servicios
             </h5>
-            <h1>
+            <br>
+
+            <!-- <h1>
                 Nuestros Servicios
-            </h1>
+            </h1> -->
+
         </div>
     </div>
     <br>
@@ -16,7 +19,7 @@
 
     <div id="parrafo-servicios">
 
-        <div class="div-section">     
+        <div class="div-section" [ngClass]="valor ? 'Backg1' : 'Backg2'">
             <div class="section-p">
                 <h3>Desarrollo de aplicaciones web personalizadas</h3>
                 <p>
@@ -28,7 +31,7 @@
             </div>
         </div>
         
-        <div class="div-section">
+        <div class="div-section" [ngClass]="valor ? 'Backg1' : 'Backg2'">
             <div class="icono">
                 <i class="icon-globe"></i>
             </div>
@@ -40,7 +43,7 @@
             </div>
         </div>
 
-        <div class="div-section">
+        <div class="div-section" [ngClass]="valor ? 'Backg1' : 'Backg2'">
             <div class="section-p">
                 <h3>Desarrollo de SPAs con Angular</h3>
                 <p>
@@ -52,7 +55,7 @@
             </div>
         </div>
 
-        <div class="div-section">
+        <div class="div-section" [ngClass]="valor ? 'Backg1' : 'Backg2'">
             <div class="icono">
                 <i class="icon-cog-1"></i>
             </div>
@@ -64,7 +67,7 @@
             </div>
         </div>
         
-        <div class="div-section">
+        <div class="div-section" [ngClass]="valor ? 'Backg1' : 'Backg2'">
             <div class="section-p">
                 <h3>Consultoría en arquitectura de software</h3>
                 <p>
@@ -76,7 +79,7 @@
             </div>
         </div>
 
-        <div class="div-section">
+        <div class="div-section" [ngClass]="valor ? 'Backg1' : 'Backg2'">
             <div class="icono">
                 <i class="icon-adult"></i>
             </div>

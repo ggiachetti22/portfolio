@@ -30,10 +30,10 @@ import { TitleServices } from './components/servicios/title.service';
 })
 
 
-export class AppComponent implements OnInit { // , AfterViewInit
+export class AppComponent implements OnInit, AfterViewInit {
 
   constructor(private titleServices: Title, private titleService: TitleServices, private render: Renderer2) {
-    console.log("App-Component", this.titleService.CurrentLight);
+    // console.log("App-Component", this.titleService.CurrentLight);
   } // constructor;
 
   @ViewChild('Container') Container!: ElementRef;
@@ -45,22 +45,16 @@ export class AppComponent implements OnInit { // , AfterViewInit
     }); // subscribe;
 
 
-    this.titleService.Light.subscribe( (v) => {
-      this.valor = Boolean(v);
-      this.ChangeLight(this.valor);
-      console.log(`Light: `, v);
-    } );
-
   } // this.ngOnInit();
 
 
-  /* public ngAfterViewInit(): void {
+  public ngAfterViewInit(): void {
     this.titleService.Light.subscribe( (v) => {
       this.valor = Boolean(v);
       this.ChangeLight(this.valor);
-      console.log(`Light: `, v);
+      // console.log(`Light: `, v);
     } );
-  } // ngAfterViewInit(); */
+  } // ngAfterViewInit();
 
   public valor: boolean = false;
 

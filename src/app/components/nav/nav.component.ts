@@ -3,7 +3,7 @@ import { Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } fro
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { SubMenuComponent } from '../sub-menu/sub-menu.component';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { LoginServices } from '../servicios/login.service';
 import { TitleServices } from '../servicios/title.service';
 
@@ -13,7 +13,6 @@ import { TitleServices } from '../servicios/title.service';
   imports: [
     RouterModule,
     FormsModule,
-    SubMenuComponent,
     NgClass,
     NgIf
   ],

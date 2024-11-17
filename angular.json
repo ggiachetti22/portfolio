@@ -1,9 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "angularCompilerOptions": {
-    "disableImageDimensionsWarning": true
-  },
   "newProjectRoot": "projects",
   "projects": {
     "my-portfolio": {

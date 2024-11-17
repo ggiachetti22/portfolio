@@ -9,12 +9,15 @@ import { BehaviorSubject } from "rxjs";
 
 export class TitleServices {
 
-    public Light = new BehaviorSubject<boolean | null>(null);
+    private _lightKey = 'Light';
+    public Light = new BehaviorSubject<boolean>(false);
     public Title = new BehaviorSubject<string>('App Flow Craft');
     public title = this.Title.asObservable();
     
-    //  private userSes!: BehaviorSubject<string | null>;
-    public light = this.Title.asObservable();
+    constructor() {
+        const initialLight = this.getStoredLight(); // Recupera el valor almacenado en localStorage.
+        this.Light.next(initialLight); // Emite el valor inicial.
+    } // constructor;
 
 
     public get CurrentTitle(): string {
@@ -24,15 +27,21 @@ export class TitleServices {
     public AddTitle(t: string): void {
         this.Title.next(t);
     } // this.AddTitle();
+    
+
+    private getStoredLight(): boolean {
+        const storedLight = localStorage.getItem(this._lightKey);
+        return storedLight ? JSON.parse(storedLight) : false; // Predeterminado: false
+    } // getStoredLight();
+
+    
 
     public get CurrentLight(): boolean {
-        // Boolean(localStorage.getItem('Light'));
         return Boolean(this.Light.value);
     } // this.CurrentLight();
 
     public AddLight(l: boolean): void {
-        // localStorage.removeItem('Light');
-        // localStorage.setItem('Light', JSON.stringify(this.Light.next(l)));
+        localStorage.setItem(this._lightKey, JSON.stringify(l));
         this.Light.next(l);
     } // this.AddLight();
 

@@ -1,5 +1,5 @@
 import { NgClass, NgIf } from '@angular/common';
-import { Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { SubMenuComponent } from '../sub-menu/sub-menu.component';
@@ -20,7 +20,7 @@ import { TitleServices } from '../servicios/title.service';
   styleUrl: './nav.component.css'
 })
 
-export class NavComponent implements OnInit {
+export class NavComponent implements OnInit, AfterViewInit {
 
   @ViewChild("link1") link1!: ElementRef;
   @ViewChild("link2") link2!: ElementRef;
@@ -77,7 +77,9 @@ export class NavComponent implements OnInit {
   } // constructor();
 
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+    
+
     console.log(`\n\n-----------------NAV open------------------\n`);
     console.log(`${this.loginService.userData?.userName}\n`);
     this.Parrafo3 = `${this.loginService.userData?.userName}`;
@@ -98,7 +100,19 @@ export class NavComponent implements OnInit {
     this.iniciar();
     this.ResizeSlider(this.event);
 
+
   } // ngOnInit();
+
+
+  public ngAfterViewInit(): void {    
+    if (this.titleService.CurrentLight) {
+      this.renderer.addClass(this.Svg.nativeElement, 'activaCheck');
+      this.renderer.addClass(this.Circle.nativeElement, 'circleCheck');
+    } else {
+      this.renderer.removeClass(this.Svg.nativeElement, 'activaCheck');
+      this.renderer.removeClass(this.Circle.nativeElement, 'circleCheck');
+    } // else;
+  } // ngAfterViewInit();
 
   public iniciar(): void {
     setTimeout( () => {
@@ -339,10 +353,11 @@ export class NavComponent implements OnInit {
   private T: boolean = false;
   public t: boolean = false;
 
-  public Light(): boolean {
-    this.T = !this.T;
+  public Light(): void {
+    // this.T = !this.T;
+    this.T = !this.titleService.CurrentLight; // Invierte el estado actual.
 
-    if (this.T === true) {
+    if (this.T) {
       this.renderer.addClass(this.Svg.nativeElement, 'activaCheck');
       this.renderer.addClass(this.Circle.nativeElement, 'circleCheck');
     } else {
@@ -350,11 +365,14 @@ export class NavComponent implements OnInit {
       this.renderer.removeClass(this.Circle.nativeElement, 'circleCheck');
     } // else;
 
-    Boolean(this.titleService.AddLight(this.T));
+    // Boolean(this.titleService.AddLight(this.T));
     // console.log(`Light: ((${this.T})) `, this.titleService.CurrentLight);
-    this.t = this.titleService.CurrentLight;
-    return this.t;
-  } // Light();
+    // this.t = this.titleService.CurrentLight;
+
+    this.titleService.AddLight(this.T);
+
+  } // this.Light();
+
 
   public Result(): string {
     return `${this.t}`;

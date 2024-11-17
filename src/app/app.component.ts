@@ -30,7 +30,7 @@ import { TitleServices } from './components/servicios/title.service';
 })
 
 
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit { // , AfterViewInit
 
   constructor(private titleServices: Title, private titleService: TitleServices, private render: Renderer2) {
     console.log("App-Component", this.titleService.CurrentLight);
@@ -45,27 +45,35 @@ export class AppComponent implements OnInit, AfterViewInit {
     }); // subscribe;
 
 
+    this.titleService.Light.subscribe( (v) => {
+      this.valor = Boolean(v);
+      this.ChangeLight(this.valor);
+      console.log(`Light: `, v);
+    } );
+
   } // this.ngOnInit();
 
 
-  public ngAfterViewInit(): void {
+  /* public ngAfterViewInit(): void {
     this.titleService.Light.subscribe( (v) => {
       this.valor = Boolean(v);
-      this.ChangeLight(Boolean(v));
+      this.ChangeLight(this.valor);
       console.log(`Light: `, v);
     } );
-  } // ngAfterViewInit();
-
+  } // ngAfterViewInit(); */
 
   public valor: boolean = false;
 
 
   private ChangeLight(v: boolean): void{
-    if (v){
+    const backgroundColor = v ? 'rgba(0, 0, 255, 0.2)' : 'rgba(0, 0, 0, .8)';
+    document.body.style.background = backgroundColor;
+
+    /* if (v){
       this.render.setStyle(this.Container.nativeElement, 'background', 'rgba(0, 0, 255, 0.2)');
     } else {
       this.render.setStyle(this.Container.nativeElement, 'background', 'rgba(0, 0, 0, .8)');
-    } // else;
+    } // else; */
   } // this.ChangeLight(v);
 
 

@@ -418,8 +418,7 @@ a .link2 {
 
 
 #svg{
-    transition: background .2s .1s ease-in;
-    background: #aaa;    
+    transition: background .2s .1s ease-in;   
     background: rgb(77, 166, 255);
     border-radius: 100px;
     width: 40px;

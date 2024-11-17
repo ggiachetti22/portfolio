@@ -103,10 +103,6 @@
     transition: background .3s ease-in;
 }
 
-.div-section:hover {
-    background: rgb(10, 62, 113);
-}
-
 
 .div-section.Backg1 {
     background: rgba(20, 66, 111, .7);
@@ -116,6 +112,10 @@
     background: rgba(20, 66, 111, .2);
 }
 
+
+.div-section:hover {
+    background: rgb(10, 62, 113);
+}
 
 .div-section:nth-of-type(odd) {
     text-align: end;

@@ -3,8 +3,9 @@ import { Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } fro
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { SubMenuComponent } from '../sub-menu/sub-menu.component';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { LoginServices } from '../servicios/login.service';
+import { TitleServices } from '../servicios/title.service';
 
 @Component({
   selector: 'app-nav',
@@ -43,6 +44,10 @@ export class NavComponent implements OnInit {
   @ViewChild("menu2", { static: false}) menu2!: ElementRef;
   @ViewChild("menu3", { static: false}) menu3!: ElementRef;
 
+  @ViewChild("Svg", {static: false}) Svg!: ElementRef;
+  @ViewChild("Circle", {static: false}) Circle!: ElementRef;
+
+
   public Check = new BehaviorSubject<boolean>(false);
   public UserSession:  any; // | null;
   
@@ -68,7 +73,7 @@ export class NavComponent implements OnInit {
   public ID: number = 0;
   
 
-  constructor(protected renderer: Renderer2, protected router: Router, private route: ActivatedRoute, private loginService: LoginServices) {
+  constructor(protected renderer: Renderer2, protected router: Router, private route: ActivatedRoute, private loginService: LoginServices, private titleService: TitleServices) {
     this.UserSession = loginService.userData;
   } // constructor();
 
@@ -202,7 +207,7 @@ export class NavComponent implements OnInit {
     } else {
       this.Close();
     } // else;
-    console.log(`Window: ((${NavSection}))\nthis.Check: ((${this.Check}))\nCheck: (${Check})\n((${this.porcentaje}))\n-------------------------\nObservable: ${this.Check.value}`)
+    /* console.log(`Window: ((${NavSection}))\nthis.Check: ((${this.Check}))\nCheck: (${Check})\n((${this.porcentaje}))\n-------------------------\nObservable: ${this.Check.value}`) */
   } // this.BtnMenu();
 
   private OpenMenu(): void {
@@ -330,6 +335,31 @@ export class NavComponent implements OnInit {
       behavior: 'smooth' // Desplazamiento suave
     });
   } // scrollToTop(); */
+
+  private L = 0;
+  private T: boolean = false;
+  public t: boolean = false;
+
+  public Light(): boolean {
+    this.T = !this.T;
+
+    if (this.T === true) {
+      this.renderer.addClass(this.Svg.nativeElement, 'activaCheck');
+      this.renderer.addClass(this.Circle.nativeElement, 'circleCheck');
+    } else {
+      this.renderer.removeClass(this.Svg.nativeElement, 'activaCheck');
+      this.renderer.removeClass(this.Circle.nativeElement, 'circleCheck');
+    } // else;
+
+    Boolean(this.titleService.AddLight(this.T));
+    // console.log(`Light: ((${this.T})) `, this.titleService.CurrentLight);
+    this.t = this.titleService.CurrentLight;
+    return this.t;
+  } // Light();
+
+  public Result(): string {
+    return `${this.t}`;
+  } // Result();
 
 
 } // NavComponent;

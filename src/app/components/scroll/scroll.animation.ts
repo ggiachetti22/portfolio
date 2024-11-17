@@ -9,7 +9,7 @@ export class ScrollAnimationDirective implements OnInit {
 
     protected observer!: IntersectionObserver;
   
-    constructor(private el: ElementRef, private renderer: Renderer2) {}
+    constructor(private elRf: ElementRef, private renderer: Renderer2) {}
   
     ngOnInit(): void {
       this.createObserver();
@@ -24,13 +24,12 @@ export class ScrollAnimationDirective implements OnInit {
   
       this.observer = new IntersectionObserver( (entries) => {
 
-        
         entries.forEach( (entry) => {
 
           if (entry.isIntersecting) {
-            this.renderer.addClass(this.el.nativeElement, 'visible');
+            this.renderer.addClass(this.elRf.nativeElement, 'visible');
           } else {
-            this.renderer.removeClass(this.el.nativeElement, 'visible');
+            this.renderer.removeClass(this.elRf.nativeElement, 'visible');
           } // else;
 
         }); // forEach;
@@ -38,7 +37,7 @@ export class ScrollAnimationDirective implements OnInit {
       } , options);
   
 
-      this.observer.observe(this.el.nativeElement);
+      this.observer.observe(this.elRf.nativeElement);
 
     } // createObserver;
 

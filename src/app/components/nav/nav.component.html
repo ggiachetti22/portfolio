@@ -96,18 +96,29 @@
 
             <ol class="Nav-cog">
                 <li>
-                    <i class="icon-cog-1"></i>
+                    {{t}}
                 </li>
     
                 <li>
-                    <i class="icon-adjust"></i>
+                    <svg #Svg id="svg" (click)="Light();">
+                        <foreignObject id="foreignObject1"  x="10" y="10" width="20" height="20">
+                            <i class="icon-moon-inv"></i>
+                        </foreignObject>
+
+                        <circle #Circle id="circle" class="icon-adjust" r="10" cy="50%" cx="25%" pathlength="100" />
+
+                        <foreignObject id="foreignObject2" x="10" y="10" width="20" height="20">
+                            <i class="icon-sun-filled"></i>
+                        </foreignObject>
+                    </svg>
+
                 </li>
             </ol>
-
 
         </section>
         <!-- <section #navegador2 id="navegador2" class="navegadores navegador2"></section> -->
     </div>
+
 </div>
 
 

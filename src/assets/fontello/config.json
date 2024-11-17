@@ -587,6 +587,36 @@
       "css": "warning",
       "code": 59468,
       "src": "typicons"
+    },
+    {
+      "uid": "5840fe162df3bcc8e390c58ef4e2acf9",
+      "css": "sun-filled",
+      "code": 59469,
+      "src": "typicons"
+    },
+    {
+      "uid": "c1306ee779029bed4f5a2b9b4f5c79e8",
+      "css": "sun-inv",
+      "code": 59470,
+      "src": "meteocons"
+    },
+    {
+      "uid": "2c304ff49075ec9647f498504651abf5",
+      "css": "cloud-sun-inv",
+      "code": 59471,
+      "src": "meteocons"
+    },
+    {
+      "uid": "c2152732d525871cf35345955854f711",
+      "css": "moon-inv",
+      "code": 59472,
+      "src": "iconic"
+    },
+    {
+      "uid": "c823149b79158a2bd56d802a6a6f1d1c",
+      "css": "cloud-moon-inv",
+      "code": 59473,
+      "src": "meteocons"
     }
   ]
 }

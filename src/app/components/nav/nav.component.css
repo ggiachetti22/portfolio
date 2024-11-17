@@ -405,12 +405,62 @@ a .link2 {
 
 .session {
     text-shadow: none;
+    -webkit-text-stroke: 0.15vh;
 }
 
 .session > span {
     font-size: 14px;
     color: whitesmoke;
 }
+
+
+/* -----------------Boton svg------------------- */
+
+
+#svg{
+    transition: background .2s .1s ease-in;
+    background: #aaa;    
+    background: rgb(77, 166, 255);
+    border-radius: 100px;
+    width: 40px;
+    height: 20px;
+    fill: none;
+    overflow: visible;
+    position: relative;
+    /* outline: 2px solid rgba(0,0,0,.7); */
+}
+
+#circle{
+    stroke: deepskyblue;
+    transition: transform .2s ease-in-out;
+    stroke-width: 1;
+    stroke-dasharray: 100 100;
+    /* fill: none; */
+    fill: seashell;
+}
+
+#foreignObject1 {
+    position: absolute;
+    transform: translateX(-25%) translateY(-25%);
+}
+
+
+#foreignObject2 {
+    position: absolute;
+    transform: translateX(25%) translateY(-25%);
+}
+
+
+#svg.activaCheck {
+    background: rgb(11, 44, 101);
+}
+
+
+#circle.circleCheck {
+    transform: translateX(50%);
+}
+
+
 
 /* -----------------Media Query------------------- */
 

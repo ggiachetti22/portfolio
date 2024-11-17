@@ -29,3 +29,11 @@ export interface UserDTO {
   password: String,
   stateID: Number,
 } // UserDTO;
+
+
+export interface SettingsMain {
+  valorNumber: Number,
+  valorBool: boolean,
+  userName: String,
+  Message: String,
+} // SettingsMain;

@@ -76,6 +76,11 @@
 .icon-attention-1:before { content: '\e84a'; } /* '' */
 .icon-attention-alt:before { content: '\e84b'; } /* '' */
 .icon-warning:before { content: '\e84c'; } /* '' */
+.icon-sun-filled:before { content: '\e84d'; } /* '' */
+.icon-sun-inv:before { content: '\e84e'; } /* '' */
+.icon-cloud-sun-inv:before { content: '\e84f'; } /* '' */
+.icon-moon-inv:before { content: '\e850'; } /* '' */
+.icon-cloud-moon-inv:before { content: '\e851'; } /* '' */
 .icon-twitter-circled:before { content: '\f057'; } /* '' */
 .icon-gplus-circled:before { content: '\f059'; } /* '' */
 .icon-phone-squared:before { content: '\f098'; } /* '' */

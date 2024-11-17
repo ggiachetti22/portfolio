@@ -10,7 +10,7 @@ import { BehaviorSubject } from 'rxjs';
     NgOptimizedImage
   ],
   templateUrl: './slider.component.html',
-  styleUrl: './slider.component.css'
+  styleUrl: './slider.component.css',
 })
 export class SliderComponent implements AfterViewInit, OnInit {
 

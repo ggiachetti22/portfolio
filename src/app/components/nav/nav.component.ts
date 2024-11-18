@@ -97,6 +97,7 @@ export class NavComponent implements OnInit {
 
 
   public ngAfterViewInit(): void {    
+    this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
     if (this.titleService.CurrentLight) {
       this.renderer.addClass(this.Svg.nativeElement, 'activaCheck');
       this.renderer.addClass(this.Circle.nativeElement, 'circleCheck');

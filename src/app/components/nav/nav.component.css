@@ -294,7 +294,7 @@ a .link2 {
 #up p {
     width: 30px;
     text-align: center;
-    line-height: 30px;
+    line-height: 10px;
     /* border: 2px solid green; */
 }
 
@@ -350,7 +350,7 @@ a .link2 {
 #logo-footer {
     width: auto;
     display: flex;
-    transform: translateX(-90%);
+    /* transform: translateX(-90%); */
     padding: 10px;
     align-items: center;
     position: relative;
@@ -358,7 +358,7 @@ a .link2 {
 }
 
 .logo-footer {
-    margin-left: -10px;
+    /* margin-left: -20px; */
     font-size: 12px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: dodgerblue;

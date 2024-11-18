@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../../url/url.component';
 import { TitleServices } from '../servicios/title.service';
@@ -32,7 +32,7 @@ export class MailComponent implements AfterViewInit {
 
   public valor: boolean = false;
 
-  public constructor(private http: HttpClient,  private titleService: TitleServices) { } // constructor;
+  public constructor(private changeDtRef: ChangeDetectorRef, private http: HttpClient, private titleService: TitleServices) { } // constructor;
 
   public ngAfterViewInit(): void {
 
@@ -40,6 +40,8 @@ export class MailComponent implements AfterViewInit {
       this.valor = Boolean(v);
     } ); // subscribe;
     
+    this.changeDtRef.detectChanges();
+
   } // ngAfterViewInit();
 
 

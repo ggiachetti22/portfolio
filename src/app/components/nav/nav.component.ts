@@ -1,8 +1,7 @@
 import { NgClass, NgIf } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { SubMenuComponent } from '../sub-menu/sub-menu.component';
 import { BehaviorSubject } from 'rxjs';
 import { LoginServices } from '../servicios/login.service';
 import { TitleServices } from '../servicios/title.service';
@@ -20,7 +19,7 @@ import { TitleServices } from '../servicios/title.service';
   styleUrl: './nav.component.css'
 })
 
-export class NavComponent implements OnInit, AfterViewInit {
+export class NavComponent implements OnInit {
 
   @ViewChild("link1") link1!: ElementRef;
   @ViewChild("link2") link2!: ElementRef;
@@ -80,14 +79,8 @@ export class NavComponent implements OnInit, AfterViewInit {
 
 
   public ngOnInit(): void {
-    // console.log(`\n\n-----------------NAV open------------------\n`);
-    // console.log(`${this.loginService.userData?.userName}\n`);
     this.Parrafo3 = `${this.loginService.userData?.userName}`;
-    // console.log(`((( Nombre de usuario ))) : `, this.Parrafo3);
-    // console.log(`Login start:\n`, this.UserSession);
     this.UserSession = this.loginService.userData;
-    // console.log(`${this.UserSession}\n`);
-    // console.log(`\n\n-----------------NAV end-------------------\n\n`);
 
     this.route.queryParams.subscribe(p => {
       this.accion = parseInt(p['action'], 10); // 10 especificación de la base decimal;

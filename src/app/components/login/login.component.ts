@@ -1,12 +1,14 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { TitleServices } from '../servicios/title.service';
-import { NewUserComponent } from '../new-user/new-user.component';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LoginServices } from '../servicios/login.service';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from '../../url/url.component';
+import { NgClass } from '@angular/common';
+// import { NewUserComponent } from '../new-user/new-user.component';
+
 
 @Component({
   selector: 'app-login',
@@ -16,15 +18,17 @@ import { environment } from '../../url/url.component';
     FormsModule,
     RouterModule,
     HttpClientModule,
-    NewUserComponent
+    NgClass
+    // NewUserComponent
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
 
+  public valor: boolean = false;
 
-  constructor(private titleService: TitleServices, private router: Router, private route: ActivatedRoute, private loginService: LoginServices, private render: Renderer2) // private loginService: LoginServices
+  constructor(private changeDtRef: ChangeDetectorRef, private titleService: TitleServices, private router: Router, private route: ActivatedRoute, private loginService: LoginServices, private render: Renderer2) // private loginService: LoginServices
   {
     if (this.loginService.userData) {
       // this.router.navigate(['/home']); // home?action=1
@@ -36,6 +40,17 @@ export class LoginComponent implements OnInit {
   public ngOnInit(): void {
     this.titleService.AddTitle(this.title);
   } // this.ngOnInit();
+
+
+  public ngAfterViewInit(): void {
+
+    this.titleService.Light.subscribe( (v) => {
+      this.valor = Boolean(v);
+    } ); // subscribe;
+    
+    this.changeDtRef.detectChanges();
+
+  } // ngAfterViewInit();
 
   protected title: string = `Login Pages`;
 

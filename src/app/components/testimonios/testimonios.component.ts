@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Renderer2 } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Renderer2 } from '@angular/core';
 import { TitleServices } from '../servicios/title.service';
 import { NgClass } from '@angular/common';
 
@@ -15,14 +15,14 @@ export class TestimoniosComponent implements AfterViewInit {
 
   public valor: boolean = false;
 
-  constructor(private titleService: TitleServices, private render: Renderer2) {} // constructor;
+  constructor(private changeDtRef: ChangeDetectorRef, private titleService: TitleServices, private render: Renderer2) {} // constructor;
 
   public ngAfterViewInit(): void {
 
     this.titleService.Light.subscribe( (v) => {
       this.valor = Boolean(v);
     } ); // subscribe;
-    
+    this.changeDtRef.detectChanges();
   } // ngAfterViewInit();
 
 

@@ -1,9 +1,10 @@
-import { AfterViewInit, Component, ElementRef, InjectionToken, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, InjectionToken, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Route, Router, RouterOutlet } from '@angular/router';
 import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { Title } from '@angular/platform-browser';
 import { TitleServices } from './components/servicios/title.service';
+import { NgIf } from '@angular/common';
 
 // export const IMAGE_CONFIG = new InjectionToken('IMAGE_CONFIG');
 
@@ -23,7 +24,8 @@ import { TitleServices } from './components/servicios/title.service';
   imports: [
     RouterOutlet,
     NavComponent,
-    FooterComponent
+    FooterComponent,
+    NgIf
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -32,8 +34,17 @@ import { TitleServices } from './components/servicios/title.service';
 
 export class AppComponent implements OnInit, AfterViewInit {
 
-  constructor(private titleServices: Title, private titleService: TitleServices, private render: Renderer2) {
-    // console.log("App-Component", this.titleService.CurrentLight);
+  public valor: boolean = false;
+
+  public showFooter = true;
+
+  constructor(private changeDtRef: ChangeDetectorRef, private titleServices: Title, private titleService: TitleServices, private render: Renderer2, private router: Router) {
+    const myRouter = ['/chat', '/chat?action=2'];
+
+    this.router.events.subscribe( () => {
+      // this.showFooter = !this.router.url.includes('/chat'); // chat?action=2
+      this.showFooter = !myRouter.some(rout => this.router.url.includes(rout));
+    });
   } // constructor;
 
   @ViewChild('Container') Container!: ElementRef;
@@ -44,7 +55,6 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.setTitle(this.title);
     }); // subscribe;
 
-
   } // this.ngOnInit();
 
 
@@ -54,9 +64,8 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.ChangeColor(this.valor);
       // console.log(`Light: `, v);
     } );
+    this.changeDtRef.detectChanges();
   } // ngAfterViewInit();
-
-  public valor: boolean = false;
 
 
   private ChangeColor(v: boolean): void{

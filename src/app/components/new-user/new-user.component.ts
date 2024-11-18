@@ -1,33 +1,42 @@
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { TitleServices } from '../servicios/title.service';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import { UserServices } from '../servicios/user.service';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-new-user',
   standalone: true,
   imports: [
-    LoginComponent,
+    //LoginComponent,
     RouterModule,
     ReactiveFormsModule,
-    FormsModule,    
+    FormsModule,
+    NgClass
   ],
   templateUrl: './new-user.component.html',
   styleUrl: './new-user.component.css'
 })
 
-export class NewUserComponent implements OnInit {
+export class NewUserComponent implements OnInit, AfterViewInit {
 
-  constructor(private titleService: TitleServices, private userServices: UserServices, private render: Renderer2) {} // constructor;
+  public valor!: boolean;
+
+  constructor(private changeDtRef: ChangeDetectorRef, private titleService: TitleServices, private userServices: UserServices, private render: Renderer2) {} // constructor;
   // , private userServices: UserServices
-
 
   public ngOnInit(): void {
     this.titleService.AddTitle(this.title);
   } // this.ngOnInit();
 
+  public ngAfterViewInit(): void {
+    this.titleService.Light.subscribe( (v) => {
+      this.valor = Boolean(v);
+    } ); // subscribe;
+    this.changeDtRef.detectChanges();
+  } // ngAfterViewInit();
   
   public UserNameEmail = new FormControl('');
   public Password = new FormControl('');

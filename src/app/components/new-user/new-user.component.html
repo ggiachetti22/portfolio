@@ -1,7 +1,7 @@
 <section class="section">
 
     <div class="container">
-        <form>
+        <form [ngClass]="valor ? 'UserBack1' : 'UserBack2'">
           <p>Crear usuario</p>
 
           <input #myUserNameEmail [formControl]="UserNameEmail" type="email" placeholder="Email..">

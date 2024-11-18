@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { ScrollAnimationDirective } from '../scroll/scroll.animation';
 import { TitleServices } from '../servicios/title.service';
 import { NgClass } from '@angular/common';
@@ -17,7 +17,7 @@ export class SectionServicesComponent implements AfterViewInit{
 
   public valor!: boolean;
 
-  public constructor(private titleService: TitleServices) {
+  public constructor(private changeDtRef: ChangeDetectorRef, private titleService: TitleServices) {
   } // constructor;
 
   public ngAfterViewInit(): void {
@@ -25,7 +25,7 @@ export class SectionServicesComponent implements AfterViewInit{
     this.titleService.Light.subscribe( (v) => {
       this.valor = Boolean(v);
     } ); // subscribe;
-    
+    this.changeDtRef.detectChanges();
   } // ngAfterViewInit();
 
 

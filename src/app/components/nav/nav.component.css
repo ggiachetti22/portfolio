@@ -280,7 +280,6 @@ a .link2 {
     width: 30px;
     height: 30px;
     background: rgba(0, 0, 0, .2);
-    transition: all .25s ease-in-out;
     position: fixed;
     bottom: 300px;
     right: 5px;
@@ -434,29 +433,56 @@ a .link2 {
 
 #foreignObject1 {
     position: absolute;
-    transform: translateX(-25%) translateY(-25%);
+    transform: translateX(-25%) translateY(-50%);
+    /* outline: 2px solid cyan; */
 }
 
 
 #foreignObject2  {
     position: absolute;
-    transform: translateX(25%) translateY(-25%);
+    transform: translateX(25%) translateY(-50%);
+    /* outline: 2px solid magenta; */
 }
 
 
 #foreignObject01 {
     position: absolute;
-    transform: translateX(-25%) translateY(-45%);
+    transform: translateX(-25%) translateY(-50%);
+    /* outline: 2px solid cyan; */
 }
 
 #foreignObject02 {
     position: absolute;
-    transform: translateX(25%) translateY(-45%);
+    transform: translateX(25%) translateY(-50%);
+    /* outline: 2px solid magenta; */
+}
+
+#svg0 .icon-moon-inv, #svg0 .icon-sun-filled {
+    position: absolute;
+    font-size: 12px;
+}
+
+#svg0 .icon-moon-inv {
+    top: 3px;
+    left: 1px;
+}
+
+#svg0 .icon-sun-filled {
+    top: 3px;
+    right: 1px;
 }
 
 
-#svg0 .icon-moon-inv, #svg0 .icon-sun-filled {
-    font-size: 12px;
+#svg .icon-moon-inv {
+    position: absolute;
+    top: 4px;
+    left: 2px;
+}
+
+#svg .icon-sun-filled {
+    position: absolute;
+    top: 4px;
+    right: 2px;
 }
 
 

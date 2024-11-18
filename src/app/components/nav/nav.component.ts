@@ -327,7 +327,7 @@ export class NavComponent implements OnInit {
     const footer = document.querySelector('.footer') as HTMLElement;
     let BodyHeight = document.body.offsetHeight; 
     let FooterHeight = footer.offsetHeight;
-    let BoxUp = BodyHeight - (FooterHeight + 900);
+    let BoxUp = BodyHeight - (FooterHeight + 400);
     const NavSection = document.getElementById('NavSection');
     let PositionActual = window.scrollY;
     // console.log(`BodyHeight: ${BodyHeight}\nFooterHeight: ${FooterHeight}`);

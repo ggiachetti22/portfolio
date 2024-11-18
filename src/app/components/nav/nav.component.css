@@ -398,7 +398,7 @@ a .link2 {
 
 .session {
     text-shadow: none;
-    -webkit-text-stroke: 0.15vh;
+    /* -webkit-text-stroke: 0.15vh; */
 }
 
 .session > span {
@@ -442,6 +442,11 @@ a .link2 {
     position: absolute;
     transform: translateX(25%) translateY(-50%);
     /* outline: 2px solid magenta; */
+}
+
+#Config {
+    margin-left: 10px;
+    /* outline: 2px solid red; */
 }
 
 

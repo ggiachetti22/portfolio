@@ -308,7 +308,6 @@ export class NavComponent implements OnInit {
       const anchoWindow = window.innerWidth;
       const altoWindow = window.innerHeight;
       const NavSection = this.NavSection.nativeElement.offsetWidth;
-      // console.log(`\nWindow: ((${NavSection}))\nWindow: ((${anchoWindow}px)) alto: ((${altoWindow}))\nAlto de footer: ((..))\n\nAltura de this.parrafoBox: (( ${this.parrafoBox.nativeElement.offsetTop}px ))`);
       if (anchoWindow >= 550) {        
         this.btnCheck.nativeElement.checked = false;
         this.Check.next(false);
@@ -324,9 +323,16 @@ export class NavComponent implements OnInit {
   
 
   protected myScroll() { // (window:scroll)="myScroll();" // de forma dinámica;
+    const footer = document.querySelector('.footer') as HTMLElement;
+    let BodyHeight = document.body.offsetHeight; 
+    let FooterHeight = footer.offsetHeight;
+    let BoxUp = BodyHeight - (FooterHeight + 900);
     const NavSection = document.getElementById('NavSection');
     let PositionActual = window.scrollY;
-    // NavSection?.classList.toggle("NavToggle", window.scrollY > 60);
+    // console.log(`BodyHeight: ${BodyHeight}\nFooterHeight: ${FooterHeight}`);
+    if(this.PositionInitial >= BoxUp) this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', null);
+    else this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
+
     if (this.PositionInitial >= PositionActual) {
       this.renderer.setStyle(NavSection, 'opacity', null);
       NavSection?.classList.remove('NavToggle');
@@ -334,9 +340,9 @@ export class NavComponent implements OnInit {
       if (this.PositionInitial >= 60) this.renderer.setStyle(NavSection, 'opacity', '0');
       NavSection?.classList.add('NavToggle');
     } // else;
-    this.Parrafo2 = this.PositionInitial.toString();
-    // console.log(`ScrollY Inicial: (${this.PositionInitial})\nScrollY Actual: (${PositionActual})`);
+
     this.PositionInitial = PositionActual;
+
   }; // myScroll();
 
 

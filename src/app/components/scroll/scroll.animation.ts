@@ -36,7 +36,6 @@ export class ScrollAnimationDirective implements OnInit {
 
       } , options);
   
-
       this.observer.observe(this.elRf.nativeElement);
 
     } // createObserver;

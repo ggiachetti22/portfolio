@@ -1,18 +1,10 @@
-<br/>
+<!-- <br/> -->
 
-<h1 [ngClass]="valor ? 'Chat1' : 'Chat2'">Section Message Soon</h1>
+<!-- <h1 [ngClass]="valor ? 'Chat1' : 'Chat2'">Section Message Soon</h1> -->
 
 <section class="section">
 
     <section id="Cont">
-
-        <div id="BoxForm" [ngClass]="valor ? 'ChatBack1' : 'ChatBack2'">
-      
-          <input #ElNombre [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElNombre" type="text" placeholder="Nombre.." maxlength="15" autofocus />
-          <input #ElMensaje [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElApellido" #text type="text" placeholder="Escribe mensaje.." />
-          <button class="enviar">Enviar</button>
-      
-        </div>
       
         <div id="Msj">
           <p>ID: <span>..</span></p>
@@ -26,15 +18,25 @@
           </ng-template>
       
       
-          <div #caja class="BoxBtn">
+          <!-- <div #caja class="BoxBtn">
             <button #Box1 class="Bots">Editar</button>
             <button #Box2 class="Bots">Borrar</button>
             <button #Box3 class="BtnDelete Bots">Eliminar completamente</button>
-          </div>
+          </div> -->
       
       
         </div>
       
+
+        <div id="BoxForm" [ngClass]="valor ? 'ChatBack1' : 'ChatBack2'">
+      
+          <!-- <input #ElNombre [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElNombre" type="text" placeholder="Nombre.." maxlength="15" autofocus /> -->
+          <input #ElMensaje [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElApellido" #text type="text" placeholder="Escribe mensaje.." />
+          <button class="enviar">➣</button>
+      
+        </div>
+
+
       
         <!-- <main id="chat">
           <app-message (click)="ToggleBox($event, ID());" class="chat" *ngFor="let msj of listMessage | async" [oMessage]="msj"></app-message>
@@ -45,6 +47,4 @@
       </section>
       
       
-
-
 </section>

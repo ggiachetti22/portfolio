@@ -123,7 +123,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
     const MensajeSpace = this.Mensaje.value?.indexOf(" ");
     const MensajeIncludes: Boolean = this.Mensaje.value?.includes(" ") ?? false;
-    if (MensajeIncludes !== false && MensajeSpace !== -1) {
+    if (MensajeIncludes === false && MensajeSpace === -1) {
       this.chatService.SendMsjGroup(`${this.loginService.userData?.userName}`, this.Mensaje, this.myID);
     } // if;
 

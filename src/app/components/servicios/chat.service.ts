@@ -19,15 +19,15 @@ const HttpOption = {
 
   export class ChatService {
 
-    private readonly apiUrlMessager: string = environment.apiMessager;
-    private readonly apiMessagerGroup: string = "api/Messager/ViewMyMessages";
-
     private readonly baseUrl: String = `https://localhost:7212/`;
     private getMsj: String = `api/Messager/ViewChatGroup`;
     private getMsjUser: String = `api/Messager/GetMessageUser/`;
     private sendMsj: String = `api/Messager/SendMessage`;
     private upMsj: String = `api/Messager/UpMessage`;
     private deleteMsj: String = `api/Messager/DeleteMessage/`;
+
+    private readonly apiUrlMessager: string = environment.apiMessager;
+    private readonly apiMessagerGroup: string = "api/Messager/ViewMyMessages";
     
     constructor(protected http: HttpClient) {
     } // constructor;
@@ -65,9 +65,9 @@ const HttpOption = {
   
 
     public GetMessager(): Observable<MessageDTO[]> {
-      return this.http.get<MessageDTO[]>(this.apiUrlMessager + `${this.getMsjUser}`);
+      return this.http.get<MessageDTO[]>(this.apiUrlMessager + `${this.apiMessagerGroup}`);
     } // GetMessager();
-    
+
   
     public GetMsj(): Observable<MessageDTO[]> {
       return this.http.get<MessageDTO[]>(this.baseUrl + `${this.getMsj}`);

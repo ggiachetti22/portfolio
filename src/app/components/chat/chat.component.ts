@@ -6,7 +6,7 @@ import { MessageDTO } from '../interface/interfaces';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ChatService } from '../servicios/chat.service';
 import { AutoResizeTextArea } from '../scroll/textarea.height';
-import { MessagerComponent } from '../Messager/messager.component';
+// import { MessagerComponent } from '../Messager/messager.component';
 
 
 @Component({

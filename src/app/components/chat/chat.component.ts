@@ -120,11 +120,13 @@ export class ChatComponent implements OnInit, AfterViewInit {
     // console.log("SendMsj");
     this.myID = Number(this.loginService.userData?.userID);
 
-    const MensajeSpace = this.Mensaje.value?.indexOf(" ");
     const MensajeIncludes: Boolean = this.Mensaje.value?.includes(" ") ?? false;
-    if (MensajeIncludes === false && MensajeSpace === -1) {
+    const MensajeSpace = this.Mensaje.value?.indexOf(" ");
+    /* if (MensajeIncludes === false && MensajeSpace === -1) {
       this.chatService.SendMsjGroup(`${this.loginService.userData?.userName}`, this.Mensaje, Number(this.loginService.userData?.userID));
-    } // if;
+    } // if; */
+
+    this.chatService.SendMsjGroup(`${this.loginService.userData?.userName}`, this.Mensaje, Number(this.loginService.userData?.userID));
 
     setTimeout(() => {
       console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);

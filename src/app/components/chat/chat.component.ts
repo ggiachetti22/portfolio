@@ -6,6 +6,7 @@ import { MessageDTO } from '../interface/interfaces';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ChatService } from '../servicios/chat.service';
 import { AutoResizeTextArea } from '../scroll/textarea.height';
+import { LoginServices } from '../servicios/login.service';
 // import { MessagerComponent } from '../Messager/messager.component';
 
 
@@ -30,13 +31,14 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   public valor!: boolean;
 
-  constructor(private changeDtRef: ChangeDetectorRef, private titleService: TitleServices, private chatService : ChatService, private renderer : Renderer2) {} // constructor;
+  constructor(private changeDtRef: ChangeDetectorRef, private titleService: TitleServices, private chatService : ChatService, private renderer : Renderer2, private loginService: LoginServices) {} // constructor;
 
   public ngOnInit(): void {
     this.titleService.AddTitle(this.title);
-    this.UpID();
-    this.GetM();
+    // this.UpID();
+    // this.GetM();
     this.ViewChatGroup();
+    console.log('ID:', this.loginService.userData?.userID);
   } // this.ngOnInit();
 
   
@@ -48,9 +50,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
   } // ngAfterViewInit();
 
 
-
-  
-  
   public listMessage?: Observable<MessageDTO[]>;
   public listMessage2?: MessageDTO[];
   // @ViewChild('text') ElText?: ElementRef;
@@ -117,12 +116,16 @@ export class ChatComponent implements OnInit, AfterViewInit {
  
  
   public SendMsj() {
-    this.chatService.EnviarMsj(this.Nombre, this.Mensaje);
+    this.myID = Number(this.loginService.userData?.userID);
+    this.chatService.SendMsjGroup(this.Nombre, this.Mensaje, this.myID);
+    // this.chatService.EnviarMsj(this.Nombre, this.Mensaje);
+
     /* setTimeout(() => {
       this.GetM();
     }, 300); */
-    this.GetM();
-    this.EnfocarImput();
+    this.ViewChatGroup();
+    // this.EnfocarImput();
+    console.log('ID:', this.loginService.userData?.userID);
   } // this.SendMsj();
  
  
@@ -232,6 +235,11 @@ export class ChatComponent implements OnInit, AfterViewInit {
     this.renderer.setStyle(this.ElMensaje.nativeElement, 'border', '2px solid tomato');
   } // this.MensajeStyle();
  
+
+  public sendMsjGroup(): void {
+    // EnviarMsjGroup
+  } // sendMsjGroup();
+
  
   public sendMsj(): void {
     const NameSpace = this.Nombre.value?.indexOf(" ");

@@ -17,6 +17,7 @@ export interface MyResponse {
 } // MyResponse;
 
 export interface UserResponse {
+  userID: Number,
   email: String,
   userName: String,
   keyToken: String

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { FormControl } from "@angular/forms";
+import { Form, FormControl } from "@angular/forms";
 import { BehaviorSubject, Observable } from "rxjs";
 import { MessageDTO, MyResponse } from "../interface/interfaces";
 import { environment } from "../../url/url.component";
@@ -28,6 +28,7 @@ const HttpOption = {
 
     private readonly apiUrlMessager: string = environment.apiMessager;
     private readonly apiMessagerGroup: string = "/api/Messager/ViewMyMessages";
+    private readonly apiAddMessagerGroup: string = "/api/Messager/AddChatGroup";
     
     constructor(protected http: HttpClient) {
     } // constructor;
@@ -73,6 +74,18 @@ const HttpOption = {
       return this.http.get<MessageDTO[]>(this.baseUrl + `${this.getMsj}`);
     } // GetMsj();
   
+
+    public SendMsjGroup(userN: FormControl, message: FormControl, usuarioID: Number): void {
+  
+      this.http.post<MyResponse>(this.apiUrlMessager + `${this.apiAddMessagerGroup}`,
+        { "userName": userN.value, "chatMsj": message.value, "timeMessage": new Date().toISOString(), "usuarioID": usuarioID, "conversacionID": 1, "statesMsj_ID": 1, HttpOption })
+        .subscribe(
+          { next: (sub) => { console.log(sub.upMessage); },
+            error: (er) => { console.error(er); }
+          });
+  
+    } // SendMsjGroup;
+
     
     public EnviarMsj(userN: FormControl, message: FormControl): void {
   

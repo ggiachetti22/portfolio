@@ -116,16 +116,19 @@ export class ChatComponent implements OnInit, AfterViewInit {
  
  
   public SendMsj() {
+    // console.log("SendMsj");
     this.myID = Number(this.loginService.userData?.userID);
     let NombreUser = this.loginService.myUserName;
     this.chatService.SendMsjGroup(`${this.loginService.myUserName}`, this.Mensaje, this.myID);
-    // this.chatService.EnviarMsj(this.Nombre, this.Mensaje);
 
     /* setTimeout(() => {
       this.GetM();
     }, 300); */
-    this.ViewChatGroup();
+
+    // this.ViewChatGroup();
+
     // this.EnfocarImput();
+
     console.log('ID:', this.loginService.userData?.userID);
   } // this.SendMsj();
  

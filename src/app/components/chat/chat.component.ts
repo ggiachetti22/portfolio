@@ -18,7 +18,7 @@ import { LoginServices } from '../servicios/login.service';
     ReactiveFormsModule,
     AutoResizeTextArea,
     NgFor,
-    CommonModule
+    CommonModule,
     // MessagerComponent
   ],
   templateUrl: './chat.component.html',
@@ -117,7 +117,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
  
   public SendMsj() {
     this.myID = Number(this.loginService.userData?.userID);
-    this.chatService.SendMsjGroup(this.Nombre, this.Mensaje, this.myID);
+    let NombreUser = this.loginService.myUserName;
+    this.chatService.SendMsjGroup(`${this.loginService.myUserName}`, this.Mensaje, this.myID);
     // this.chatService.EnviarMsj(this.Nombre, this.Mensaje);
 
     /* setTimeout(() => {

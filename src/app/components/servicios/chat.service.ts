@@ -75,7 +75,7 @@ const HttpOption = {
     } // GetMsj();
   
 
-    public SendMsjGroup(userN: any, message: FormControl, usuarioID: Number): void {
+    public SendMsjGroup(userN: string, message: FormControl, usuarioID: Number): void {
   
       this.http.post<MyResponse>(this.apiUrlMessager + `${this.apiAddMessagerGroup}`,
         { "userName": userN, "chatMsj": message.value, "timeMessage": new Date().toISOString(), "usuarioID": usuarioID, "conversacionID": 1, "statesMsj_ID": 1, HttpOption })

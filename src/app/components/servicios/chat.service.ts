@@ -78,7 +78,7 @@ const HttpOption = {
     public SendMsjGroup(userN: any, message: FormControl, usuarioID: Number): void {
   
       this.http.post<MyResponse>(this.apiUrlMessager + `${this.apiAddMessagerGroup}`,
-        { "userName": userN.toISOString(), "chatMsj": message.value, "timeMessage": new Date().toISOString(), "usuarioID": usuarioID, "conversacionID": 1, "statesMsj_ID": 1, HttpOption })
+        { "userName": userN.toString(), "chatMsj": message.value, "timeMessage": new Date().toISOString(), "usuarioID": usuarioID, "conversacionID": 1, "statesMsj_ID": 1, HttpOption })
         .subscribe(
           { next: (sub) => { console.log(sub.upMessage); },
             error: (er) => { console.error(er); }

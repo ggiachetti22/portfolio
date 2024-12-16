@@ -1,50 +1,69 @@
-<!-- <br/> -->
-
 <!-- <h1 [ngClass]="valor ? 'Chat1' : 'Chat2'">Section Message Soon</h1> -->
+<section id="Cont-box" class="section">
 
-<section class="section">
+    <ul id="Cont">
+      
+      <li class="li"> <!-- (click)="ToggleNull($event);" -->
+        
+        <div class="box-list">
+          
+          <div class="Msj">
 
-    <section id="Cont">
-      
-        <div id="Msj">
-          <p>ID: <span>..</span></p>
-      
-          <p>...</p>
-      
-          <p id="parrafo" class="parrafo">...</p>
-      
-          <ng-template #TextMaxLength>
-            <p id="parrafo" class="parrafo">...</p>
-          </ng-template>
-      
-      
-          <!-- <div #caja class="BoxBtn">
-            <button #Box1 class="Bots">Editar</button>
-            <button #Box2 class="Bots">Borrar</button>
-            <button #Box3 class="BtnDelete Bots">Eliminar completamente</button>
-          </div> -->
-      
-      
+            
+            <!-- <div class="chat">
+              <p>ID: <span>00</span></p>
+              <p>user:</p>
+              <p class="parrafo">Mensaje: Un profesor jubilado encuentra un nuevo propósito de vida cuando una investigadora privada lo contrata para infiltrarse en un hogar de retiro en San Francisco.</p>
+              <p>00:00hs</p>
+            </div> -->
+
+
+            <div *ngFor="let msj of listMessage | async">
+              {{msj.userName}}
+              <br>
+              {{msj.chatMsj}}
+              <br>
+              {{msj.timeHora}}
+            </div>
+
+
+            <ng-template #TextMaxLength>
+              <p class="parrafo">...</p>
+            </ng-template>
+        
+            <!-- <div #caja class="BoxBtn">
+              <button #Box1 class="Bots">Editar</button>
+              <button #Box2 class="Bots">Borrar</button>
+              <button #Box3 class="BtnDelete Bots">Eliminar completamente</button>
+            </div> -->
+  
+          </div>
+  
+          <div id="BoxForm" [ngClass]="valor ? 'ChatBack1' : 'ChatBack2'">
+            <!-- <input #ElNombre [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElNombre" type="text" placeholder="Nombre.." maxlength="15" autofocus /> -->
+            <!-- <input #ElMensaje [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElApellido" #text type="text" placeholder="Escribe mensaje.." /> -->
+            <textarea autoResizeTextarea class="custom-textarea" [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElApellido" placeholder="Escribe aquí..."></textarea>
+            <!-- <div class="custom-textarea" #ElMensaje [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElApellido" placeholder="Escribe aquí..." contenteditable="true"></div> -->
+            <button class="enviar">
+              <i class="icon-paper-plane-alt"></i>
+              <span class="visually-hidden">➣</span>
+            </button>
+          </div>
+
+
+          <!-- <main id="chat">
+            <app-messager (click)="ToggleBox($event, ID());" class="chat" *ngFor="let msj of listMessage | async" [oMessage]="msj"></app-messager>
+          </main> -->
+
         </div>
-      
-
-        <div id="BoxForm" [ngClass]="valor ? 'ChatBack1' : 'ChatBack2'">
-      
-          <!-- <input #ElNombre [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElNombre" type="text" placeholder="Nombre.." maxlength="15" autofocus /> -->
-          <input #ElMensaje [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElApellido" #text type="text" placeholder="Escribe mensaje.." />
-          <button class="enviar">➣</button>
-      
-        </div>
 
 
+      </li>
+
+      <!-- li*20.li>p{llista$} -->
+
       
-        <!-- <main id="chat">
-          <app-message (click)="ToggleBox($event, ID());" class="chat" *ngFor="let msj of listMessage | async" [oMessage]="msj"></app-message>
-        </main> -->
-      
-        <!-- <app-message *ngFor="let a of ArrayString; let i = index" (ArrayString)="AgregarString($event)"></app-message> -->
-      
-      </section>
+    </ul>
       
       
 </section>

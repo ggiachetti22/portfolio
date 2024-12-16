@@ -4,13 +4,15 @@ export const environment = {
   
     production: true, // para produccion/publicado;
     apiUrlEmail: 'https://www.sendemail.somee.com',  // API en producción/publicado y eliminar proxy.conf.json;
-    apiUrlLoginUser: 'https://www.loginusertoken.somee.com' // 'https://www.loginusertoken.somee.com'
+    apiUrlLoginUser: 'https://www.loginusertoken.somee.com', // 'https://www.loginusertoken.somee.com'
+    apiMessager: 'http://www.mychatmessager.somee.com'
     // https://www.sendemail.somee.com/swagger/index.html
+    // http://www.mychatmessager.somee.com/swagger/index.html
   };
   
   
   
-  /* 
+  /*
   package.json
   "scripts": {
     "start": "ng serve --proxy-config proxy.conf.json -o",

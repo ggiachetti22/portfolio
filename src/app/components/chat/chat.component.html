@@ -18,12 +18,11 @@
             </div> -->
 
 
-            <div *ngFor="let msj of listMessage | async">
-              {{msj.userName}}
+            <div class="chat" *ngFor="let msj of listMessage | async">
+              <p>{{msj.userName}}</p>
+              <p class="parrafo">{{msj.chatMsj}}</p>
               <br>
-              {{msj.chatMsj}}
-              <br>
-              {{msj.timeHora}}
+              <p>{{msj.timeHora}}</p>
             </div>
 
 

@@ -36,6 +36,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     this.titleService.AddTitle(this.title);
     this.UpID();
     this.GetM();
+    this.ViewChatGroup();
   } // this.ngOnInit();
 
   
@@ -68,7 +69,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   public ViewChatGroup(): void {
     this.listMessage = this.chatService.GetMessager();
-  } // ViewChatGroup();
+  } // this.ViewChatGroup();
 
  
   public GetM() {

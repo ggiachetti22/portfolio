@@ -118,7 +118,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   public SendMsj() {
     // console.log("SendMsj");
-
     // this.myID = Number(this.loginService.userData?.userID);
 
     const MensajeSpace = this.Mensaje.value?.indexOf(" ");

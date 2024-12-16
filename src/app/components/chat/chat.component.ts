@@ -122,11 +122,9 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
     const MensajeIncludes: Boolean = this.Mensaje.value?.includes(" ") ?? false;
     const MensajeSpace = this.Mensaje.value?.indexOf(" ");
-    /* if (MensajeIncludes === false && MensajeSpace === -1) {
+    if (MensajeIncludes === false && MensajeSpace === -1) {
       this.chatService.SendMsjGroup(`${this.loginService.userData?.userName}`, this.Mensaje, Number(this.loginService.userData?.userID));
-    } // if; */
-
-    this.chatService.SendMsjGroup(`${this.loginService.userData?.userName}`, this.Mensaje, Number(this.loginService.userData?.userID));
+    } // if;
 
     setTimeout(() => {
       console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);

@@ -27,7 +27,7 @@ const HttpOption = {
     private deleteMsj: String = `api/Messager/DeleteMessage/`;
 
     private readonly apiUrlMessager: string = environment.apiMessager;
-    private readonly apiMessagerGroup: string = "api/Messager/ViewMyMessages";
+    private readonly apiMessagerGroup: string = "/api/Messager/ViewMyMessages";
     
     constructor(protected http: HttpClient) {
     } // constructor;

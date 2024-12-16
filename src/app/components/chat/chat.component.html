@@ -33,8 +33,8 @@
             <!-- <input #ElMensaje [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElApellido" #text type="text" placeholder="Escribe mensaje.." /> -->
             <textarea autoResizeTextarea class="custom-textarea" [formControl]="Mensaje" [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElApellido" placeholder="Escribe aquí..."></textarea>
             <!-- <div class="custom-textarea" #ElMensaje [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElApellido" placeholder="Escribe aquí..." contenteditable="true"></div> -->
-            <button class="enviar" (clicl)="SendMsj();">
-              <i class="icon-paper-plane-alt"></i>
+            <button class="enviar">
+              <i class="icon-paper-plane-alt" (clicl)="SendMsj();"></i>
               <span class="visually-hidden">➣</span>
             </button>
           </div>

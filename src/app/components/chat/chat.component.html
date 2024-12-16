@@ -9,19 +9,9 @@
           
           <div class="Msj">
 
-            
-            <!-- <div class="chat">
-              <p>ID: <span>00</span></p>
-              <p>user:</p>
-              <p class="parrafo">Mensaje: Un profesor jubilado encuentra un nuevo propósito de vida cuando una investigadora privada lo contrata para infiltrarse en un hogar de retiro en San Francisco.</p>
-              <p>00:00hs</p>
-            </div> -->
-
-
             <div class="chat" *ngFor="let msj of listMessage | async">
               <p>{{msj.userName}}</p>
               <p class="parrafo">{{msj.chatMsj}}</p>
-              <br>
               <p>{{msj.timeHora}}</p>
             </div>
 

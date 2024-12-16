@@ -31,7 +31,7 @@
           <div id="BoxForm" [ngClass]="valor ? 'ChatBack1' : 'ChatBack2'">
             <!-- <input #ElNombre [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElNombre" type="text" placeholder="Nombre.." maxlength="15" autofocus /> -->
             <!-- <input #ElMensaje [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElApellido" #text type="text" placeholder="Escribe mensaje.." /> -->
-            <textarea autoResizeTextarea class="custom-textarea" [formControl]="Mensaje" [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElApellido" placeholder="Escribe aquí..."></textarea>
+            <textarea autoResizeTextarea #inputMessage class="custom-textarea" [formControl]="Mensaje" [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElApellido" placeholder="Escribe aquí..."></textarea>
             <!-- <div class="custom-textarea" #ElMensaje [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElApellido" placeholder="Escribe aquí..." contenteditable="true"></div> -->
             <button class="enviar">
               <i class="icon-paper-plane-alt" (click)="SendMsj();"></i>

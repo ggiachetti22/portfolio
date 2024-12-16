@@ -53,11 +53,12 @@ export class ChatComponent implements OnInit, AfterViewInit {
   public listMessage?: Observable<MessageDTO[]>;
   public listMessage2?: MessageDTO[];
   // @ViewChild('text') ElText?: ElementRef;
-  @ViewChild('hidden') hidden?: ElementRef;
+  @ViewChild('hidden', { static: false }) hidden?: ElementRef;
   public message_ID = new FormControl(0);
   public Nombre = new FormControl('');
   public Mensaje = new FormControl('');
   protected myID: Number = 0; // this.myID
+  @ViewChild('inputMessage', { static: false }) inputMessage?: ElementRef;
  
  
   /* public ArrayString? = [''];
@@ -124,9 +125,11 @@ export class ChatComponent implements OnInit, AfterViewInit {
     this.chatService.SendMsjGroup(this.loginService.myUserName, this.Mensaje, this.myID);
 
     setTimeout(() => {
+      this.inputMessage?.nativeElement.setValue('');
+      this.inputMessage?.nativeElement.focus();
+      console.log('ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.myUserName);
       this.ViewChatGroup();
-      console.log('ID:', this.loginService.userData?.userID);
-    }, 300);
+    }, 500);
 
     // this.EnfocarImput();
   } // this.SendMsj();

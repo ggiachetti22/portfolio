@@ -120,7 +120,12 @@ export class ChatComponent implements OnInit, AfterViewInit {
     // console.log("SendMsj");
 
     // this.myID = Number(this.loginService.userData?.userID);
-    this.chatService.SendMsjGroup(`${this.loginService.userData?.userName}`, this.Mensaje, this.myID);
+
+    const MensajeSpace = this.Mensaje.value?.indexOf(" ");
+    const MensajeIncludes: Boolean = this.Mensaje.value?.includes(" ") ?? false;
+    if (MensajeIncludes !== false && MensajeSpace !== -1) {
+      this.chatService.SendMsjGroup(`${this.loginService.userData?.userName}`, this.Mensaje, this.myID);
+    } // if;
 
     setTimeout(() => {
       console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);
@@ -128,6 +133,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     }, 300);
 
 
+    // this.Mensaje;
     // this.inputMessage?.nativeElement.setValue('');
 
     // this.inputMessage?.nativeElement.focus();

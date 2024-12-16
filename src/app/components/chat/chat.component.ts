@@ -130,7 +130,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);
       this.ViewChatGroup();
-      this.inputMessage?.nativeElement.setValue('');
+      // this.inputMessage?.nativeElement.setValue('');
     }, 300);
 
 

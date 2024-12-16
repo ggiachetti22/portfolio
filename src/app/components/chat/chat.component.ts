@@ -37,8 +37,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
     this.titleService.AddTitle(this.title);
     // this.UpID();
     // this.GetM();
-    this.ViewChatGroup();
-    console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario-1: '+ this.loginService.myUserName +' Nombre de Usuario-2: '+ this.loginService.userData?.userName);
+    // this.ViewChatGroup();
+    console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);
   } // this.ngOnInit();
 
   
@@ -120,7 +120,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     // console.log("SendMsj");
 
     this.myID = Number(this.loginService.userData?.userID);
-    this.chatService.SendMsjGroup(`${this.loginService.userData?.userName}`, this.Mensaje, this.myID);
+    // this.chatService.SendMsjGroup(`${this.loginService.userData?.userName}`, this.Mensaje, this.myID);
 
     setTimeout(() => {
       this.inputMessage?.nativeElement.setValue('');
@@ -130,7 +130,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     }, 500);
 
 
-    this.ViewChatGroup();
+    // this.ViewChatGroup();
 
     // this.EnfocarImput();
   } // this.SendMsj();

@@ -25,7 +25,7 @@ h1.Chat2 {
     display: flex;
     position: inherit;
     justify-content: center;
-    overflow-y: auto;
+    /* overflow-y: auto; */
     /* outline: 4px solid green;
     outline-offset: -4px; */
 }
@@ -81,6 +81,7 @@ h1.Chat2 {
   min-width: 280px;
   max-height: 80vh;
   overflow-y: scroll;
+  /* border: 2px solid tomato; */
 }
 
 

@@ -7,6 +7,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0px 0px 0px 0px;
-    outline: 5px solid yellowgreen;
-    outline-offset: -5px;
+    /* outline: 5px solid yellowgreen;
+    outline-offset: -5px; */
 }

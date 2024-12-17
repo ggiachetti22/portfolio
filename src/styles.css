@@ -15,9 +15,11 @@
 body {
     width: 100%;
     height: auto;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     position: relative;    
     text-align: center;
+    /* outline: 5px solid yellowgreen;
+    outline-offset: -5px; */
     /* font-family: 'Montserrat', sans-serif; */
     /* background: linear-gradient(45deg, #FC466B, #3F5EFB); */
     /* background: rgba(0, 0, 0, .8); */

@@ -18,14 +18,15 @@ h1.Chat2 {
 
 .section {
     width: 100%;
-    height: calc(100vh - 60px);
-    height: auto;
+    height: calc(100% - 60px);
     max-height: 900px;
     /* padding-top: 60px; */
     display: flex;
     position: inherit;
     justify-content: center;
     /* overflow-y: auto; */
+    border-top: 60px solid transparent;
+    margin-top: -60px;
     /* outline: 4px solid green;
     outline-offset: -4px; */
 }

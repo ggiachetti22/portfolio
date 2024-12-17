@@ -1,12 +1,12 @@
 .container {
     width: 100%;
     height: auto;
-    min-height: 100vh;    
+    /* in-height: 100vh; */
     position: relative;
     display: block;
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding: 0px 0px 0px 0px;
     outline: 5px solid yellowgreen;
     outline-offset: -5px;
 }

@@ -51,8 +51,11 @@ h1.Chat2 {
   min-width: 288px;
   max-width: 500px;
   height: auto;
-  max-height: calc(100% - 120px);
-  margin-top: 60px;
+  /* max-height: calc(100% - 120px); */
+  max-height: calc(100% - 70px);
+  max-height: 900px;
+  /* position: static; */
+  /* margin-top: 60px; */
   display: flex;
   flex-direction: column;
   align-items: center;

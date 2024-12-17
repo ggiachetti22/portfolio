@@ -51,7 +51,7 @@ h1.Chat2 {
   min-width: 288px;
   max-width: 500px;
   height: auto;
-  height: calc(100% - 70px);
+  max-height: calc(100% - 70px);
   margin-top: 60px;
   display: flex;
   flex-direction: column;
@@ -221,7 +221,9 @@ body#chat::-webkit-scrollbar {
   border-bottom-right-radius: .5rem;
   background: rgba(41, 48, 79, 0.8);
   position: relative;
-  overflow: hidden;  
+  overflow: hidden;
+  /* outline: 3px solid cyan;
+  outline-offset: -3px; */
 }
 
 /* #BoxForm.ChatBack1 {
@@ -367,7 +369,7 @@ input:focus, .enviar:focus{
 
 .custom-textarea {
   width: calc(100% - 50px);
-  /* max-width: 100%; */ /* Evita que crezca más del contenedor */
+  /* max -width: 100%; */ /* Evita que crezca más del contenedor */
   /* min-height: 1.5em; */ /* Altura mínima para una línea */
   height: auto;
   max-height: calc(1.5rem * 6 * 16px); /* Limita el crecimiento a 4 líneas */

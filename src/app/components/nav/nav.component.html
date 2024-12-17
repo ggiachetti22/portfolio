@@ -31,10 +31,10 @@
                 </a>
 
                 <ng-template #UserSess>
-                        <a class="Nav-link" [routerLink]="[ '/login'] " [queryParams]="{action: '3'} " (click)="logoff() ">
+                    <a id="Nav-link" class="Nav-link" [routerLink]="[ '/login'] " [queryParams]="{action: '3'} " (click)="logoff() ">
                         Cerrar Sesión
                         <div class="div " [ngClass]="ElLink3 ? 'link1 ' : 'link2' "></div>
-                      </a>
+                    </a>
                 </ng-template>
 
             </li>

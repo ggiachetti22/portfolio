@@ -18,9 +18,10 @@ h1.Chat2 {
 
 .section {
     width: 100%;
+    height: calc(100vh - 60px);
     height: 100vh;
+    max-height: 900px;
     margin-top: -60px;
-    /* max-height: calc(100vh - 60px); */
     display: flex;
     position: inherit;
     justify-content: center;
@@ -30,29 +31,32 @@ h1.Chat2 {
 }
 
 
+#Cont-box {
+  width: 100%;
+  min-width: 280px;
+  /* margin: auto; */
+  /* outline: 10px solid yellowgreen;
+  outline-offset: -10px; */
+}
+
+
 .section::-webkit-scrollbar {
   display: none;
 }
 
-#Cont-box {
-  width: 100%;
-  min-width: 280px;
-  /* outline: 10px solid yellowgreen;
-  outline-offset: -10px; */
-}
 
 #Cont-box #Cont {
   padding: 5px 7px 5px 7px;
   width: 100%;
   min-width: 288px;
   max-width: 500px;
-  height: calc(100vh - 70px);
-  max-height: 700px;
+  height: auto;
+  max-height: calc(100vh - 80px);
+  margin-top: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  margin-top: 60px;
   overflow-y: scroll;
   background: rgba(5, 67, 26, 0.8);
   /* outline: 2px solid yellowgreen;

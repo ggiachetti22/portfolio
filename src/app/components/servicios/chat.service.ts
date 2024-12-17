@@ -35,7 +35,9 @@ const HttpOption = {
     private readonly apiAddMessagerGroup: string = "/api/Messager/AddChatGroup";
     
     constructor(protected http: HttpClient) {
-      this.hubConnection = new signalR.HubConnectionBuilder().withUrl('https://www.mychatmessager.somee.com/chatHub').build();
+      this.hubConnection = new signalR.HubConnectionBuilder().withUrl('http://www.mychatmessager.somee.com/chatHub')
+      .configureLogging(signalR.LogLevel.Information) // Agrega logs detallados
+      .build();
       this.startConnection();
       this.receiveMessage();
     } // constructor;

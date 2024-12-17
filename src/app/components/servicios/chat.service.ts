@@ -21,7 +21,7 @@ const HttpOption = {
 
   export class ChatService {
 
-    private hubConnection: signalR.HubConnection;
+    // private hubConnection: signalR.HubConnection;
 
     private readonly baseUrl: String = `https://localhost:7212/`;
     private getMsj: String = `api/Messager/ViewChatGroup`;
@@ -35,26 +35,25 @@ const HttpOption = {
     private readonly apiAddMessagerGroup: string = "/api/Messager/AddChatGroup";
     
     constructor(protected http: HttpClient) {
-      this.hubConnection = new signalR.HubConnectionBuilder().withUrl('http://www.mychatmessager.somee.com/chatHub')
-      .configureLogging(signalR.LogLevel.Information) // Agrega logs detallados
-      .build();
-      this.startConnection();
-      this.receiveMessage();
+      // this.hubConnection = new signalR.HubConnectionBuilder().withUrl('https://www.mychatmessager.somee.com/chatHub').configureLogging(signalR.LogLevel.Information).build();
+      // this.startConnection();
+      // this.receiveMessage();
     } // constructor;
 
-    private startConnection() {
+    /* private startConnection() {
       this.hubConnection
         .start()
         .then(() => console.log('Conexión a SignalR iniciada'))
         .catch(err => console.error('Error al conectar con el hub:', err));
-    } // startConnection;
+    } // startConnection; */
   
-    public receiveMessage() {
+
+    /* public receiveMessage() {
       this.hubConnection.on('ReceiveMessage', (user: string, message: string) => {
         console.log(`Mensaje recibido de ${user}: ${message}`);
         // Aquí puedes actualizar tu UI
       });
-    } // receiveMessage;
+    } // receiveMessage; */
 
   
     private stateSource1 = new BehaviorSubject<boolean>(false);

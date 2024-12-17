@@ -115,6 +115,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     this.ElNombre?.nativeElement.focus();
   } // this.EnfocarImput();
  
+  textValue: string = '';
 
   public SendMsj() {
     // console.log("SendMsj");
@@ -129,6 +130,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);
       this.ViewChatGroup();
+      this.textValue = '';
       // this.inputMessage?.nativeElement.setValue('');
     }, 500);
     

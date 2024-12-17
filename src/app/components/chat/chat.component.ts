@@ -121,8 +121,10 @@ export class ChatComponent implements OnInit, AfterViewInit {
     this.myID = Number(this.loginService.userData?.userID);
 
     if (!this.Mensaje.value || this.Mensaje.value.trim() === "") {
+      console.log("Cadena vacía");
+    } else {
       this.chatService.SendMsjGroup(`${this.loginService.userData?.userName}`, this.Mensaje, Number(this.loginService.userData?.userID));
-    } // if;
+    } // else;
 
     setTimeout(() => {
       console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);

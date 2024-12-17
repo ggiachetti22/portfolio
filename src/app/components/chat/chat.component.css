@@ -59,7 +59,7 @@ h1.Chat2 {
   width: 100%;
   min-width: 288px;
   max-width: 500px;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 120px);
   display: flex;
   flex-direction: column;
   align-items: center;

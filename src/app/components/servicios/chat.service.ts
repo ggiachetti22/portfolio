@@ -4,6 +4,8 @@ import { Form, FormControl } from "@angular/forms";
 import { BehaviorSubject, Observable } from "rxjs";
 import { MessageDTO, MyResponse } from "../interface/interfaces";
 import { environment } from "../../url/url.component";
+import * as signalR from '@microsoft/signalr';
+
 
 const HttpOption = {
     MyHeader: new HttpHeaders ({
@@ -19,6 +21,8 @@ const HttpOption = {
 
   export class ChatService {
 
+    private hubConnection: signalR.HubConnection;
+
     private readonly baseUrl: String = `https://localhost:7212/`;
     private getMsj: String = `api/Messager/ViewChatGroup`;
     private getMsjUser: String = `api/Messager/GetMessageUser/`;
@@ -31,7 +35,25 @@ const HttpOption = {
     private readonly apiAddMessagerGroup: string = "/api/Messager/AddChatGroup";
     
     constructor(protected http: HttpClient) {
+      this.hubConnection = new signalR.HubConnectionBuilder().withUrl('https://www.mychatmessager.somee.com/chatHub').build();
+      this.startConnection();
+      this.receiveMessage();
     } // constructor;
+
+    private startConnection() {
+      this.hubConnection
+        .start()
+        .then(() => console.log('Conexión a SignalR iniciada'))
+        .catch(err => console.error('Error al conectar con el hub:', err));
+    } // startConnection;
+  
+    public receiveMessage() {
+      this.hubConnection.on('ReceiveMessage', (user: string, message: string) => {
+        console.log(`Mensaje recibido de ${user}: ${message}`);
+        // Aquí puedes actualizar tu UI
+      });
+    } // receiveMessage;
+
   
     private stateSource1 = new BehaviorSubject<boolean>(false);
     private stateSource2 = new BehaviorSubject<boolean>(false);

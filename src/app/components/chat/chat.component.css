@@ -59,12 +59,12 @@ h1.Chat2 {
   width: 100%;
   min-width: 288px;
   max-width: 500px;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 70px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   background: rgba(5, 67, 26, 0.8);
   /* outline: 2px solid yellowgreen;
   outline-offset: -2px; */

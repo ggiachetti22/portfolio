@@ -517,7 +517,7 @@ a .link2 {
 (width: 300px) {
     #NavSection {
         background: linear-gradient(-45deg, #1d81cc, #162838 80%);
-        /* background: rgba(0, 0, 0, .03); */
+        opacity: .5;        
         -webkit-backdrop-filter: blur(0);
         backdrop-filter: blur(0);
     }

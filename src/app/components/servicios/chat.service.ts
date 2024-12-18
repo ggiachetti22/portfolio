@@ -45,14 +45,14 @@ const HttpOption = {
       this.hubConnection
       .start()
       .then( () => { console.log('Conexion exitosa!'); } )
-      .catch( (er) => { console.error('Error: de conexion: ', er); } );
+      .catch( (er) => { console.error('Error: de conexion: ', er.chatHub); } );
 
     } // this.startConnection();
 
 
-    // myMsj: (userName: string, mensage: string) => void
+    // myMsj: (userName: string, mensaje: string) => void
 
-    public listenForMessage( myMsj: (mensage: string) => void ): void {
+    public listenForMessage( myMsj: (mensaje: string) => void ): void {
       this.hubConnection.on('ReceiveMessage', myMsj);
     } // this.listenForMessage();
 
@@ -60,22 +60,6 @@ const HttpOption = {
     public stopConnection(): void {
       this.hubConnection.stop();
     } // this.stopConnection();
-
-
-    /* private startConnection() {
-      this.hubConnection
-        .start()
-        .then(() => console.log('Conexión a SignalR iniciada'))
-        .catch(err => console.error('Error al conectar con el hub:', err));
-    } // startConnection; */
-  
-
-    /* public receiveMessage() {
-      this.hubConnection.on('ReceiveMessage', (user: string, message: string) => {
-        console.log(`Mensaje recibido de ${user}: ${message}`);
-        // Aquí puedes actualizar tu UI
-      });
-    } // receiveMessage; */
 
   
     private stateSource1 = new BehaviorSubject<boolean>(false);

@@ -128,9 +128,9 @@ export class ChatComponent implements OnInit, AfterViewInit {
     // \!this.Mensaje.value || this.Mensaje.value.trim() === ""
     // chatMsj && chatMsj.trim();
     if (chatMsj && chatMsj.trim()) {
-      this.chatService.sendMessage(`${userName}`, `${chatMsj}`, usuarioID, conversacionID);
-      this.Mensaje.reset();
-      // this.chatService.SendMsjGroup(`${userName}`, this.Mensaje, usuarioID);
+      // this.chatService.sendMessage(`${userName}`, `${chatMsj}`, usuarioID, conversacionID);
+      // this.Mensaje.reset();
+      this.chatService.SendMsjGroup(`${userName}`, this.Mensaje, usuarioID);
     } else {
       console.log("Cadena vacía");
     } // else;

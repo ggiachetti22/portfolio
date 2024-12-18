@@ -352,7 +352,12 @@ export class NavComponent implements OnInit {
     window.location.href = 'login?action=3';
   } // logoff;
 
+
+  // public showFooter = true;
+
   public scrollToTop(): void {
+    // const myRouter = ['/chat', '/chat?action=2'];
+
     window.scrollTo({
       top: 0,
       behavior: 'smooth' // Desplazamiento suave

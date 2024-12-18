@@ -37,9 +37,9 @@ const HttpOption = {
     public messages: { userName: string; chatMsj: string; timeMessage: string }[] = [];
 
     constructor(protected http: HttpClient) {
-      this.startConnection();
-      this.addMessageListener();
-      this.stopConnection();
+      // this.startConnection();
+      // this.addMessageListener();
+      // this.stopConnection();
     } // constructor;
 
     // `${this.apiUrlMessager}/chatHub`

@@ -42,13 +42,23 @@ const HttpOption = {
       // this.stopConnection();
     } // constructor;
 
+    // `${this.apiUrlMessager}/chatHub`
+    // https://www.mychatmessager.somee.com/chatHub
     private startConnection(): void {
-      this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl(`${this.apiUrlMessager}/chatHub`).build();
-
-      this.hubConnection.start()
-      .then( () => { console.log('Conexion exitosa!'); } )
-      .catch( (er) => { console.error('Error: de conexion: ', er); } );
+      try {
+        this.hubConnection = new signalR.HubConnectionBuilder()
+        .withUrl('https://www.mychatmessager.somee.com/chatHub').build();
+  
+        this.hubConnection.start()
+        .then( () => { console.log('Conexion exitosa!'); } )
+        .catch( (er) => { console.error('Error: de conexion: ', er); } );
+      } catch (err) {
+        console.error('Error connecting to SignalR:', err);
+        
+        setTimeout( () => {
+          this.startConnection(); 
+        }, 5000);
+      } // catch;
     } // this.startConnection();
 
     private addMessageListener(): void {

@@ -34,22 +34,15 @@ export class ChatComponent implements OnInit, AfterViewInit {
   constructor(private changeDtRef: ChangeDetectorRef, private titleService: TitleServices, private chatService : ChatService, private renderer : Renderer2, private loginService: LoginServices) {} // constructor;
 
   public ngOnInit(): void {
-    this.titleService.AddTitle(this.title);
     // this.UpID();
     // this.GetM();
+    this.titleService.AddTitle(this.title);
     this.ViewChatGroup();
-    console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);
+    // console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);
 
     /* this.chatService.listenForMessage((msj: string) => {
       this.Mensajes.push(msj);
     }); // listenForMessage; */
-
-    
-
-    this.chatService.listenForMessage((msj: string) => {
-      // msj = this.textValue;
-      this.Mensajes.push(msj);
-    }); // listenForMessage;
     
   } // this.ngOnInit();
 
@@ -137,11 +130,11 @@ export class ChatComponent implements OnInit, AfterViewInit {
       console.log("Cadena vacía");
     } else {
       this.chatService.SendMsjGroup(`${this.loginService.userData?.userName}`, this.Mensaje, Number(this.loginService.userData?.userID));
-      this.Mensajes.push(this.Mensaje.toString());
+      // this.Mensajes.push(this.Mensaje.toString());
     } // else;
 
     setTimeout(() => {
-      console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);
+      // console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);
       this.ViewChatGroup();
       this.textValue = '';
       // this.inputMessage?.nativeElement.setValue('');
@@ -388,57 +381,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
     
   } // Btn();
 
-
-
-
-
-  /*
-      <section id="Cont">
-      
-        <div id="Msj">
-          <p>ID: <span>..</span></p>
-      
-          <p>...</p>
-      
-          <p id="parrafo" class="parrafo">...</p>
-      
-          <ng-template #TextMaxLength>
-            <p id="parrafo" class="parrafo">...</p>
-          </ng-template>
-      
-      
-          <!-- <div #caja class="BoxBtn">
-            <button #Box1 class="Bots">Editar</button>
-            <button #Box2 class="Bots">Borrar</button>
-            <button #Box3 class="BtnDelete Bots">Eliminar completamente</button>
-          </div> -->
-      
-      
-        </div>
-      
-
-        <div id="BoxForm" [ngClass]="valor ? 'ChatBack1' : 'ChatBack2'">
-      
-          <!-- <input #ElNombre [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElNombre" type="text" placeholder="Nombre.." maxlength="15" autofocus /> -->
-          <!-- <input #ElMensaje [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElApellido" #text type="text" placeholder="Escribe mensaje.." /> -->
-          <div class="custom-textarea" #ElMensaje [ngClass]="valor ? 'ChatColor1' : 'ChatColor2'" name="ElApellido" placeholder="Escribe aquí..." contenteditable="true"></div>
-          <button class="enviar">
-            <i class="icon-paper-plane-alt"></i>
-            <span class="visually-hidden">➣</span>
-          </button>
-      
-        </div>
-
-
-      
-        <!-- <main id="chat">
-          <app-message (click)="ToggleBox($event, ID());" class="chat" *ngFor="let msj of listMessage | async" [oMessage]="msj"></app-message>
-        </main> -->
-      
-        <!-- <app-message *ngFor="let a of ArrayString; let i = index" (ArrayString)="AgregarString($event)"></app-message> -->
-      
-      </section>
-  */
 
   
 } // ChatComponent;

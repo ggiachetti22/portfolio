@@ -47,12 +47,18 @@ const HttpOption = {
     private startConnection(): void {
       try {
         this.hubConnection = new signalR.HubConnectionBuilder()
+        .withUrl('https://www.mychatmessager.somee.com/chatHub', { transport: signalR.HttpTransportType.LongPolling }).build();
+
+        console.log(`this.hubConnection.state: ${this.hubConnection.state}\n signalR.HubConnectionState.Connected: ${signalR.HubConnectionState.Connected}`);
+
+        /* this.hubConnection = new signalR.HubConnectionBuilder()
         .withUrl('https://www.mychatmessager.somee.com/chatHub').build();
   
         this.hubConnection.start()
         .then( () => { console.log('Conexion exitosa!'); } )
-        .catch( (er) => { console.error('Error: de conexion: ', er); } );
+        .catch( (er) => { console.error('Error: de conexion: ', er); } ); */
       } catch (err) {
+        console.log(`this.hubConnection.state: ${this.hubConnection.state}\n signalR.HubConnectionState.Connected: ${signalR.HubConnectionState.Connected}\n\n`);
         console.error('Error connecting to SignalR:', err);
         
         setTimeout( () => {
@@ -73,11 +79,21 @@ const HttpOption = {
     } // this.stopConnection();
 
 
-    public sendMessage(userName: string, chatMsj: string, usuarioID: number, conversacionID: number) {
+    public sendMessage(userName: string, chatMsj: string, usuarioID: Number, conversacionID: Number) {
       this.hubConnection
         .invoke('SendMessage', userName, chatMsj, usuarioID, conversacionID)
         .catch((err) => console.error('Error sending message:', err));
     } // sendMessage;
+
+
+    public SendMsjGroup(userN: string, message: FormControl, usuarioID: Number): void {
+      this.http.post<MyResponse>(this.apiUrlMessager + `${this.apiAddMessagerGroup}`,
+        { "userName": userN, "chatMsj": message.value, "timeMessage": new Date().toISOString(), "usuarioID": usuarioID, "conversacionID": 1, "statesMsj_ID": 1, HttpOption})
+        .subscribe(
+          { next: (sub) => { console.log(sub); },
+            error: (er) => { console.error(er); }
+          });
+    } // SendMsjGroup;
 
   
     private stateSource1 = new BehaviorSubject<boolean>(false);
@@ -121,16 +137,6 @@ const HttpOption = {
       return this.http.get<MessageDTO[]>(this.baseUrl + `${this.getMsj}`);
     } // GetMsj();
   
-
-    public SendMsjGroup(userN: string, message: FormControl, usuarioID: Number): void {
-      this.http.post<MyResponse>(this.apiUrlMessager + `${this.apiAddMessagerGroup}`,
-        { "userName": userN, "chatMsj": message.value, "timeMessage": new Date().toISOString(), "usuarioID": usuarioID, "conversacionID": 1, "statesMsj_ID": 1, HttpOption})
-        .subscribe(
-          { next: (sub) => { console.log(sub); },
-            error: (er) => { console.error(er); }
-          });
-    } // SendMsjGroup;
-
     
     public EnviarMsj(userN: FormControl, message: FormControl): void {
   

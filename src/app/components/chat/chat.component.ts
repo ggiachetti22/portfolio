@@ -122,15 +122,15 @@ export class ChatComponent implements OnInit, AfterViewInit {
   public SendMsj() {
     this.myID = Number(this.loginService.userData?.userID);
     const userName = this.loginService.userData?.userName;
-    const usuarioID = this.myID;
-    const conversacionID = 1; // ID de la conversación actual
     const chatMsj = this.Mensaje.value;
+    const usuarioID = Number(this.myID);
+    const conversacionID = 1; // ID de la conversación actual
     // \!this.Mensaje.value || this.Mensaje.value.trim() === ""
     // chatMsj && chatMsj.trim();
     if (chatMsj && chatMsj.trim()) {
-      this.chatService.sendMessage(`${userName}`, chatMsj.toString(), Number(usuarioID), conversacionID);
+      this.chatService.sendMessage(`${userName}`, `${chatMsj}`, usuarioID, conversacionID);
       this.Mensaje.reset();
-      // this.chatService.SendMsjGroup(`${userName}`, this.Mensaje, usuarioID, conversacionID);
+      // this.chatService.SendMsjGroup(`${userName}`, this.Mensaje, usuarioID);
     } else {
       console.log("Cadena vacía");
     } // else;

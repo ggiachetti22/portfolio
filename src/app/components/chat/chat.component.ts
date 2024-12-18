@@ -31,7 +31,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   public valor!: boolean;
 
-  constructor(private changeDtRef: ChangeDetectorRef, private titleService: TitleServices, private chatService : ChatService, private renderer : Renderer2, private loginService: LoginServices) {} // constructor;
+  constructor(private changeDtRef: ChangeDetectorRef, private titleService: TitleServices, public chatService : ChatService, private renderer : Renderer2, private loginService: LoginServices) {} // constructor;
 
   public ngOnInit(): void {
     // this.UpID();
@@ -126,6 +126,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     const conversacionID = 1; // ID de la conversación actual
     const chatMsj = this.Mensaje.value;
     // \!this.Mensaje.value || this.Mensaje.value.trim() === ""
+    // chatMsj && chatMsj.trim();
     if (chatMsj && chatMsj.trim()) {
       this.chatService.sendMessage(`${userName}`, chatMsj.toString(), Number(usuarioID), conversacionID);
       this.Mensaje.reset();
@@ -134,12 +135,12 @@ export class ChatComponent implements OnInit, AfterViewInit {
       console.log("Cadena vacía");
     } // else;
 
-    setTimeout(() => {
+    /* setTimeout(() => {
       // console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);
       this.ViewChatGroup();
       this.textValue = '';
       // this.inputMessage?.nativeElement.setValue('');
-    }, 500);
+    }, 500); */
     
 
     // this.inputMessage?.nativeElement.focus();

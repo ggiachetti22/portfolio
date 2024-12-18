@@ -135,12 +135,12 @@ export class ChatComponent implements OnInit, AfterViewInit {
       console.log("Cadena vacía");
     } // else;
 
-    /* setTimeout(() => {
+    setTimeout(() => {
       // console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);
       this.ViewChatGroup();
       this.textValue = '';
       // this.inputMessage?.nativeElement.setValue('');
-    }, 500); */
+    }, 500);
     
 
     // this.inputMessage?.nativeElement.focus();

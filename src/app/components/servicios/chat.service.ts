@@ -39,7 +39,7 @@ const HttpOption = {
     constructor(protected http: HttpClient) {
       this.startConnection();
       this.addMessageListener();
-      // this.stopConnection();
+      this.stopConnection();
     } // constructor;
 
     // `${this.apiUrlMessager}/chatHub`

@@ -34,32 +34,40 @@ const HttpOption = {
     
     private hubConnection!: signalR.HubConnection;
 
-    constructor(protected http: HttpClient) {} // constructor;
+    public messages: { userName: string; chatMsj: string; timeMessage: string }[] = [];
 
-    public startConnection(): void {
+    constructor(protected http: HttpClient) {
+      this.startConnection();
+      this.addMessageListener();
+      // this.stopConnection();
+    } // constructor;
 
+    private startConnection(): void {
       this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl(`${this.apiUrlMessager}/chatHub`)
-      .build();
+      .withUrl(`${this.apiUrlMessager}/chatHub`).build();
 
-      this.hubConnection
-      .start()
+      this.hubConnection.start()
       .then( () => { console.log('Conexion exitosa!'); } )
-      .catch( (er) => { console.error('Error: de conexion: ', er.chatHub); } );
-
+      .catch( (er) => { console.error('Error: de conexion: ', er); } );
     } // this.startConnection();
 
-
-    // myMsj: (userName: string, mensaje: string) => void
-
-    public listenForMessage( myMsj: (mensaje: string) => void ): void {
-      this.hubConnection.on('ReceiveMessage', myMsj);
-    } // this.listenForMessage();
+    private addMessageListener(): void {
+      this.hubConnection.on('ReceiveMessage', (data) => {
+        this.messages.push(data);
+      } );
+    } // this.addMessageListener();
 
 
     public stopConnection(): void {
       this.hubConnection.stop();
     } // this.stopConnection();
+
+
+    public sendMessage(userName: string, chatMsj: string, usuarioID: number, conversacionID: number) {
+      this.hubConnection
+        .invoke('SendMessage', userName, chatMsj, usuarioID, conversacionID)
+        .catch((err) => console.error('Error sending message:', err));
+    } // sendMessage;
 
   
     private stateSource1 = new BehaviorSubject<boolean>(false);

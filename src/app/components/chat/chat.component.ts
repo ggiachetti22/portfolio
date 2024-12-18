@@ -40,9 +40,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
     this.ViewChatGroup();
     // console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);
 
-    /* this.chatService.listenForMessage((msj: string) => {
-      this.Mensajes.push(msj);
-    }); // listenForMessage; */
     
   } // this.ngOnInit();
 
@@ -58,11 +55,11 @@ export class ChatComponent implements OnInit, AfterViewInit {
   public listMessage?: Observable<MessageDTO[]>;
   public listMessage2?: MessageDTO[];
   // @ViewChild('text') ElText?: ElementRef;
+  protected myID: Number = 0; // this.myID
   @ViewChild('hidden', { static: false }) hidden?: ElementRef;
   public message_ID = new FormControl(0);
   public Nombre = new FormControl('');
   public Mensaje = new FormControl('');
-  protected myID: Number = 0; // this.myID
   @ViewChild('inputMessage', { static: false }) inputMessage?: ElementRef;
  
   /* public ArrayString? = [''];
@@ -123,14 +120,18 @@ export class ChatComponent implements OnInit, AfterViewInit {
   public textValue: string = '';
 
   public SendMsj() {
-    // console.log("SendMsj");
     this.myID = Number(this.loginService.userData?.userID);
-
-    if (!this.Mensaje.value || this.Mensaje.value.trim() === "") {
-      console.log("Cadena vacía");
+    const userName = this.loginService.userData?.userName;
+    const usuarioID = this.myID;
+    const conversacionID = 1; // ID de la conversación actual
+    const chatMsj = this.Mensaje.value;
+    // \!this.Mensaje.value || this.Mensaje.value.trim() === ""
+    if (chatMsj && chatMsj.trim()) {
+      this.chatService.sendMessage(`${userName}`, chatMsj.toString(), Number(usuarioID), conversacionID);
+      this.Mensaje.reset();
+      // this.chatService.SendMsjGroup(`${userName}`, this.Mensaje, usuarioID, conversacionID);
     } else {
-      this.chatService.SendMsjGroup(`${this.loginService.userData?.userName}`, this.Mensaje, Number(this.loginService.userData?.userID));
-      // this.Mensajes.push(this.Mensaje.toString());
+      console.log("Cadena vacía");
     } // else;
 
     setTimeout(() => {

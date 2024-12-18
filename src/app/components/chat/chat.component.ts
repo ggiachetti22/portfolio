@@ -47,7 +47,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     
 
     this.chatService.listenForMessage((msj: string) => {
-      msj = this.textValue;
+      // msj = this.textValue;
       this.Mensajes.push(msj);
     }); // listenForMessage;
     

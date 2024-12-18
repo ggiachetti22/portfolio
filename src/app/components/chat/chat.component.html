@@ -10,10 +10,14 @@
           
           <div class="Msj">
 
-            <div class="chat" *ngFor="let msj of listMessage | async">
+            <!-- <div class="chat" *ngFor="let msj of listMessage | async">
               <p>{{msj.userName}}</p>
               <p class="parrafo">{{msj.chatMsj}}</p>
               <p>{{msj.timeHora}}</p>
+            </div> -->
+
+            <div class="chat" *ngFor="let msj of Mensajes">
+              <p>{{msj}}</p>
             </div>
 
 

@@ -39,6 +39,11 @@ export class ChatComponent implements OnInit, AfterViewInit {
     // this.GetM();
     this.ViewChatGroup();
     console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);
+
+    this.chatService.listenForMessage((msj: string) => {
+      this.Mensajes.push(msj);
+    }); // listenForMessage;
+    
   } // this.ngOnInit();
 
   
@@ -59,7 +64,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
   public Mensaje = new FormControl('');
   protected myID: Number = 0; // this.myID
   @ViewChild('inputMessage', { static: false }) inputMessage?: ElementRef;
- 
  
   /* public ArrayString? = [''];
  
@@ -115,7 +119,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
     this.ElNombre?.nativeElement.focus();
   } // this.EnfocarImput();
  
-  textValue: string = '';
+  public Mensajes: string[] = [];
+  public textValue: string = '';
 
   public SendMsj() {
     // console.log("SendMsj");
@@ -125,6 +130,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
       console.log("Cadena vacía");
     } else {
       this.chatService.SendMsjGroup(`${this.loginService.userData?.userName}`, this.Mensaje, Number(this.loginService.userData?.userID));
+      this.Mensajes.push(this.Mensaje.toString());
     } // else;
 
     setTimeout(() => {

@@ -19,9 +19,7 @@ const HttpOption = {
     providedIn: 'root'
   })
 
-  export class ChatService {
-
-    // private hubConnection: signalR.HubConnection;
+  export class ChatService {    
 
     private readonly baseUrl: String = `https://localhost:7212/`;
     private getMsj: String = `api/Messager/ViewChatGroup`;
@@ -34,11 +32,35 @@ const HttpOption = {
     private readonly apiMessagerGroup: string = "/api/Messager/ViewMyMessages";
     private readonly apiAddMessagerGroup: string = "/api/Messager/AddChatGroup";
     
-    constructor(protected http: HttpClient) {
-      // this.hubConnection = new signalR.HubConnectionBuilder().withUrl('https://www.mychatmessager.somee.com/chatHub').configureLogging(signalR.LogLevel.Information).build();
-      // this.startConnection();
-      // this.receiveMessage();
-    } // constructor;
+    private hubConnection!: signalR.HubConnection;
+
+    constructor(protected http: HttpClient) {} // constructor;
+
+    public startConnection(): void {
+
+      this.hubConnection = new signalR.HubConnectionBuilder()
+      .withUrl(`${this.apiUrlMessager}/chatHub`)
+      .build();
+
+      this.hubConnection
+      .start()
+      .then( () => { console.log('Conexion exitosa!'); } )
+      .catch( (er) => { console.error('Error: de conexion: ', er); } );
+
+    } // this.startConnection();
+
+
+    // myMsj: (userName: string, mensage: string) => void
+
+    public listenForMessage( myMsj: (mensage: string) => void ): void {
+      this.hubConnection.on('ReceiveMessage', myMsj);
+    } // this.listenForMessage();
+
+
+    public stopConnection(): void {
+      this.hubConnection.stop();
+    } // this.stopConnection();
+
 
     /* private startConnection() {
       this.hubConnection

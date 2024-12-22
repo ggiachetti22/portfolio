@@ -47,16 +47,10 @@ const HttpOption = {
     private startConnection(): void {
       try {
         this.hubConnection = new signalR.HubConnectionBuilder()
-        .withUrl('https://www.mychatmessager.somee.com/chatHub', { transport: signalR.HttpTransportType.LongPolling }).build();
-
+        .withUrl(`${environment.apiMessager}/chatHub`, { transport: signalR.HttpTransportType.LongPolling })
+        .build();
         console.log(`this.hubConnection.state: ${this.hubConnection.state}\n signalR.HubConnectionState.Connected: ${signalR.HubConnectionState.Connected}`);
 
-        /* this.hubConnection = new signalR.HubConnectionBuilder()
-        .withUrl('https://www.mychatmessager.somee.com/chatHub').build();
-  
-        this.hubConnection.start()
-        .then( () => { console.log('Conexion exitosa!'); } )
-        .catch( (er) => { console.error('Error: de conexion: ', er); } ); */
       } catch (err) {
         console.log(`this.hubConnection.state: ${this.hubConnection.state}\n signalR.HubConnectionState.Connected: ${signalR.HubConnectionState.Connected}\n\n`);
         console.error('Error connecting to SignalR:', err);

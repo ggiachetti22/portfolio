@@ -55,24 +55,16 @@ export class ChatComponent implements OnInit, AfterViewInit {
   } // ngAfterViewInit();
 
   public ConnectionHub(): void {
-    this.hubConnection = new signalR.HubConnectionBuilder()
-    .withUrl(this.UrlMessage)
-    .build();
-
+    this.hubConnection = new signalR.HubConnectionBuilder().withUrl(this.UrlMessage).build();
     this.hubConnection.on('InsertMessageGroup', (x => {
+      console.log('InsertMessageGroup: ', x)
       this.ViewChatGroup();
       this.SendMsj();
     }));
-
-
-    this.hubConnection
-    .start()
-    .then(() => {
+ 
+    this.hubConnection.start().then(() => {
       console.log('Conexión éxitosa!');
-    })
-    .catch(er => console.error('Error: ', er));
-
-
+    }).catch(er => console.error('Error hubConnection: ', er));
   } // this.ConnectionHub();
 
 

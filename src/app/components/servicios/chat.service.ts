@@ -29,13 +29,12 @@ const HttpOption = {
     private deleteMsj: String = `api/Messager/DeleteMessage/`;
 
     private readonly apiUrlMessager: string = environment.apiMessager;
+    private hubConnection!: signalR.HubConnection;
     private readonly apiMessagerGroup: string = "/api/Messager/ViewMyMessages";
     private readonly apiAddMessagerGroup: string = "/api/Messager/AddChatGroup";
     
-    private hubConnection!: signalR.HubConnection;
-    private UrlMessage = "https://www.mychatmessager.somee.com/chatHub";
 
-    public messages: { userName: string; chatMsj: string; timeMessage: string }[] = [];
+    public messages: { userName: string; chatMsj: string; timeMessage: string } [] = [];
 
     constructor(protected http: HttpClient) {
       // this.startConnection();
@@ -43,9 +42,9 @@ const HttpOption = {
       // this.stopConnection();
     } // constructor;
 
-    // `${this.apiUrlMessager}/chatHub`
-    // https://www.mychatmessager.somee.com/chatHub
-    private startConnection(): void {
+
+
+    /* private startConnection(): void {
       try {
         this.hubConnection = new signalR.HubConnectionBuilder()
         .withUrl(`${environment.apiMessager}/chatHub`, { transport: signalR.HttpTransportType.LongPolling })
@@ -66,19 +65,20 @@ const HttpOption = {
       this.hubConnection.on('ReceiveMessage', (data) => {
         this.messages.push(data);
       } );
-    } // this.addMessageListener();
+    } // this.addMessageListener(); */
 
 
-    public stopConnection(): void {
+    /* public stopConnection(): void {
       this.hubConnection.stop();
-    } // this.stopConnection();
+    } // this.stopConnection(); */
 
 
-    public sendMessage(userName: string, chatMsj: string, usuarioID: Number, conversacionID: Number) {
+
+    /* public sendMessage(userName: string, chatMsj: string, usuarioID: Number, conversacionID: Number) {
       this.hubConnection
         .invoke('SendMessage', userName, chatMsj, usuarioID, conversacionID)
         .catch((err) => console.error('Error sending message:', err));
-    } // sendMessage;
+    } // sendMessage; */
 
 
     public SendMsjGroup(userN: string, message: FormControl, usuarioID: Number): void {

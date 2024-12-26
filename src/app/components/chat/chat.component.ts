@@ -7,6 +7,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ChatService } from '../servicios/chat.service';
 import { AutoResizeTextArea } from '../scroll/textarea.height';
 import { LoginServices } from '../servicios/login.service';
+import * as signalR from '@microsoft/signalr';
 // import { MessagerComponent } from '../Messager/messager.component';
 
 
@@ -31,6 +32,9 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   public valor!: boolean;
 
+  private hubConnection!: signalR.HubConnection;
+  private UrlMessage = "https://www.mychatmessager.somee.com/chatHub";
+
   constructor(private changeDtRef: ChangeDetectorRef, private titleService: TitleServices, public chatService : ChatService, private renderer : Renderer2, private loginService: LoginServices) {} // constructor;
 
   public ngOnInit(): void {
@@ -38,9 +42,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
     // this.GetM();
     this.titleService.AddTitle(this.title);
     this.ViewChatGroup();
+    this.ConnectionHub();
     // console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);
-
-    
   } // this.ngOnInit();
 
   
@@ -50,6 +53,28 @@ export class ChatComponent implements OnInit, AfterViewInit {
     } ); // subscribe;
     this.changeDtRef.detectChanges();
   } // ngAfterViewInit();
+
+  public ConnectionHub(): void {
+    this.hubConnection = new signalR.HubConnectionBuilder()
+    .withUrl(this.UrlMessage)
+    .build();
+
+    this.hubConnection.on('InsertMessageGroup', (x => {
+      this.ViewChatGroup();
+      this.SendMsj();
+    }));
+
+
+    this.hubConnection
+    .start()
+    .then(() => {
+      console.log('Conexión éxitosa!');
+    })
+    .catch(er => console.error('Error: ', er));
+
+
+  } // this.ConnectionHub();
+
 
 
   public listMessage?: Observable<MessageDTO[]>;
@@ -380,7 +405,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
     this.n = 1 - Number(this.n);
     this.en = this.env[Number(this.n)];
     console.log(`\nthis.n: ${this.n}\n( ${this.env[Number(this.n)]} )`);
-    
   } // Btn();
 
 

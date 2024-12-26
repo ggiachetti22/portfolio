@@ -33,6 +33,7 @@ const HttpOption = {
     private readonly apiAddMessagerGroup: string = "/api/Messager/AddChatGroup";
     
     private hubConnection!: signalR.HubConnection;
+    private UrlMessage = "https://www.mychatmessager.somee.com/chatHub";
 
     public messages: { userName: string; chatMsj: string; timeMessage: string }[] = [];
 

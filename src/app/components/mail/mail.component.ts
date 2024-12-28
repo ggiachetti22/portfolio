@@ -45,13 +45,15 @@ export class MailComponent implements AfterViewInit {
   } // ngAfterViewInit();
 
 
-  public SendMessageEmail(): void {
-    // email && email.trim() && message && message.trim()
-    // `Debes completar los campos`
+  public SendMessageEmail(): void {    
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (emailPattern.test(this.toEmail.value)) {
-      this.Msj = `Mensaje enviado con éxito.!`;
-      this.EnviarElMensaje();
+      if(this.toEmail.value && this.toEmail.value.trim() && this.toMessage.value && this.toMessage.value.trim()) {
+        this.Msj = `Mensaje enviado con éxito.!`;
+        this.EnviarElMensaje();
+      } else {
+        this.Msj = `Debes completar los campos`;  
+      } // else;
       // this.ResetTextArea();
     } else {
       this.Msj = `Verifica el correo es incorrecto`;

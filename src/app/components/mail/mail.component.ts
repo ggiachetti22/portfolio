@@ -46,6 +46,8 @@ export class MailComponent implements AfterViewInit {
 
 
   public SendMessageEmail(): void {
+    // email && email.trim() && message && message.trim()
+    // `Debes completar los campos`
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (emailPattern.test(this.toEmail.value)) {
       this.Msj = `Mensaje enviado con éxito.!`;
@@ -56,15 +58,12 @@ export class MailComponent implements AfterViewInit {
       // this.ResetTextArea();
     } // else;
     this.ResetTextArea();
-    // email && email.trim() && message && message.trim()
-    // `Debes completar los campos`
   } // SendMessageEmail;
 
 
   private EnviarElMensaje(): void {
-    var email = this.toEmail.value;
-    var message = this.toMessage.value;
     var mySend = { toEmail: this.toEmail.value, toMessage: this.toMessage.value };
+
     this.http.post(`${this.ApiUrlEmail}${this.enviarMensajeEmail}`, mySend).subscribe({
       next: (resp) => { console.log(`Mensaje enviado con éxito.!! ${this.toEmail}, ${this.toMessage}`) },
       error: (er) => { console.error(er); }

@@ -63,12 +63,18 @@ export class MailComponent implements AfterViewInit {
 
 
   private EnviarElMensaje(): void {
+    var email = this.toEmail.value;
+    var message = this.toMessage.value;
     var mySend = { toEmail: this.toEmail.value, toMessage: this.toMessage.value };
 
-    this.http.post(`${this.ApiUrlEmail}${this.enviarMensajeEmail}`, mySend).subscribe({
-      next: (resp) => { console.log(`Mensaje enviado con éxito.!! ${this.toEmail}, ${this.toMessage}`) },
-      error: (er) => { console.error(er); }
-    }); // subscribe;
+    if(email && email.trim() && message && message.trim()) {
+      this.http.post(`${this.ApiUrlEmail}${this.enviarMensajeEmail}`, mySend).subscribe({
+        next: (resp) => { console.log(`Mensaje enviado con éxito.!! ${this.toEmail}, ${this.toMessage}`) },
+        error: (er) => { console.error(er); }
+      }); // subscribe;
+    } else {
+      console.log(`Debes completar los campos`);
+    } // else;
   } // this.EnviarElMensaje();
 
   private ResetTextArea(): void {

@@ -54,10 +54,8 @@ export class MailComponent implements AfterViewInit {
       } else {
         this.Msj = `Debes completar los campos`;  
       } // else;
-      // this.ResetTextArea();
     } else {
       this.Msj = `Verifica el correo es incorrecto`;
-      // this.ResetTextArea();
     } // else;
     this.ResetTextArea();
   } // SendMessageEmail;
@@ -65,7 +63,7 @@ export class MailComponent implements AfterViewInit {
 
   private EnviarElMensaje(): void {
     var mySend = { toEmail: this.toEmail.value, toMessage: this.toMessage.value };
-
+    // this.http.post(`${this.ApiUrlEmail}${this.enviarMensajeEmail}`, mySend, { responseType: 'text' }).subscribe
     this.http.post(`${this.ApiUrlEmail}${this.enviarMensajeEmail}`, mySend).subscribe({
       next: (resp) => { console.log(`Mensaje enviado con éxito.!! ${this.toEmail}, ${this.toMessage}`) },
       error: (er) => { console.error(er); }

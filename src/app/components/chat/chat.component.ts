@@ -43,7 +43,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     // this.GetM();
     this.titleService.AddTitle(this.title);
     this.ViewChatGroup();
-    // this.ConnectionHub();
+    this.ConnectionHub();
     // console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);
   } // this.ngOnInit();
 

@@ -27,7 +27,7 @@ import { environment } from '../../url/url.component';
   styleUrl: './chat.component.css'
 })
 
-export class ChatComponent implements OnInit, AfterViewInit {
+export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
 
   protected title: string = "Chat Pages";
 
@@ -43,7 +43,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     // this.GetM();
     this.titleService.AddTitle(this.title);
     this.ViewChatGroup();
-    // this.ConnectionHub();
+    this.ConnectionHub();
     // console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);
   } // this.ngOnInit();
 
@@ -56,13 +56,13 @@ export class ChatComponent implements OnInit, AfterViewInit {
   } // ngAfterViewInit();
 
 
-  /* public ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     if (this.hubConnection) {
       this.hubConnection.stop().then(() => {
         console.log('Conexión detenida.');
       }).catch(err => console.error('Error al detener la conexión: ', err));
     } // if;
-  } // ngOnDestroy(); */
+  } // ngOnDestroy();
 
 
   public ConnectionHub(): void {

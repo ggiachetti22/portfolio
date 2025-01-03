@@ -27,7 +27,7 @@ import { environment } from '../../url/url.component';
   styleUrl: './chat.component.css'
 })
 
-export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ChatComponent implements OnInit, AfterViewInit {
 
   protected title: string = "Chat Pages";
 
@@ -43,7 +43,7 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
     // this.GetM();
     this.titleService.AddTitle(this.title);
     this.ViewChatGroup();
-    this.ConnectionHub();
+    // this.ConnectionHub();
     // console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);
   } // this.ngOnInit();
 
@@ -56,24 +56,25 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
   } // ngAfterViewInit();
 
 
-  public ngOnDestroy(): void {
+  /* public ngOnDestroy(): void {
     if (this.hubConnection) {
       this.hubConnection.stop().then(() => {
         console.log('Conexión detenida.');
       }).catch(err => console.error('Error al detener la conexión: ', err));
     } // if;
-  } // ngOnDestroy();
+  } // ngOnDestroy(); */
 
-  
+
   public ConnectionHub(): void {
     this.hubConnection = new signalR.HubConnectionBuilder().withUrl(this.apiUrlMessager + '/chatHub')
     .withAutomaticReconnect([0, 2000, 10000, 30000])
     .build();
+
     this.hubConnection.on('InsertMessageGroup', (x => {
       console.log('InsertMessageGroup: ', x)
       // this.ViewChatGroup();
       // this.SendMsj();
-    }));
+    })); // on;
  
     this.hubConnection.start().then(() => {
       console.log('Conexión éxitosa!');

@@ -46,17 +46,6 @@ export class ChatComponent implements OnInit, AfterViewInit { // OnDestroy
 
     // console.log("My URL: ", this.apiUrlMessager + '/chatHub');
 
-    const connection = new signalR.HubConnectionBuilder()
-    .withUrl(this.apiUrlMessager + '/chatHub', {
-      accessTokenFactory: () => {
-        return connection; // Aquí puedes enviar el token JWT o cualquier parámetro necesario.
-    }
-    })
-    .build();
-
-    connection.start().catch(err => console.error("Error de conexión: ", err));
-
-
     // this.ConnectionHub();
 
     // console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);

@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { TitleServices } from '../servicios/title.service';
 import { NgClass, NgFor, CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
@@ -27,9 +27,9 @@ import { environment } from '../../url/url.component';
   styleUrl: './chat.component.css'
 })
 
-export class ChatComponent implements OnInit, AfterViewInit {
+export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  protected title: string = `Chat Pages`;
+  protected title: string = "Chat Pages";
 
   public valor!: boolean;
 
@@ -55,8 +55,20 @@ export class ChatComponent implements OnInit, AfterViewInit {
     this.changeDtRef.detectChanges();
   } // ngAfterViewInit();
 
+
+  public ngOnDestroy(): void {
+    if (this.hubConnection) {
+      this.hubConnection.stop().then(() => {
+        console.log('Conexión detenida.');
+      }).catch(err => console.error('Error al detener la conexión: ', err));
+    } // if;
+  } // ngOnDestroy();
+
+  
   public ConnectionHub(): void {
-    this.hubConnection = new signalR.HubConnectionBuilder().withUrl(this.apiUrlMessager + '/chatHub').build();
+    this.hubConnection = new signalR.HubConnectionBuilder().withUrl(this.apiUrlMessager + '/chatHub')
+    .withAutomaticReconnect([0, 2000, 10000, 30000])
+    .build();
     this.hubConnection.on('InsertMessageGroup', (x => {
       console.log('InsertMessageGroup: ', x)
       // this.ViewChatGroup();

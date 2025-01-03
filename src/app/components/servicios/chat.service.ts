@@ -73,7 +73,6 @@ const HttpOption = {
     } // this.stopConnection(); */
 
 
-
     /* public sendMessage(userName: string, chatMsj: string, usuarioID: Number, conversacionID: Number) {
       this.hubConnection
         .invoke('SendMessage', userName, chatMsj, usuarioID, conversacionID)

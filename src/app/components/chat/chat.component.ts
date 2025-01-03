@@ -8,6 +8,7 @@ import { ChatService } from '../servicios/chat.service';
 import { AutoResizeTextArea } from '../scroll/textarea.height';
 import { LoginServices } from '../servicios/login.service';
 import * as signalR from '@microsoft/signalr';
+import { environment } from '../../url/url.component';
 // import { MessagerComponent } from '../Messager/messager.component';
 
 
@@ -33,7 +34,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
   public valor!: boolean;
 
   private hubConnection!: signalR.HubConnection;
-  private UrlMessage = "https://www.mychatmessager.somee.com/chatHub";
+  private readonly apiUrlMessager: string = environment.apiMessager;
 
   constructor(private changeDtRef: ChangeDetectorRef, private titleService: TitleServices, public chatService : ChatService, private renderer : Renderer2, private loginService: LoginServices) {} // constructor;
 
@@ -55,11 +56,11 @@ export class ChatComponent implements OnInit, AfterViewInit {
   } // ngAfterViewInit();
 
   public ConnectionHub(): void {
-    this.hubConnection = new signalR.HubConnectionBuilder().withUrl(this.UrlMessage).build();
+    this.hubConnection = new signalR.HubConnectionBuilder().withUrl(this.apiUrlMessager + '/chatHub').build();
     this.hubConnection.on('InsertMessageGroup', (x => {
       console.log('InsertMessageGroup: ', x)
-      this.ViewChatGroup();
-      this.SendMsj();
+      // this.ViewChatGroup();
+      // this.SendMsj();
     }));
  
     this.hubConnection.start().then(() => {

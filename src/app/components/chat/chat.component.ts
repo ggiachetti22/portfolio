@@ -27,7 +27,7 @@ import { environment } from '../../url/url.component';
   styleUrl: './chat.component.css'
 })
 
-export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
+export class ChatComponent implements OnInit, AfterViewInit { // OnDestroy
 
   protected title: string = "Chat Pages";
 
@@ -44,10 +44,14 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
     this.titleService.AddTitle(this.title);
     this.ViewChatGroup();
 
-    console.log("My URL: ", this.apiUrlMessager + '/chatHub');
+    // console.log("My URL: ", this.apiUrlMessager + '/chatHub');
 
     const connection = new signalR.HubConnectionBuilder()
-    .withUrl(this.apiUrlMessager + '/chatHub')
+    .withUrl(this.apiUrlMessager + '/chatHub', {
+      accessTokenFactory: () => {
+        return connection; // Aquí puedes enviar el token JWT o cualquier parámetro necesario.
+    }
+    })
     .build();
 
     connection.start().catch(err => console.error("Error de conexión: ", err));
@@ -67,13 +71,13 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
   } // ngAfterViewInit();
 
 
-  public ngOnDestroy(): void {
+  /* public ngOnDestroy(): void {
     if (this.hubConnection) {
       this.hubConnection.stop().then(() => {
         console.log('Conexión detenida.');
       }).catch(err => console.error('Error al detener la conexión: ', err));
     } // if;
-  } // ngOnDestroy();
+  } // ngOnDestroy(); */
 
 
   public ConnectionHub(): void {

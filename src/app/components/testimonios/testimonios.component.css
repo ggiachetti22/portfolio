@@ -67,7 +67,6 @@ section {
 }
 
 
-
 figure {
     width: 80px;
     height: 80px;
@@ -82,7 +81,17 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: saturate(.5);
+    transition: filter .2s ease-in, transform .2s ease-in;
 }
+
+
+.section .div:hover figure img {
+    filter: saturate(1);
+    transform: scale(1.15);
+}
+
+
 
 .titulos {
     margin-top: 50px;

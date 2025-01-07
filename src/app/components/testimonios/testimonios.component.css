@@ -112,6 +112,46 @@ h4 {
 }
 
 
+
+/* -----------------SVG------------------- */
+
+
+
+#Box-svg {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    outline: 2px solid tomato;
+    outline-offset: -2px;
+}
+
+.SVG {
+    width: 75px;
+    height: 75px;
+    border-radius: 1em;
+    background: rgba(255, 255, 255, .1);
+}
+
+.svg path {
+    fill: aqua;
+}
+
+:nth-last-child(1) .svg {
+    transform: translateY(15%) translateX(8%);
+}
+
+:nth-last-child(2) .svg {
+    transform: translateY(11%) translateX(6%);
+}
+
+:nth-last-child(3) .svg {
+    transform: translateY(11%) translateX(6%);
+}
+
+
+
+
 /* -----------------Media Query------------------- */
 
 

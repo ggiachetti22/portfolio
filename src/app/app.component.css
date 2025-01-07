@@ -7,6 +7,11 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0px 0px 0px 0px;
+    background-image: url("../assets/img/Fondo\ Granulado.avif");
+    background-position: 0 0;
+    -webkit-font-smoothing: antialiased;
+    /* -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px); */
     /* outline: 5px solid yellowgreen;
     outline-offset: -5px; */
 }

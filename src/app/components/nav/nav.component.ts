@@ -97,20 +97,24 @@ export class NavComponent implements OnInit {
 
 
   public ngAfterViewInit(): void {    
-    this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
-    if (this.titleService.CurrentLight) {
-      this.renderer.addClass(this.Svg.nativeElement, 'activaCheck');
-      this.renderer.addClass(this.Circle.nativeElement, 'circleCheck');
 
-      this.renderer.addClass(this.Svg0.nativeElement, 'activaCheck');
-      this.renderer.addClass(this.Circle0.nativeElement, 'circleCheck');
-    } else {
-      this.renderer.removeClass(this.Svg.nativeElement, 'activaCheck');
-      this.renderer.removeClass(this.Circle.nativeElement, 'circleCheck');
+    if(this.parrafoBox?.nativeElement && this.Svg?.nativeElement && this.Circle?.nativeElement && this.Svg0?.nativeElement && this.Circle0?.nativeElement) {
+      this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
+      if (this.titleService.CurrentLight) {
+        this.renderer.addClass(this.Svg.nativeElement, 'activaCheck');
+        this.renderer.addClass(this.Circle.nativeElement, 'circleCheck');
+  
+        this.renderer.addClass(this.Svg0.nativeElement, 'activaCheck');
+        this.renderer.addClass(this.Circle0.nativeElement, 'circleCheck');
+      } else {
+        this.renderer.removeClass(this.Svg.nativeElement, 'activaCheck');
+        this.renderer.removeClass(this.Circle.nativeElement, 'circleCheck');
+  
+        this.renderer.removeClass(this.Svg0.nativeElement, 'activaCheck');
+        this.renderer.removeClass(this.Circle0.nativeElement, 'circleCheck');
+      } // else;
+    } // if
 
-      this.renderer.removeClass(this.Svg0.nativeElement, 'activaCheck');
-      this.renderer.removeClass(this.Circle0.nativeElement, 'circleCheck');
-    } // else;
   } // ngAfterViewInit();
 
 

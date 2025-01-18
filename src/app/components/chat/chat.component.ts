@@ -45,7 +45,7 @@ export class ChatComponent implements OnInit, AfterViewInit { // OnDestroy
     this.ViewChatGroup();
 
     console.log("this.MyConnection(): \n");
-    this.MyConnection();
+    // this.MyConnection();
 
     // console.log("My URL: ", this.apiUrlMessager + '/chatHub');
 

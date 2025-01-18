@@ -8,13 +8,12 @@ import { ScrollAnimationDirective } from '../scroll/scroll.animation';
 import { SubMenuComponent } from '../sub-menu/sub-menu.component';
 import { TitleServices } from '../servicios/title.service';
 
-
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     ScrollAnimationDirective,
-    // SubMenuComponent,
+    SubMenuComponent,
     MailComponent,
     SectionIntroComponent,
     SectionPortfolioComponent,
@@ -35,6 +34,5 @@ export class HomeComponent implements OnInit {
   } // this.ngOnInit();
 
   protected title: string = `Home Pages`;
-
 
 } // HomeComponent;

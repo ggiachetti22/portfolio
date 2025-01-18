@@ -26,7 +26,7 @@ export class MailComponent implements AfterViewInit {
   public toEmail = new FormControl();
   public toMessage = new FormControl();
   public Msj: String = "Dejanos un mensaje";
-  @ViewChild('correo', {static: false}) correo?: ElementRef;
+  @ViewChild('correo', {static: false}) correo!: ElementRef;
 
   // "start": "ng serve --proxy-config proxy.conf.json -o",
 
@@ -73,7 +73,7 @@ export class MailComponent implements AfterViewInit {
   private ResetTextArea(): void {
     this.toEmail.setValue('');
     this.toMessage.setValue('');
-    this.correo?.nativeElement.focus();
+    if(this.correo?.nativeElement) this.correo?.nativeElement.focus();
   } // this.ResetTextArea();
 
 

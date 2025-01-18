@@ -74,7 +74,7 @@ export class ChatComponent implements OnInit, AfterViewInit { // OnDestroy
   public MyConnection() : void {
     let connect = new signalR.HubConnectionBuilder().withUrl(this.apiUrlMessager + '/chatHub').build();
     connect.on("SendtMessageGroup", data => {
-      console.log("Conexción: ", data);
+      console.log("Conexión: ", data);
     });
     connect.start().then(() => connect.invoke("SendtMessageGroup", "Hola Mundo..!")).catch(er => console.error(er));
   } // this.MyConnection();

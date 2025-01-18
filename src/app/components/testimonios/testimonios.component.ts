@@ -23,10 +23,13 @@ export class TestimoniosComponent implements AfterViewInit {
     } ); // subscribe;
     this.changeDtRef.detectChanges();
 
-    this.ancho = this.Box.nativeElement.offsetWidth;
-    this.altura = this.Box.nativeElement.offsetHeight;
-    this.Top = this.Box.nativeElement.offsetHeight - this.Box.nativeElement.offsetHeight;
-    this.Center = this.ancho / 2;
+    if(this.Box && this.Box?.nativeElement) {
+      this.ancho = this.Box.nativeElement.offsetWidth;
+      this.altura = this.Box.nativeElement.offsetHeight;
+      this.Top = this.Box.nativeElement.offsetHeight - this.Box.nativeElement.offsetHeight;
+      this.Center = this.ancho / 2;
+    } // if;
+
   } // ngAfterViewInit();
 
   public Top = 0;

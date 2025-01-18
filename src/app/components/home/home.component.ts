@@ -5,15 +5,16 @@ import { SectionPortfolioComponent } from '../section-portfolio/section-portfoli
 import { SectionServicesComponent } from '../section-services/section-services.component';
 import { SectionTestimoniosComponent } from '../section-testimonios/section-testimonios.component';
 import { ScrollAnimationDirective } from '../scroll/scroll.animation';
-import { SubMenuComponent } from '../sub-menu/sub-menu.component';
 import { TitleServices } from '../servicios/title.service';
+// import { SubMenuComponent } from '../sub-menu/sub-menu.component';
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
+    // SubMenuComponent,
     ScrollAnimationDirective,
-    SubMenuComponent,
     MailComponent,
     SectionIntroComponent,
     SectionPortfolioComponent,

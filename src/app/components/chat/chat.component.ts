@@ -7,8 +7,8 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ChatService } from '../servicios/chat.service';
 import { AutoResizeTextArea } from '../scroll/textarea.height';
 import { LoginServices } from '../servicios/login.service';
-import { environment } from '../../url/url.component';
 import * as signalR from '@microsoft/signalr';
+import { environment } from '../../url/url.component';
 // import { MessagerComponent } from '../Messager/messager.component';
 
 
@@ -46,7 +46,6 @@ export class ChatComponent implements OnInit, AfterViewInit { // OnDestroy
 
     // console.log("My URL: ", this.apiUrlMessager + '/chatHub');
 
-    // console.log("this.MyConnection(); \n");
     // this.ConnectionHub();
 
     // console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);

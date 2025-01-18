@@ -7,13 +7,16 @@ import { SectionTestimoniosComponent } from '../section-testimonios/section-test
 import { ScrollAnimationDirective } from '../scroll/scroll.animation';
 import { SubMenuComponent } from '../sub-menu/sub-menu.component';
 import { TitleServices } from '../servicios/title.service';
+import { environment } from '../../url/url.component';
+import * as signalR from '@microsoft/signalr';
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     ScrollAnimationDirective,
-    SubMenuComponent,
+    // SubMenuComponent,
     MailComponent,
     SectionIntroComponent,
     SectionPortfolioComponent,
@@ -30,9 +33,26 @@ export class HomeComponent implements OnInit {
   public ngOnInit(): void {
 
     this.titleService.AddTitle(this.title);
+
+    console.log("this.MyConnection(); \n");
+    this.MyConnection();
     
   } // this.ngOnInit();
 
   protected title: string = `Home Pages`;
+  private readonly apiUrlMessager: string = environment.apiMessager;
+
+  public MyConnection() : void {
+    let connect = new signalR.HubConnectionBuilder().withUrl(this.apiUrlMessager + '/chatHub').build();
+    connect.on("SendtMessageGroup", conn => {
+      console.log("");
+      console.log(conn);
+      console.log("");
+    });
+    connect.start().then(() => console.log("Conexión éxitosa..!!"));
+    // connect.start().then(() => connect.invoke("SendtMessageGroup", "Hola Mundo..!")); //.catch(er => console.error(er));
+  } // this.MyConnection();
+
+  
 
 } // HomeComponent;

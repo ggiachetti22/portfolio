@@ -44,11 +44,9 @@ export class ChatComponent implements OnInit, AfterViewInit { // OnDestroy
     this.titleService.AddTitle(this.title);
     this.ViewChatGroup();
 
-    console.log("this.MyConnection(); \n");
-    this.MyConnection();
-
     // console.log("My URL: ", this.apiUrlMessager + '/chatHub');
 
+    // console.log("this.MyConnection(); \n");
     // this.ConnectionHub();
 
     // console.log('SendMsj => ID:', this.loginService.userData?.userID +' Nombre de Usuario: '+ this.loginService.userData?.userName);
@@ -70,19 +68,6 @@ export class ChatComponent implements OnInit, AfterViewInit { // OnDestroy
       }).catch(err => console.error('Error al detener la conexión: ', err));
     } // if;
   } // ngOnDestroy(); */
-
-  public MyConnection() : void {
-    let connect = new signalR.HubConnectionBuilder().withUrl(this.apiUrlMessager + '/chatHub').build();
-
-    connect.on("SendtMessageGroup", conn => {
-      console.log(conn);
-    });
-
-    connect.start().then(() => console.log("Conexión éxitosa..!!"));
-    // connect.start().then(() => connect.invoke("SendtMessageGroup", "Hola Mundo..!")); //.catch(er => console.error(er));
-
-  } // this.MyConnection();
-
 
 
   public ConnectionHub(): void {

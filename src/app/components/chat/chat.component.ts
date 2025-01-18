@@ -7,8 +7,8 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ChatService } from '../servicios/chat.service';
 import { AutoResizeTextArea } from '../scroll/textarea.height';
 import { LoginServices } from '../servicios/login.service';
-import * as signalR from '@microsoft/signalr';
 import { environment } from '../../url/url.component';
+import * as signalR from '@microsoft/signalr';
 // import { MessagerComponent } from '../Messager/messager.component';
 
 
@@ -73,11 +73,15 @@ export class ChatComponent implements OnInit, AfterViewInit { // OnDestroy
 
   public MyConnection() : void {
     let connect = new signalR.HubConnectionBuilder().withUrl(this.apiUrlMessager + '/chatHub').build();
-    connect.on("SendtMessageGroup", data => {
-      console.log("Conexión: ", data);
+
+    connect.on("SendtMessageGroup", conn => {
+      console.log(conn);
     });
-    connect.start().then(() => connect.invoke("SendtMessageGroup", "Hola Mundo..!")).catch(er => console.error(er));
+
+    connect.start().then(() => connect.invoke("SendtMessageGroup", "Hola Mundo..!")); //.catch(er => console.error(er));
+
   } // this.MyConnection();
+
 
 
   public ConnectionHub(): void {

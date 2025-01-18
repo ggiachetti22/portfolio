@@ -43,3 +43,15 @@ export const environment = {
   
   }
   */
+
+
+
+  /*
+  "strictNullChecks": false,
+  "noImplicitAny": false,
+  "forceConsistentCasingInFileNames": true,
+  */
+
+
+
+  

@@ -30,6 +30,7 @@ export class TestimoniosComponent implements AfterViewInit {
       this.Center = this.ancho / 2;
     } // if;
 
+    
   } // ngAfterViewInit();
 
   public Top = 0;

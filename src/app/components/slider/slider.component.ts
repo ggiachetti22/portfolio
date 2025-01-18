@@ -14,12 +14,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SliderComponent implements AfterViewInit, OnInit {
 
-@ViewChild('ContentBox') ContentBox!: ElementRef;
-@ViewChild('fondo') fondo!: ElementRef;
-@ViewChild('Navegadores') Navegadores!: ElementRef;
-@ViewChild('BtnPrev') BtnPrev!: ElementRef;
-@ViewChild('BtnNext') BtnNext!: ElementRef;
-@ViewChild('play') play!: ElementRef;
+@ViewChild('ContentBox', {static: false}) ContentBox!: ElementRef;
+@ViewChild('fondo', {static: false}) fondo!: ElementRef;
+@ViewChild('Navegadores', {static: false}) Navegadores!: ElementRef;
+@ViewChild('BtnPrev', {static: false}) BtnPrev!: ElementRef;
+@ViewChild('BtnNext', {static: false}) BtnNext!: ElementRef;
+@ViewChild('play', {static: false}) play!: ElementRef;
 
 public n: Number = 0;
 public valorActual: Number = 25;
@@ -132,7 +132,7 @@ public Current() {
   this.figureAltoNext = Number(this.myFigures[Number(this.V)].offsetHeight);
   this.render.setStyle(this.BtnPrev.nativeElement, 'height', `${this.figureAltoPrev}px`);
   this.render.setStyle(this.BtnNext.nativeElement, 'height', `${this.figureAltoNext}px`);
-  console.log(`offsetHeight: ${this.figureAltoPrev}px == ${this.figureAltoNext}px\nActual: ${this.V}`);
+  // console.log(`offsetHeight: ${this.figureAltoPrev}px == ${this.figureAltoNext}px\nActual: ${this.V}`);
 } // this.Current();
 
 public Pintar(n: Number) {

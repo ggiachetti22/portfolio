@@ -78,6 +78,7 @@ export class ChatComponent implements OnInit, AfterViewInit { // OnDestroy
       console.log(conn);
     });
 
+    connect.start().then(() => console.log("Conexión éxitosa..!!"));
     // connect.start().then(() => connect.invoke("SendtMessageGroup", "Hola Mundo..!")); //.catch(er => console.error(er));
 
   } // this.MyConnection();

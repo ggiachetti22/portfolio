@@ -44,7 +44,7 @@ export class ChatComponent implements OnInit, AfterViewInit { // OnDestroy
     this.titleService.AddTitle(this.title);
     this.ViewChatGroup();
 
-    console.log("this.MyConnection(): \n");
+    console.log("this.MyConnection(); \n");
     this.MyConnection();
 
     // console.log("My URL: ", this.apiUrlMessager + '/chatHub');
@@ -78,7 +78,7 @@ export class ChatComponent implements OnInit, AfterViewInit { // OnDestroy
       console.log(conn);
     });
 
-    connect.start().then(() => connect.invoke("SendtMessageGroup", "Hola Mundo..!")); //.catch(er => console.error(er));
+    // connect.start().then(() => connect.invoke("SendtMessageGroup", "Hola Mundo..!")); //.catch(er => console.error(er));
 
   } // this.MyConnection();
 

@@ -44,6 +44,7 @@ export class ChatComponent implements OnInit, AfterViewInit { // OnDestroy
     this.titleService.AddTitle(this.title);
     this.ViewChatGroup();
 
+    console.log("this.MyConnection(): \n");
     this.MyConnection();
 
     // console.log("My URL: ", this.apiUrlMessager + '/chatHub');
@@ -78,7 +79,7 @@ export class ChatComponent implements OnInit, AfterViewInit { // OnDestroy
     connect.start().then(() => connect.invoke("SendtMessageGroup", "Hola Mundo..!")).catch(er => console.error(er));
   } // this.MyConnection();
 
-  
+
   public ConnectionHub(): void {
     this.hubConnection = new signalR.HubConnectionBuilder().withUrl(this.apiUrlMessager + '/chatHub')
     .withAutomaticReconnect([0, 2000, 10000, 30000])

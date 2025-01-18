@@ -10,6 +10,7 @@ import { ScrollAnimationDirective } from '../scroll/scroll.animation';
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css'
 })
-export class FooterComponent {
 
+export class FooterComponent {
 } // FooterComponent;
+

@@ -12,6 +12,7 @@ import { TestimoniosComponent } from '../testimonios/testimonios.component';
   templateUrl: './section-testimonios.component.html',
   styleUrl: './section-testimonios.component.css'
 })
-export class SectionTestimoniosComponent {
 
-}
+export class SectionTestimoniosComponent {
+} // SectionTestimopniosComponent;
+

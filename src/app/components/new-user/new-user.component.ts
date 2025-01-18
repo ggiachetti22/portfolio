@@ -43,14 +43,14 @@ export class NewUserComponent implements OnInit, AfterViewInit {
   public ConfirmarPassword = new FormControl('');
   public UserName = new FormControl('');
 
-  @ViewChild("myUserNameEmail") myUserNameEmail!: ElementRef;
-  @ViewChild("myPassword") myPassword!: ElementRef;
-  @ViewChild("myPasswordConfirm") myPasswordConfirm!: ElementRef;
-  @ViewChild("myUseName") myUseName!: ElementRef;
+  @ViewChild("myUserNameEmail", {static: false}) myUserNameEmail!: ElementRef;
+  @ViewChild("myPassword", {static: false}) myPassword!: ElementRef;
+  @ViewChild("myPasswordConfirm", {static: false}) myPasswordConfirm!: ElementRef;
+  @ViewChild("myUseName", {static: false}) myUseName!: ElementRef;
 
-  @ViewChild("EmailRef") EmailRef!: ElementRef;
-  @ViewChild("PassRef") PassRef!: ElementRef;
-  @ViewChild("ConfPassRef") ConfPassRef!: ElementRef;
+  @ViewChild("EmailRef", {static: false}) EmailRef!: ElementRef;
+  @ViewChild("PassRef", {static: false}) PassRef!: ElementRef;
+  @ViewChild("ConfPassRef", {static: false}) ConfPassRef!: ElementRef;
   public MyEmal: string = '';
   public MyPass: string = '';
   public MyConfPass: string = '';

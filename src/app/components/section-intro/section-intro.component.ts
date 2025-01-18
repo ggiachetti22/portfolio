@@ -12,5 +12,7 @@ import { ScrollAnimationDirective } from '../scroll/scroll.animation';
   templateUrl: './section-intro.component.html',
   styleUrl: './section-intro.component.css'
 })
+
 export class SectionIntroComponent {
 } // SectionIntroComponent;
+

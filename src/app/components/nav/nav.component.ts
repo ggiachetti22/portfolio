@@ -21,19 +21,19 @@ import { TitleServices } from '../servicios/title.service';
 
 export class NavComponent implements OnInit {
 
-  @ViewChild("link1") link1!: ElementRef;
-  @ViewChild("link2") link2!: ElementRef;
-  @ViewChild("link3") link3!: ElementRef;
+  @ViewChild("link1", {static: false}) link1!: ElementRef;
+  @ViewChild("link2", {static: false}) link2!: ElementRef;
+  @ViewChild("link3", {static: false}) link3!: ElementRef;
   public ElLink1: boolean = false;
   public ElLink2: boolean = false;
   public ElLink3: boolean = false;
   // public ElLink4: boolean = false;
   // public ElLink5: boolean = false;
-  @ViewChild('NavSection') NavSection!: ElementRef;
-  @ViewChild("boxsection") boxsection!: ElementRef;
-  @ViewChild("btnCheck") btnCheck!: ElementRef;
-  @ViewChild("navegador1") navegador1!: ElementRef;
-  // @ViewChild("navegador2") navegador2!: ElementRef;
+  @ViewChild('NavSection', {static: false}) NavSection!: ElementRef;
+  @ViewChild("boxsection", {static: false}) boxsection!: ElementRef;
+  @ViewChild("btnCheck", {static: false}) btnCheck!: ElementRef;
+  @ViewChild("navegador1", {static: false}) navegador1!: ElementRef;
+  // @ViewChild("navegador2", {static: false}) navegador2!: ElementRef;
   @ViewChild("parrafo1", { static: false }) parrafo1!: ElementRef;
   @ViewChild("parrafo2", { static: false }) parrafo2!: ElementRef;
   @ViewChild("parrafoBox", { static: false }) parrafoBox!: ElementRef;

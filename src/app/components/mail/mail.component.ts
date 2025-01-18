@@ -26,7 +26,7 @@ export class MailComponent implements AfterViewInit {
   public toEmail = new FormControl();
   public toMessage = new FormControl();
   public Msj: String = "Dejanos un mensaje";
-  @ViewChild('correo') correo?: ElementRef;
+  @ViewChild('correo', {static: false}) correo?: ElementRef;
 
   // "start": "ng serve --proxy-config proxy.conf.json -o",
 

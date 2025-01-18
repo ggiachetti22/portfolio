@@ -66,10 +66,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   private cl: any;
 
-  @ViewChild("myUserNameEmail") myUserNameEmail!: ElementRef;
-  @ViewChild("myPassword") myPassword!: ElementRef;
-  @ViewChild("EmailRef") EmailRef!: ElementRef;
-  @ViewChild("PassRef") PassRef!: ElementRef;
+  @ViewChild("myUserNameEmail", {static: false}) myUserNameEmail!: ElementRef;
+  @ViewChild("myPassword", {static: false}) myPassword!: ElementRef;
+  @ViewChild("EmailRef", {static: false}) EmailRef!: ElementRef;
+  @ViewChild("PassRef", {static: false}) PassRef!: ElementRef;
   public MyEmal: string = '';
   public MyPass: string = '';
 

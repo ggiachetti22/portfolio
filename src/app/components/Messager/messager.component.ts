@@ -20,8 +20,8 @@ export class MessagerComponent {
 
   private myID : Number = 0;
 
-  @ViewChild('hidden') hiddenInput! : ElementRef;
-  @ViewChild('Despliega') Despliega! : ElementRef;
+  @ViewChild('hidden', {static: false}) hiddenInput! : ElementRef;
+  @ViewChild('Despliega', {static: false}) Despliega! : ElementRef;
 
   HiddenInput = new FormControl('');
 

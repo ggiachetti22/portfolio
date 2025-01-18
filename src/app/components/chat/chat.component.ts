@@ -7,8 +7,8 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ChatService } from '../servicios/chat.service';
 import { AutoResizeTextArea } from '../scroll/textarea.height';
 import { LoginServices } from '../servicios/login.service';
-import * as signalR from '@microsoft/signalr';
 import { environment } from '../../url/url.component';
+import * as signalR from '@microsoft/signalr';
 // import { MessagerComponent } from '../Messager/messager.component';
 
 
@@ -89,7 +89,7 @@ export class ChatComponent implements OnInit, AfterViewInit { // OnDestroy
 
   public listMessage?: Observable<MessageDTO[]>;
   public listMessage2?: MessageDTO[];
-  // @ViewChild('text') ElText?: ElementRef;
+  // @ViewChild('text', {static: false}) ElText?: ElementRef;
   protected myID: Number = 0; // this.myID
   @ViewChild('hidden', { static: false }) hidden?: ElementRef;
   public message_ID = new FormControl(0);
@@ -232,12 +232,12 @@ export class ChatComponent implements OnInit, AfterViewInit { // OnDestroy
   public VisibleBox: Number | null = null;
   public PrevID: Number = 0;
   public Dark: String = "rgba(0, 0, 0, .25)";
-  @ViewChild('Box1') Box1!: ElementRef;
-  @ViewChild('Box2') Box2!: ElementRef;
-  @ViewChild('Box3') Box3!: ElementRef;
-  @ViewChild('caja') caja!: ElementRef;
-  @ViewChild('ElNombre') ElNombre!: ElementRef;
-  @ViewChild('ElMensaje') ElMensaje!: ElementRef;
+  @ViewChild('Box1', {static: false}) Box1!: ElementRef;
+  @ViewChild('Box2', {static: false}) Box2!: ElementRef;
+  @ViewChild('Box3', {static: false}) Box3!: ElementRef;
+  @ViewChild('caja', {static: false}) caja!: ElementRef;
+  @ViewChild('ElNombre', {static: false}) ElNombre!: ElementRef;
+  @ViewChild('ElMensaje', {static: false}) ElMensaje!: ElementRef;
  
   private Ev: HTMLElement | null = null;
   private E: HTMLElement | null = null;

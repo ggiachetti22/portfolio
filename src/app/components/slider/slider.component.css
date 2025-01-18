@@ -166,6 +166,19 @@ img {
 }
 
 
+#imagenesRandom {
+    /* width: calc(100% / 3); */
+    margin: 50px auto;
+    max-width: 1450px;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 0 20px;
+}
+
+
 /* -----------------Media Query------------------- */
 
 @media (max-width: 425px),
@@ -194,5 +207,11 @@ img {
     }
     #play {
         cursor: none;
+    }
+    #imagenesRandom {
+        width: 80%;
+        height: 100%;
+        gap: 20px 0;
+        flex-flow: row wrap;
     }
 }

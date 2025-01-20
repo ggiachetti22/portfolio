@@ -156,6 +156,7 @@
 .icon-paper-plane-empty { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf1d9;&nbsp;'); }
 .icon-cc-visa { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf1f0;&nbsp;'); }
 .icon-cc-mastercard { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf1f1;&nbsp;'); }
+.icon-whatsapp { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf232;&nbsp;'); }
 .icon-chrome-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf268;&nbsp;'); }
 .icon-commenting { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf27a;&nbsp;'); }
 .icon-commenting-o { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf27b;&nbsp;'); }

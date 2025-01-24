@@ -90,6 +90,9 @@ export class NavComponent implements OnInit {
 
     this.route.snapshot.params['ElID'];
 
+    // if(this.btnCheck?.nativeElement.checked) this.btnCheck.nativeElement.checked;
+
+
     this.iniciar();
     this.ResizeSlider(this.event);
 

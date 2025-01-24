@@ -351,13 +351,12 @@ export class NavComponent implements OnInit {
   
       if (PositionActual !== undefined) {
 
-        /* if (this.PositionInitial >= BoxUp) {
+        if (this.PositionInitial >= 800) { // this.PositionInitial >= BoxUp
           this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', null);
         } else {
           this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
-        } // else; */
+        } // else;
 
-        this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
   
         if (this.PositionInitial >= PositionActual) {
           this.renderer.setStyle(NavSection, 'opacity', null);

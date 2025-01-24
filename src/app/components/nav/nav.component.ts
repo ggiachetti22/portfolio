@@ -100,8 +100,6 @@ export class NavComponent implements OnInit {
 
     // if(this.btnCheck?.nativeElement.checked) this.btnCheck.nativeElement.checked;
 
-
-
     this.iniciar();
     this.ResizeSlider(this.event);
 
@@ -109,29 +107,29 @@ export class NavComponent implements OnInit {
 
 
   public ngAfterViewInit(): void {    
-    // const footer = document.querySelector('.footer') as HTMLElement;
+    // console.log('Componente?:', this.constructor.name);
     const NavSection = document.getElementById('NavSection');
 
-    console.log('Componente?:', this.constructor.name);
+    if (this.parrafoBox?.nativeElement && this.Svg?.nativeElement &&
+      this.Circle?.nativeElement && this.Svg0?.nativeElement && this.Circle0?.nativeElement ) {
 
-    if(NavSection) {
-      if(this.parrafoBox?.nativeElement && this.Svg?.nativeElement && this.Circle?.nativeElement && this.Svg0?.nativeElement && this.Circle0?.nativeElement) {
         this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
+
         if (this.titleService.CurrentLight) {
           this.renderer.addClass(this.Svg.nativeElement, 'activaCheck');
           this.renderer.addClass(this.Circle.nativeElement, 'circleCheck');
-    
+  
           this.renderer.addClass(this.Svg0.nativeElement, 'activaCheck');
           this.renderer.addClass(this.Circle0.nativeElement, 'circleCheck');
         } else {
           this.renderer.removeClass(this.Svg.nativeElement, 'activaCheck');
           this.renderer.removeClass(this.Circle.nativeElement, 'circleCheck');
-    
+  
           this.renderer.removeClass(this.Svg0.nativeElement, 'activaCheck');
           this.renderer.removeClass(this.Circle0.nativeElement, 'circleCheck');
-        } // else;
+        } // else
+
       } // if
-    } // if;
 
   } // ngAfterViewInit();
 
@@ -184,7 +182,7 @@ export class NavComponent implements OnInit {
     this.home = Lct.substring(Home, this.In);
     this.chat = Lct.substring(Chat, this.In);
     this.login = Lct.substring(Login, this.In);
-    console.log(`Location Now: `, Lct, `\nLocal Home: `, this.home, `\nLocal Chat: `, this.chat, `\nLocal Login: `, this.login, `\n(?): (${this.In})`);
+    // console.log(`Location Now: `, Lct, `\nLocal Home: `, this.home, `\nLocal Chat: `, this.chat, `\nLocal Login: `, this.login, `\n(?): (${this.In})`);
   } // this.MyLocation();
 
 

@@ -330,32 +330,42 @@ export class NavComponent implements OnInit {
  
   
 
-  protected myScroll() { // (window:scroll)="myScroll();" // de forma dinámica;
-    const footer = document.querySelector('.footer') as HTMLElement;
-    const NavSection = document.getElementById('NavSection');
-    let BodyHeight = document.body.offsetHeight; 
-    let FooterHeight = footer.offsetHeight;
-    let BoxUp = BodyHeight - (FooterHeight + 400);
-    let PositionActual = window.scrollY;
-
-    if (footer && NavSection && BodyHeight && FooterHeight && BoxUp && PositionActual) {
-      // console.log(`BodyHeight: ${BodyHeight}\nFooterHeight: ${FooterHeight}`);
-      if(this.PositionInitial >= BoxUp) this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', null);
-      else this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
-
-      if (this.PositionInitial >= PositionActual) {
-        this.renderer.setStyle(NavSection, 'opacity', null);
-        NavSection?.classList.remove('NavToggle');
-      } else {
-        if (this.PositionInitial >= 60) this.renderer.setStyle(NavSection, 'opacity', '0');
-        NavSection?.classList.add('NavToggle');
-      } // else;
-
-      this.PositionInitial = PositionActual;
-
-    } // if;
-
-  }; // myScroll();
+  protected myScroll() {
+    try {
+      const footer = document.querySelector('.footer') as HTMLElement;
+      const NavSection = document.getElementById('NavSection');
+  
+      if (!footer || !NavSection) {
+        console.warn('Elementos requeridos no están disponibles en el DOM.');
+        return;
+      }
+  
+      let BodyHeight = document.body.offsetHeight; 
+      let FooterHeight = footer.offsetHeight;
+      let BoxUp = BodyHeight - (FooterHeight + 400);
+      let PositionActual = window.scrollY;
+  
+      if (BoxUp && PositionActual !== undefined) {
+        if (this.PositionInitial >= BoxUp) {
+          this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', null);
+        } else {
+          this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
+        }
+  
+        if (this.PositionInitial >= PositionActual) {
+          this.renderer.setStyle(NavSection, 'opacity', null);
+          NavSection.classList.remove('NavToggle');
+        } else {
+          if (this.PositionInitial >= 60) this.renderer.setStyle(NavSection, 'opacity', '0');
+          NavSection.classList.add('NavToggle');
+        }
+  
+        this.PositionInitial = PositionActual;
+      }
+    } catch (error) {
+      console.error('Error en myScroll:', error);
+    } // chat
+  } // myScroll();
 
 
   public logoff() {

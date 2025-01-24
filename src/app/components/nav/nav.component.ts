@@ -110,8 +110,8 @@ export class NavComponent implements OnInit {
     // console.log('Componente?:', this.constructor.name);
     const NavSection = document.getElementById('NavSection');
 
-    if (this.parrafoBox?.nativeElement && this.Svg?.nativeElement &&
-      this.Circle?.nativeElement && this.Svg0?.nativeElement && this.Circle0?.nativeElement ) {
+    if (!this.parrafoBox?.nativeElement && !this.Svg?.nativeElement &&
+      !this.Circle?.nativeElement && !this.Svg0?.nativeElement && !this.Circle0?.nativeElement ) {
 
         this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
 

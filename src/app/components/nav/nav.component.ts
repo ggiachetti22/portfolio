@@ -88,8 +88,6 @@ export class NavComponent implements OnInit {
       this.LinkActivo();
     });
 
-    const footer = document.querySelector('.footer') as HTMLElement;
-    const NavSection = document.getElementById('NavSection');
 
     this.route.snapshot.params['ElID'];
 

@@ -108,11 +108,11 @@ export class NavComponent implements OnInit {
 
   public ngAfterViewInit(): void {    
 
-    const alreadyReloaded = localStorage.getItem('reloaded');
+    /* const alreadyReloaded = localStorage.getItem('reloaded');
     if (!alreadyReloaded) {
       localStorage.setItem('reloaded', 'true');
       location.reload();
-    } // if
+    } // if; */
 
     // console.log('Componente?:', this.constructor.name);
     const NavSection = document.getElementById('NavSection');

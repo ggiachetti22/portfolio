@@ -332,24 +332,28 @@ export class NavComponent implements OnInit {
 
   protected myScroll() { // (window:scroll)="myScroll();" // de forma dinámica;
     const footer = document.querySelector('.footer') as HTMLElement;
+    const NavSection = document.getElementById('NavSection');
     let BodyHeight = document.body.offsetHeight; 
     let FooterHeight = footer.offsetHeight;
     let BoxUp = BodyHeight - (FooterHeight + 400);
-    const NavSection = document.getElementById('NavSection');
     let PositionActual = window.scrollY;
-    // console.log(`BodyHeight: ${BodyHeight}\nFooterHeight: ${FooterHeight}`);
-    if(this.PositionInitial >= BoxUp) this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', null);
-    else this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
 
-    if (this.PositionInitial >= PositionActual) {
-      this.renderer.setStyle(NavSection, 'opacity', null);
-      NavSection?.classList.remove('NavToggle');
-    } else {
-      if (this.PositionInitial >= 60) this.renderer.setStyle(NavSection, 'opacity', '0');
-      NavSection?.classList.add('NavToggle');
-    } // else;
+    if (footer && NavSection && BodyHeight && FooterHeight && BoxUp && PositionActual) {
+      // console.log(`BodyHeight: ${BodyHeight}\nFooterHeight: ${FooterHeight}`);
+      if(this.PositionInitial >= BoxUp) this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', null);
+      else this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
 
-    this.PositionInitial = PositionActual;
+      if (this.PositionInitial >= PositionActual) {
+        this.renderer.setStyle(NavSection, 'opacity', null);
+        NavSection?.classList.remove('NavToggle');
+      } else {
+        if (this.PositionInitial >= 60) this.renderer.setStyle(NavSection, 'opacity', '0');
+        NavSection?.classList.add('NavToggle');
+      } // else;
+
+      this.PositionInitial = PositionActual;
+
+    } // if;
 
   }; // myScroll();
 

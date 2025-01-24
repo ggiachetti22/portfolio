@@ -90,7 +90,6 @@ export class NavComponent implements OnInit {
 
     const footer = document.querySelector('.footer') as HTMLElement;
     const NavSection = document.getElementById('NavSection');
-    this.NavSection.nativeElement = NavSection;
 
     this.route.snapshot.params['ElID'];
 

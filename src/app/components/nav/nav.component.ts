@@ -101,6 +101,7 @@ export class NavComponent implements OnInit {
     // if(this.btnCheck?.nativeElement.checked) this.btnCheck.nativeElement.checked;
 
 
+
     this.iniciar();
     this.ResizeSlider(this.event);
 
@@ -110,6 +111,8 @@ export class NavComponent implements OnInit {
   public ngAfterViewInit(): void {    
     // const footer = document.querySelector('.footer') as HTMLElement;
     const NavSection = document.getElementById('NavSection');
+
+    console.log('Componente?:', this.constructor.name);
 
     if(NavSection) {
       if(this.parrafoBox?.nativeElement && this.Svg?.nativeElement && this.Circle?.nativeElement && this.Svg0?.nativeElement && this.Circle0?.nativeElement) {
@@ -340,43 +343,6 @@ export class NavComponent implements OnInit {
     }); // resize; 
   } // this.ResizeSlider($event);
  
-
-  /* protected myScroll() { // (window:scroll)="myScroll();" // de forma dinámica;
-    try {
-      const footer = document.querySelector('.footer') as HTMLElement;
-      const NavSection = document.getElementById('NavSection');
-  
-      if (!footer || !NavSection) {
-        console.warn('Elementos requeridos no están disponibles en el DOM.');
-        return;
-      } // if;
-  
-      let BodyHeight = document.body.offsetHeight; 
-      let FooterHeight = footer.offsetHeight;
-      let BoxUp = BodyHeight - (FooterHeight + 400);
-      let PositionActual = window.scrollY;
-  
-      if (BoxUp && PositionActual !== undefined) {
-
-        if (this.PositionInitial >= BoxUp) {
-          this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', null);
-        } else {
-          this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
-        } // else;
-  
-        if (this.PositionInitial >= PositionActual) {
-          this.renderer.setStyle(NavSection, 'opacity', null);
-          NavSection.classList.remove('NavToggle');
-        } else {
-          if (this.PositionInitial >= 60) this.renderer.setStyle(NavSection, 'opacity', '0');
-          NavSection.classList.add('NavToggle');
-        } // else:
-        this.PositionInitial = PositionActual;
-      }
-    } catch (error) {
-      console.error('Error en myScroll:', error);
-    }
-  } // myScroll(); */
 
 
   protected myScroll() { // (window:scroll)="myScroll2();" // de forma dinámica;

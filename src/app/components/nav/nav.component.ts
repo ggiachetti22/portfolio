@@ -337,20 +337,18 @@ export class NavComponent implements OnInit {
     try {
       const footer = document.querySelector('.footer') as HTMLElement;
       const NavSection = document.getElementById('NavSection');
-
-      let BodyHeight = document.body.offsetHeight; 
-      let FooterHeight = footer.offsetHeight;
-      
+  
       if (!footer || !NavSection) {
         console.warn('Elementos requeridos no están disponibles en el DOM.');
-        FooterHeight = 600;
         return;
       } // if;
   
+      let BodyHeight = document.body.offsetHeight; 
+      let FooterHeight = footer.offsetHeight;
       let BoxUp = BodyHeight - (FooterHeight + 400);
       let PositionActual = window.scrollY;
   
-      if (PositionActual !== undefined) {
+      if (BoxUp && PositionActual !== undefined) {
 
         if (this.PositionInitial >= BoxUp) {
           this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', null);
@@ -358,6 +356,7 @@ export class NavComponent implements OnInit {
           this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
         } // else;
 
+        this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
   
         if (this.PositionInitial >= PositionActual) {
           this.renderer.setStyle(NavSection, 'opacity', null);

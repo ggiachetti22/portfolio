@@ -382,6 +382,12 @@ export class NavComponent implements OnInit {
   protected myScroll() { // (window:scroll)="myScroll2();" // de forma dinámica;
     const footer = document.querySelector('.footer') as HTMLElement;
     const NavSection = document.getElementById('NavSection');
+
+    if (!footer || !NavSection) {
+      console.warn('Elementos requeridos no están disponibles en el DOM.');
+      return;
+    } // if;
+
     let BodyHeight = document.body.offsetHeight; 
     let FooterHeight = footer.offsetHeight;
     let BoxUp = BodyHeight - (FooterHeight + 400);

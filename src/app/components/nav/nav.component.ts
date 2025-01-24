@@ -100,10 +100,10 @@ export class NavComponent implements OnInit {
 
 
   public ngAfterViewInit(): void {    
-    const footer = document.querySelector('.footer') as HTMLElement;
+    // const footer = document.querySelector('.footer') as HTMLElement;
     const NavSection = document.getElementById('NavSection');
-    
-    if(footer && NavSection) {
+
+    if(NavSection) {
       if(this.parrafoBox?.nativeElement && this.Svg?.nativeElement && this.Circle?.nativeElement && this.Svg0?.nativeElement && this.Circle0?.nativeElement) {
         this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
         if (this.titleService.CurrentLight) {
@@ -335,26 +335,29 @@ export class NavComponent implements OnInit {
 
   protected myScroll() { // (window:scroll)="myScroll();" // de forma dinámica;
     try {
-      const footer = document.querySelector('.footer') as HTMLElement;
+      // const footer = document.querySelector('.footer') as HTMLElement;
       const NavSection = document.getElementById('NavSection');
   
-      if (!footer || !NavSection) {
+      if (!NavSection) {
         console.warn('Elementos requeridos no están disponibles en el DOM.');
         return;
       } // if;
   
-      let BodyHeight = document.body.offsetHeight; 
-      let FooterHeight = footer.offsetHeight;
-      let BoxUp = BodyHeight - (FooterHeight + 400);
+      // let BodyHeight = document.body.offsetHeight; 
+      // let FooterHeight = footer.offsetHeight;
+      // let BoxUp = BodyHeight - (FooterHeight + 400);
+
       let PositionActual = window.scrollY;
   
-      if (BoxUp && PositionActual !== undefined) {
+      if (PositionActual !== undefined) {
 
-        if (this.PositionInitial >= BoxUp) {
+        /* if (this.PositionInitial >= BoxUp) {
           this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', null);
         } else {
           this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
-        } // else;
+        } // else; */
+
+        this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
   
         if (this.PositionInitial >= PositionActual) {
           this.renderer.setStyle(NavSection, 'opacity', null);
@@ -370,35 +373,6 @@ export class NavComponent implements OnInit {
     }
   } // myScroll();
 
- 
-/*
-  protected myScroll2() { // (window:scroll)="myScroll2();" // de forma dinámica;
-    const footer = document.querySelector('.footer') as HTMLElement;
-    const NavSection = document.getElementById('NavSection');
-    let BodyHeight = document.body.offsetHeight; 
-    let FooterHeight = footer.offsetHeight;
-    let BoxUp = BodyHeight - (FooterHeight + 400);
-    let PositionActual = window.scrollY;
-
-    if (footer && NavSection && BodyHeight && FooterHeight && BoxUp && PositionActual) {
-      // console.log(`BodyHeight: ${BodyHeight}\nFooterHeight: ${FooterHeight}`);
-      if(this.PositionInitial >= BoxUp) this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', null);
-      else this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
-
-      if (this.PositionInitial >= PositionActual) {
-        this.renderer.setStyle(NavSection, 'opacity', null);
-        NavSection?.classList.remove('NavToggle');
-      } else {
-        if (this.PositionInitial >= 60) this.renderer.setStyle(NavSection, 'opacity', '0');
-        NavSection?.classList.add('NavToggle');
-      } // else;
-
-      this.PositionInitial = PositionActual;
-
-    } // if;
-
-  }; // myScroll2();
-*/
 
   
   public logoff() {

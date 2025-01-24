@@ -88,7 +88,6 @@ export class NavComponent implements OnInit {
       this.LinkActivo();
     });
 
-
     this.route.snapshot.params['ElID'];
 
     // if(this.btnCheck?.nativeElement.checked) this.btnCheck.nativeElement.checked;
@@ -101,23 +100,27 @@ export class NavComponent implements OnInit {
 
 
   public ngAfterViewInit(): void {    
-
-    if(this.parrafoBox?.nativeElement && this.Svg?.nativeElement && this.Circle?.nativeElement && this.Svg0?.nativeElement && this.Circle0?.nativeElement) {
-      this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
-      if (this.titleService.CurrentLight) {
-        this.renderer.addClass(this.Svg.nativeElement, 'activaCheck');
-        this.renderer.addClass(this.Circle.nativeElement, 'circleCheck');
-  
-        this.renderer.addClass(this.Svg0.nativeElement, 'activaCheck');
-        this.renderer.addClass(this.Circle0.nativeElement, 'circleCheck');
-      } else {
-        this.renderer.removeClass(this.Svg.nativeElement, 'activaCheck');
-        this.renderer.removeClass(this.Circle.nativeElement, 'circleCheck');
-  
-        this.renderer.removeClass(this.Svg0.nativeElement, 'activaCheck');
-        this.renderer.removeClass(this.Circle0.nativeElement, 'circleCheck');
-      } // else;
-    } // if
+    const footer = document.querySelector('.footer') as HTMLElement;
+    const NavSection = document.getElementById('NavSection');
+    
+    if(footer && NavSection) {
+      if(this.parrafoBox?.nativeElement && this.Svg?.nativeElement && this.Circle?.nativeElement && this.Svg0?.nativeElement && this.Circle0?.nativeElement) {
+        this.renderer.setStyle(this.parrafoBox.nativeElement, 'right', '-40px');
+        if (this.titleService.CurrentLight) {
+          this.renderer.addClass(this.Svg.nativeElement, 'activaCheck');
+          this.renderer.addClass(this.Circle.nativeElement, 'circleCheck');
+    
+          this.renderer.addClass(this.Svg0.nativeElement, 'activaCheck');
+          this.renderer.addClass(this.Circle0.nativeElement, 'circleCheck');
+        } else {
+          this.renderer.removeClass(this.Svg.nativeElement, 'activaCheck');
+          this.renderer.removeClass(this.Circle.nativeElement, 'circleCheck');
+    
+          this.renderer.removeClass(this.Svg0.nativeElement, 'activaCheck');
+          this.renderer.removeClass(this.Circle0.nativeElement, 'circleCheck');
+        } // else;
+      } // if
+    } // if;
 
   } // ngAfterViewInit();
 

@@ -22,8 +22,10 @@ export class AutoResizeTextArea implements OnInit {
     @HostListener('input')
     adjustHeight(): void {
         const textarea = this.Elemento.nativeElement;
-        this.renderer.setStyle(textarea, 'height', 'auto');
-        textarea.style.height = Math.min(textarea.scrollHeight, this.maxLines * this.lineHeight) + 'px';
+        if (textarea) {
+          this.renderer.setStyle(textarea, 'height', 'auto');
+          textarea.style.height = Math.min(textarea.scrollHeight, this.maxLines * this.lineHeight) + 'px';
+        } // if;
     } // adjustHeight;
 
 
@@ -32,17 +34,20 @@ export class AutoResizeTextArea implements OnInit {
         window.addEventListener('resize', () => {
           const anchoWindow = window.innerWidth;
           // const altoWindow = window.innerHeight;
-          if (anchoWindow <= 650) {
-            console.log("Menor a 650px");
-            this.pixeles = 12;
-            this.maxLines = 4;
-            this.lineHeight = 1.5 * this.pixeles;
-          } else {
-            this.pixeles = 16;
-            this.maxLines = 5;
-            this.lineHeight = 1.5 * this.pixeles;
-            console.log("Mayor a 650px");
-          } // else;
+          if(anchoWindow) {
+            if (anchoWindow <= 650) {
+              console.log("Menor a 650px");
+              this.pixeles = 12;
+              this.maxLines = 4;
+              this.lineHeight = 1.5 * this.pixeles;
+            } else {
+              this.pixeles = 16;
+              this.maxLines = 5;
+              this.lineHeight = 1.5 * this.pixeles;
+              console.log("Mayor a 650px");
+            } // else;
+          } // if
+
         }); // addEventListener;
     } // this.adjunstResize(this.event);
 

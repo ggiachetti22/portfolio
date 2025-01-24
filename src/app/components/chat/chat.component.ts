@@ -57,6 +57,8 @@ export class ChatComponent implements OnInit, AfterViewInit { // OnDestroy
       this.valor = Boolean(v);
     } ); // subscribe;
     this.changeDtRef.detectChanges();
+
+    
   } // ngAfterViewInit();
 
 

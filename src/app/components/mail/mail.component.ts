@@ -40,7 +40,7 @@ export class MailComponent implements AfterViewInit {
       this.valor = Boolean(v);
     } ); // subscribe;
     
-    if(this.correo?.nativeElement) this.correo?.nativeElement.focus();
+    if(!this.correo?.nativeElement) console.log("Elemñento no iniciado");
     this.changeDtRef.detectChanges();
 
   } // ngAfterViewInit();

@@ -6,6 +6,7 @@ import { SectionServicesComponent } from '../section-services/section-services.c
 import { SectionTestimoniosComponent } from '../section-testimonios/section-testimonios.component';
 import { ScrollAnimationDirective } from '../scroll/scroll.animation';
 import { TitleServices } from '../servicios/title.service';
+import { BannerComponent } from '../banner/banner.component';
 // import { SubMenuComponent } from '../sub-menu/sub-menu.component';
 
 
@@ -19,7 +20,8 @@ import { TitleServices } from '../servicios/title.service';
     SectionIntroComponent,
     SectionPortfolioComponent,
     SectionServicesComponent,    
-    SectionTestimoniosComponent
+    SectionTestimoniosComponent,
+    BannerComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'

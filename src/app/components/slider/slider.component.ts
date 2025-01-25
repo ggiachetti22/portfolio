@@ -1,13 +1,14 @@
-import { NgOptimizedImage } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+// import { NgOptimizedImage } from '@angular/common';
+
 
 @Component({
   selector: 'app-slider',
   standalone: true,
   imports: [
-    NgOptimizedImage
+    // NgOptimizedImage
   ],
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.css',

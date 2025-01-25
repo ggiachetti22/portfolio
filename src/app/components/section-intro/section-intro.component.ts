@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { ScrollAnimationDirective } from '../scroll/scroll.animation';
-import { SliderComponent } from '../slider/slider.component';
+import { BannerComponent } from '../banner/banner.component';
+
 
 @Component({
   selector: 'app-section-intro',
   standalone: true,
   imports: [
     ScrollAnimationDirective,
-    // SliderComponent
+    BannerComponent
   ],
   templateUrl: './section-intro.component.html',
   styleUrl: './section-intro.component.css'

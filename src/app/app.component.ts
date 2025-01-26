@@ -39,13 +39,15 @@ export class AppComponent implements OnInit, AfterViewInit {
   public showFooter = true;
 
   constructor(private changeDtRef: ChangeDetectorRef, private titleServices: Title, private titleService: TitleServices, private render: Renderer2, private router: Router) {
-    const myRouter = ['/chat', '/chat?action=2'];
 
+    const myRouter = ['/chat', '/chat?action=2'];
     this.router.events.subscribe( () => {
       // this.showFooter = !this.router.url.includes('/chat'); // chat?action=2
       this.showFooter = !myRouter.some(rout => this.router.url.includes(rout));
     });
+    
   } // constructor;
+  
 
   @ViewChild('Container') Container!: ElementRef;
 

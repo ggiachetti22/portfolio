@@ -42,7 +42,7 @@
             
 
         </ul>
-
+        
         <a id="session" *ngIf="UserSession !== null" class="Nav-link session">
             Sesión de:<span>&nbsp;{{Parrafo3}}</span>
         </a>
@@ -136,7 +136,7 @@
 </div>
 
 
-<div id="up" #parrafoBox *ngIf="showFooter">
+<div id="up" #parrafoBox>
     <div (click)="scrollToTop();" #parrafo1 name="parrafo1">&#11014;</div>
     <!-- <p #parrafo2 name="parrafo2">{{Parrafo2}}</p> -->
 </div>

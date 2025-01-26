@@ -53,11 +53,11 @@ export class ChatComponent implements OnInit, AfterViewInit { // OnDestroy
 
   
   public ngAfterViewInit(): void {
+
     this.titleService.Light.subscribe( (v) => {
       this.valor = Boolean(v);
     } ); // subscribe;
     this.changeDtRef.detectChanges();
-
     
   } // ngAfterViewInit();
 

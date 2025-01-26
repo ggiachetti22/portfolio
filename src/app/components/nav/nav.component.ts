@@ -76,14 +76,15 @@ export class NavComponent implements OnInit {
   constructor(protected renderer: Renderer2, protected router: Router, private route: ActivatedRoute, private loginService: LoginServices, private titleService: TitleServices) {
     this.UserSession = loginService.userData;
 
-    /*const myRouter = ['/chat', '/chat?action=2'];
+    const myRouter = ['/chat', '/chat?action=2'];
     this.router.events.subscribe( () => {
       // this.showFooter = !this.router.url.includes('/chat'); // chat?action=2
       this.showFooter = !myRouter.some(rout => this.router.url.includes(rout));
-    }); */
+    });
+
   } // constructor();
 
-  // public showFooter = true;
+  public showFooter = true;
 
 
   public ngOnInit(): void {

@@ -13,3 +13,4 @@ export const routes: Routes = [
     // { path: '**', component: ErrorComponent }
         // { path: 'other', loadChildren: () => import('./other/other.routes').then(m => m.OTHER_ROUTES) }
 ];
+

@@ -1,9 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { FormControl } from "@angular/forms";
-import { BehaviorSubject, Observable, map, noop } from "rxjs";
+import { BehaviorSubject, Observable, map } from "rxjs";
 import { MyResponse, UserResponse } from "../interface/interfaces";
-import { NonNullAssert } from "@angular/compiler";
 import { environment } from "../../url/url.component";
 
 
@@ -50,17 +48,16 @@ export class LoginServices {
         if (res.success === 1) {
 
           localStorage.setItem('usuario', JSON.stringify(usuario));
-
           localStorage.setItem('usuarioNombre', JSON.stringify(usuario.userName));
-
-          this.userSession.next(usuario);
-          this.userNameSession?.next(usuario.userName);
 
           let us = usuario.userName;
 
-          const nombre = this.userNameSession?.value; // UserName;
-          console.log(`this.userName: ${this.myUserName} // (${nombre})\n`);
+          this.userSession?.next(usuario);
+          this.userNameSession?.next(us);
 
+          const nombre = this.userNameSession?.value; // UserName;
+
+          console.log(`this.userName: ${this.myUserName} // (${nombre})\n`);
           console.log(`Acceso concedido!!\n\b${JSON.stringify(usuario)}`);
           console.log(`Acceso concedido!!\n\b${JSON.stringify(us)}`);
 
@@ -72,13 +69,12 @@ export class LoginServices {
   } // LoginUser;
 
 
-  // DSLOIS / 1234
-
-  public get myUserName(): String | null { // | undefined
+  public get myUserName(): String | null {
     // this.userNameSession?.asObservable().toString();
     this.userNameSession?.next(localStorage.getItem("usuarioNombre"));
     return this.userNameSession?.value;
   } // this.myUserName;
+
 
   public get userData(): UserResponse | null {
     console.log(`Session open ----------------\n`);

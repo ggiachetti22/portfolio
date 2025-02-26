@@ -1,5 +1,5 @@
-import { inject, Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivateFn, GuardResult, MaybeAsync, Router, RouterStateSnapshot } from "@angular/router";
+import { inject } from "@angular/core";
+import { CanActivateFn, Router } from "@angular/router";
 import { LoginServices } from "./login.service";
 
 
@@ -12,7 +12,7 @@ export const GuardServices: CanActivateFn = () => {
         return true;
     } // if;
 
-    // this.router.navigate(['/login']); // '/login?action=4'
+    // this.router.navigate(['/login']);
     window.location.href = 'login?action=3';
     // window.location.reload();
   

@@ -8,7 +8,6 @@ import { LoginServices } from "./login.service";
   providedIn: 'root'
 })
 
-
 export class JwtInterceptor implements HttpInterceptor {
 
   constructor(private loginService: LoginServices) {} // constructor;

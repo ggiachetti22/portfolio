@@ -35,11 +35,11 @@ export class LoginServices {
 
   public loginUser(uName: String, Clave: String): Observable<MyResponse> {
 
-    const body = JSON.stringify({ "email": uName,"userName": uName, "password": Clave });
+    /* const body = JSON.stringify({ "email": uName,"userName": uName, "password": Clave });
 
     console.log(`----------------\n`);
     console.log(body);
-    console.log(`----------------\n`);
+    console.log(`----------------\n`); */
 
     return this.http.post<MyResponse>(`${this.LoginUser}`, { "email": uName, "userName": uName, "password": Clave, HttpOption }).pipe(
       map( res => {

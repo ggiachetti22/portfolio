@@ -110,7 +110,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   } // this.Despintar();
 
   protected Login(): void {
-    console.log(`Ruta: ((${this.LoginUser}))`);
+    // console.log(`Ruta: ((${this.LoginUser}))`);
 
     this.N.next(Number(1 - Number(this.N.value)));
     this.n = Number(this.N.asObservable());

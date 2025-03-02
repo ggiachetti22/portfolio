@@ -179,7 +179,7 @@ button:focus {
     user-select: none;
   }
   .button {
-    min-width: calc(230px + 10vw);
+    min-width: 70vw;
   }
 }
 

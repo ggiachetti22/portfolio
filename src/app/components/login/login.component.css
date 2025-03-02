@@ -178,5 +178,8 @@ button:focus {
     -webkit-user-select: none;
     user-select: none;
   }
+  .button {
+    min-width: calc(230px + 10vw);
+  }
 }
 
